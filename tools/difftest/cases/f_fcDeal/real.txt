@@ -1,0 +1,11 @@
+# 全部转发到真头文件。
+#
+# f_fcDeal.c 的 include 链是 f_menu.h / f_main.h / f_eeprom.h / f_invPara.h /
+# f_fcDeal.h / f_runSrc.h / f_frqSrc.h。公共 shim 里 f_menu.h / f_runSrc.h /
+# f_frqSrc.h 都是空壳, 而真链条要求它们是真的 —— 例如本模块靠 f_eeprom.h 拿到
+# `SaveOneFuncCode` 宏、靠 f_funcCode.h 拿到 `GetCodeIndex` 宏与 FUNCCODE_ALL
+# 联合体。**必须一次全转发**: 只转发一个, 链条下游仍会撞上桩。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

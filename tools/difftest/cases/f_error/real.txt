@@ -1,0 +1,25 @@
+# 全部转发到真头文件。
+#
+# f_error.c 的 include 链是 f_error.h / f_main.h / f_runSrc.h / f_frqSrc.h /
+# f_eeprom.h / f_io.h / f_menu.h / f_ui.h / f_comm.h / f_posCtrl.h / f_invPara.h。
+# 公共 shim 里 f_error.h / f_runSrc.h / f_frqSrc.h / f_io.h / f_menu.h / f_ui.h /
+# f_comm.h 都是空壳, 而真链条要求它们是真的:
+#
+#   f_error.h   -> f_funcCode.h -> f_interface.h   (errorAttribute / curTime /
+#                                                    ERROR_DEALING / errorAction)
+#   f_eeprom.h                                     (funcCodeRwMode[Tmp] /
+#                                                    startIndexWriteSeries)
+#   f_io.h                                         (diFunc / diSelectFunc /
+#                                                    diStatus / doStatus)
+#   f_runSrc.h                                     (runFlag / runCmd / dspMainCmd
+#                                                    / dspMainCmd1 / dspSubCmd /
+#                                                    dspStatus / tuneCmd)
+#   f_ui.h                                         (keyFunc / KEY_STOP)
+#
+# **必须一次全转发**: 只转发一个, 链条下游仍会撞上桩。另外本模块的观测量就是
+# 这些结构体的**具体布局** (errorScene3.elem 的 8 个 Uint16 依次赋值), 替身类型
+# 会让测试失去意义。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

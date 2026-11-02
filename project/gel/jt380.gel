@@ -1,0 +1,971 @@
+
+menuitem "f_funCode_JT380";
+
+hotmenu F0_RAM_Regs()
+{
+ 		    GEL_WatchAdd("*(int*)inverterGpTypeDisp");
+ 		    GEL_WatchAdd("*(int*)m1Fun_motorCtrlMode");
+ 		    GEL_WatchAdd("*(int*)runSrc");
+ 		    GEL_WatchAdd("*(int*)frqXSrc");
+ 		    GEL_WatchAdd("*(int*)frqYSrc");
+ 		    GEL_WatchAdd("*(int*)frqYRangeBase");
+ 		    GEL_WatchAdd("*(int*)frqYRange");
+ 		    GEL_WatchAdd("*(int*)frqCalcSrc");
+ 		    GEL_WatchAdd("*(int*)presetFrq");
+ 		    GEL_WatchAdd("*(int*)runDir");
+	        GEL_WatchAdd("*(int*)maxFrq");
+	        GEL_WatchAdd("*(int*)upperFrqSrc");
+	        GEL_WatchAdd("*(int*)upperFrq");
+	        GEL_WatchAdd("*(int*)upperFrqOffset");
+	        GEL_WatchAdd("*(int*)lowerFrq");
+	        GEL_WatchAdd("*(int*)carrierFrq");
+	        GEL_WatchAdd("*(int*)carFcByTem");
+	        GEL_WatchAdd("*(int*)accTime1");
+	        GEL_WatchAdd("*(int*)decTime1");
+	        GEL_WatchAdd("*(int*)accDecTimeUnit");
+	        GEL_WatchAdd("*(int*)rsvd1F0  						");
+	        GEL_WatchAdd("*(int*)frqYOffsetSrc  			");
+	        GEL_WatchAdd("*(int*)frqPoint  					");
+	        GEL_WatchAdd("*(int*)frqRemMode  				");
+	        GEL_WatchAdd("*(int*)motorSn  						");
+	        GEL_WatchAdd("*(int*)accDecTimeRef  			");
+	        GEL_WatchAdd("*(int*)frqUpDownRef  			");
+	        GEL_WatchAdd("*(int*)runSrcBandFrqSrc  	");
+	        GEL_WatchAdd("*(int*)commCardType  			");
+
+}
+
+hotmenu F1_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) m1Fun_motorType  			   ");
+        GEL_WatchAdd("*(int*) m1Fun_ratingPower			   ");
+        GEL_WatchAdd("*(int*) m1Fun_ratingVoltage		   ");
+        GEL_WatchAdd("*(int*) m1Fun_ratingCurrent		   ");
+        GEL_WatchAdd("*(int*) m1Fun_ratingFrq				   ");
+        GEL_WatchAdd("*(int*) m1Fun_ratingSpeed			   ");
+        GEL_WatchAdd("*(int*) m1Fun_statorResistance	   ");
+        GEL_WatchAdd("*(int*) m1Fun_rotorResistance	   ");
+        GEL_WatchAdd("*(int*) m1Fun_leakInductance		   ");
+        GEL_WatchAdd("*(int*) m1Fun_mutualInductance	   ");
+        GEL_WatchAdd("*(int*) m1Fun_zeroLoadCurrent	   ");
+        GEL_WatchAdd("*(int*) rsvd1F1			             ");
+        GEL_WatchAdd("*(int*) rsvd2F1			             ");
+        GEL_WatchAdd("*(int*) rsvd3F1			             ");
+        GEL_WatchAdd("*(int*) rsvd4F1			             ");
+        GEL_WatchAdd("*(int*) rsvd5F1			             ");
+        GEL_WatchAdd("*(int*) m1Fun_pmsmRs			         ");
+        GEL_WatchAdd("*(int*) m1Fun_pmsmLd			         ");
+        GEL_WatchAdd("*(int*) m1Fun_pmsmLq			         ");
+        GEL_WatchAdd("*(int*) rsvd6F1			             ");
+        GEL_WatchAdd("*(int*) m1Fun_motorCoeff			     ");
+        GEL_WatchAdd("*(int*) rsvd7F1			             ");
+        GEL_WatchAdd("*(int*) rsvd8F1			             ");
+        GEL_WatchAdd("*(int*) rsvd9F1			             ");
+        GEL_WatchAdd("*(int*) rsvd10F1		               ");
+        GEL_WatchAdd("*(int*) rsvd11F1		               ");
+        GEL_WatchAdd("*(int*) rsvd12F1		               ");
+        GEL_WatchAdd("*(int*) m1Fun_encoderPulse			   ");
+        GEL_WatchAdd("*(int*) m1Fun_encoderType			   ");
+        GEL_WatchAdd("*(int*) rsvd13F1			             ");
+        GEL_WatchAdd("*(int*) m1Fun_encoderABZPhase	   ");
+        GEL_WatchAdd("*(int*) m1Fun_encoderAngle			   ");
+        GEL_WatchAdd("*(int*) m1Fun_encoderUVWPhase	   ");
+        GEL_WatchAdd("*(int*) m1Fun_encoderUVWBiasAngle ");
+        GEL_WatchAdd("*(int*) m1Fun_transfPal		       ");
+        GEL_WatchAdd("*(int*) rsvd14F1			             ");
+        GEL_WatchAdd("*(int*) m1Fun_fvcPgLoseTime		   ");
+        GEL_WatchAdd("*(int*) m1Fun_tuneCmd			 		   ");
+}
+
+hotmenu F2_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopKp1			    ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopTi1			    ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopChgFrq1	    ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopKp2			    ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopTi2			    ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopChgFrq2	    ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSlipCompCoef		    ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopFilterTime	");
+        GEL_WatchAdd("*(int*) m1Fun_vcOverMagGain			  ");
+        GEL_WatchAdd("*(int*) m1Fun_spdCtrlTorqueLimitSrc");
+        GEL_WatchAdd("*(int*) m1Fun_spdCtrlTorqueLimit		");
+        GEL_WatchAdd("*(int*) rsvd1F2			              ");
+        GEL_WatchAdd("*(int*) rsvd2F2			              ");
+        GEL_WatchAdd("*(int*) m1Fun_magAdjKp			        ");
+        GEL_WatchAdd("*(int*) m1Fun_magAdjTi			        ");
+        GEL_WatchAdd("*(int*) m1Fun_torqueAdjKp		      ");
+        GEL_WatchAdd("*(int*) m1Fun_torqueAdjTi		      ");
+        GEL_WatchAdd("*(int*) m1Fun_vcSpdLoopTiAttri		  ");
+        GEL_WatchAdd("*(int*) m1Fun_synFluxWeakMode			");
+        GEL_WatchAdd("*(int*) m1Fun_synFluxWeakDepth		  ");
+        GEL_WatchAdd("*(int*) m1Fun_maxFluxWeakCurr			");
+        GEL_WatchAdd("*(int*) m1Fun_fulxWeakAutAdjGain	  ");
+        GEL_WatchAdd("*(int*) m1Fun_fulxWeakKiMult				");
+}
+
+hotmenu F3_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) vfCurve			           ");
+        GEL_WatchAdd("*(int*) m1Fun_torqueBoost		   ");
+        GEL_WatchAdd("*(int*) boostCloseFrq			     ");
+        GEL_WatchAdd("*(int*) vfFrq1			             ");
+        GEL_WatchAdd("*(int*) vfVol1			             ");
+        GEL_WatchAdd("*(int*) vfFrq2			             ");
+        GEL_WatchAdd("*(int*) vfVol2			             ");
+        GEL_WatchAdd("*(int*) vfFrq3			             ");
+        GEL_WatchAdd("*(int*) vfVol3			             ");
+        GEL_WatchAdd("*(int*) slipCompCoef		         ");
+        GEL_WatchAdd("*(int*) vfOverMagGain		       ");
+        GEL_WatchAdd("*(int*) m1Fun_antiVibrateGain	 ");
+        GEL_WatchAdd("*(int*) rsvd1F3			           ");
+        GEL_WatchAdd("*(int*) vfVoltageSrc			       ");
+        GEL_WatchAdd("*(int*) vfVoltageDigtalSet			 ");
+        GEL_WatchAdd("*(int*) vfVoltageAccTime		     ");
+}
+
+hotmenu F4_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) di1Func						");
+        GEL_WatchAdd("*(int*) di2Func						");
+        GEL_WatchAdd("*(int*) di3Func						");
+        GEL_WatchAdd("*(int*) di4Func						");
+        GEL_WatchAdd("*(int*) di5Func						");
+        GEL_WatchAdd("*(int*) di6Func						");
+        GEL_WatchAdd("*(int*) di7Func						");
+        GEL_WatchAdd("*(int*) di8Func						");
+        GEL_WatchAdd("*(int*) di9Func						");
+        GEL_WatchAdd("*(int*) di10Func			      ");
+        GEL_WatchAdd("*(int*) diFilterTime	      ");
+        GEL_WatchAdd("*(int*) diControlMode	    ");
+        GEL_WatchAdd("*(int*) diUpDownSlope	    ");
+        GEL_WatchAdd("*(int*) ai1MinIn			      ");
+        GEL_WatchAdd("*(int*) ai1MinInSet		    ");
+        GEL_WatchAdd("*(int*) ai1MaxIn			      ");
+        GEL_WatchAdd("*(int*) ai1MaxInSet		    ");
+        GEL_WatchAdd("*(int*) ai1FilterTime	    ");
+        GEL_WatchAdd("*(int*) ai2MinIn			      ");
+        GEL_WatchAdd("*(int*) ai2MinInSet		    ");
+        GEL_WatchAdd("*(int*) ai2MaxIn			      ");
+        GEL_WatchAdd("*(int*) ai2MaxInSet		    ");
+        GEL_WatchAdd("*(int*) ai2FilterTime	    ");
+        GEL_WatchAdd("*(int*) ai3MinIn			      ");
+        GEL_WatchAdd("*(int*) ai3MinInSet		    ");
+        GEL_WatchAdd("*(int*) ai3MaxIn			      ");
+        GEL_WatchAdd("*(int*) ai3MaxInSet		    ");
+        GEL_WatchAdd("*(int*) ai3FilterTime	    ");
+        GEL_WatchAdd("*(int*) pulseInMinIn	      ");
+        GEL_WatchAdd("*(int*) pulseInMinInSet		");
+        GEL_WatchAdd("*(int*) pulseInMaxIn				");
+        GEL_WatchAdd("*(int*) pulseInMaxInSet		");
+        GEL_WatchAdd("*(int*) pulseInFilterTime	");
+        GEL_WatchAdd("*(int*) aiCurveSrc			 		");
+        GEL_WatchAdd("*(int*) aiLowerThanMinSet	");
+        GEL_WatchAdd("*(int*) di1DelayTime				");
+        GEL_WatchAdd("*(int*) di2DelayTime				");
+        GEL_WatchAdd("*(int*) di3DelayTime				");
+        GEL_WatchAdd("*(int*) diLogic1			    	");
+        GEL_WatchAdd("*(int*) diLogic2			    	");
+
+}
+
+hotmenu F5_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) fmOutSelect	         ");
+        GEL_WatchAdd("*(int*) fmrFunc			   		   ");
+        GEL_WatchAdd("*(int*) relay1Func	        	 ");
+        GEL_WatchAdd("*(int*) relay2Func	     	     ");
+        GEL_WatchAdd("*(int*) do1Func			   		   ");
+        GEL_WatchAdd("*(int*) do2Func			  			 ");
+        GEL_WatchAdd("*(int*) fmpFunc			         ");
+        GEL_WatchAdd("*(int*) ao1Func			         ");
+        GEL_WatchAdd("*(int*) ao2Func			         ");
+        GEL_WatchAdd("*(int*) fmpOutMaxFrq          ");
+        GEL_WatchAdd("*(int*) ao1Offset		         ");
+        GEL_WatchAdd("*(int*) ao1Gain			         ");
+        GEL_WatchAdd("*(int*) ao2Offset		         ");
+        GEL_WatchAdd("*(int*) ao2Gain			         ");
+        GEL_WatchAdd("*(int*) rsvd1F5			         ");
+        GEL_WatchAdd("*(int*) rsvd2F5			         ");
+        GEL_WatchAdd("*(int*) rsvd3F5			         ");
+        GEL_WatchAdd("*(int*) fmrOutputDelay		     ");
+        GEL_WatchAdd("*(int*) relay1OutputDelay	   ");
+        GEL_WatchAdd("*(int*) relay2OutputDelay	   ");
+        GEL_WatchAdd("*(int*) do1OutputDelay		     ");
+        GEL_WatchAdd("*(int*) do2OutputDelay		     ");
+        GEL_WatchAdd("*(int*) doLogic		           ");
+
+}
+
+hotmenu F6_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) startMode			        ");
+        GEL_WatchAdd("*(int*) speedTrackMode         ");
+        GEL_WatchAdd("*(int*) speedTrackVelocity	    ");
+        GEL_WatchAdd("*(int*) startFrq			          ");
+        GEL_WatchAdd("*(int*) startFrqTime	          ");
+        GEL_WatchAdd("*(int*) startBrakeCurrent		  ");
+        GEL_WatchAdd("*(int*) startBrakeTime			    ");
+        GEL_WatchAdd("*(int*) accDecSpdCurve			    ");
+        GEL_WatchAdd("*(int*) sCurveStartPhaseTime	  ");
+        GEL_WatchAdd("*(int*) sCurveEndPhaseTime		  ");
+        GEL_WatchAdd("*(int*) stopMode			          ");
+        GEL_WatchAdd("*(int*) stopBrakeFrq			      ");
+        GEL_WatchAdd("*(int*) stopBrakeWaitTime	    ");
+        GEL_WatchAdd("*(int*) stopBrakeCurrentV	    ");
+        GEL_WatchAdd("*(int*) stopBrakeTime			    ");
+        GEL_WatchAdd("*(int*) brakeDutyRatio		      ");
+}
+
+hotmenu F7_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) rsvd1F7			           ");
+        GEL_WatchAdd("*(int*) mfkKeyFunc			         ");
+        GEL_WatchAdd("*(int*) stopKeyFunc			       ");
+        GEL_WatchAdd("*(int*) ledDispParaRun1	       ");
+        GEL_WatchAdd("*(int*) ledDispParaRun2	       ");
+        GEL_WatchAdd("*(int*) ledDispParaStop	       ");
+        GEL_WatchAdd("*(int*) speedDispCoeff	         ");
+        GEL_WatchAdd("*(int*) radiatorTemp		         ");
+        GEL_WatchAdd("*(int*) temp2			             ");
+        GEL_WatchAdd("*(int*) runTimeAddup		         ");
+        GEL_WatchAdd("*(int*) productVersion	         ");
+        GEL_WatchAdd("*(int*) softVersion			       ");
+        GEL_WatchAdd("*(int*) speedDispPoint	         ");
+        GEL_WatchAdd("*(int*) powerUpTimeAddup        ");
+        GEL_WatchAdd("*(int*) powerAddup		           ");
+
+}
+
+hotmenu F8_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) jogFrq			         "   ) 	;
+        GEL_WatchAdd("*(int*) jogAccTime	             "   ) 		;
+        GEL_WatchAdd("*(int*) jogDecTime	             "   ) 		;
+        GEL_WatchAdd("*(int*) accTime2		             "   ) 	;
+        GEL_WatchAdd("*(int*) decTime2		             "   ) 	;
+        GEL_WatchAdd("*(int*) accTime3		             "   ) 	;
+        GEL_WatchAdd("*(int*) decTime3		             "   ) 	;
+        GEL_WatchAdd("*(int*) accTime4		             "   ) 	;
+        GEL_WatchAdd("*(int*) decTime4		             "   ) 	;
+        GEL_WatchAdd("*(int*) jumpFrq1		             "   ) 	;
+        GEL_WatchAdd("*(int*) jumpFrq2		             "   ) 	;
+        GEL_WatchAdd("*(int*) jumpFrqRange			     "   ) ;
+        GEL_WatchAdd("*(int*) zeroSpeedDeadTime		 "   )   	;
+        GEL_WatchAdd("*(int*) antiReverseRun			 "   ) 	;
+        GEL_WatchAdd("*(int*) lowerDeal			     "   )   ;
+        GEL_WatchAdd("*(int*) droopCtrl			     "   )   ;
+        GEL_WatchAdd("*(int*) powerUpTimeArriveSet		  "  )  ;
+        GEL_WatchAdd("*(int*) runTimeArriveSet			 "   ) ;
+        GEL_WatchAdd("*(int*) startProtect			     "   ) ;
+        GEL_WatchAdd("*(int*) frqFdt1Value			     "   ) ;
+        GEL_WatchAdd("*(int*) frqFdt1Lag			     "   ) 	;
+        GEL_WatchAdd("*(int*) frqArriveRange			     "   ) 	;
+        GEL_WatchAdd("*(int*) accDecJumpFrq			     "   )   ;
+        GEL_WatchAdd("*(int*) rsvd1F8			           "   )   	;
+        GEL_WatchAdd("*(int*) rsvd2F8			           "   )   	;
+        GEL_WatchAdd("*(int*) accTime12SwitchFrq			 "   ) 	;
+        GEL_WatchAdd("*(int*) decTime12SwitchFrq			 "   ) 	;
+        GEL_WatchAdd("*(int*) terminalJogPri			     "   ) 	;
+        GEL_WatchAdd("*(int*) frqFdt2Value			       "   ) ;
+        GEL_WatchAdd("*(int*) frqFdt2Lag			         "   ) 	;
+        GEL_WatchAdd("*(int*) arriveFrq1			         "   ) 	;
+        GEL_WatchAdd("*(int*) arriveFrq1Width			   "   )   	;
+        GEL_WatchAdd("*(int*) arriveFrq2			         "   ) 	;
+        GEL_WatchAdd("*(int*) arriveFrq2Width			   "   )   	;
+        GEL_WatchAdd("*(int*) zeroCurCheckLevel			 "   )	;
+        GEL_WatchAdd("*(int*) zeroCurCheckDelayTime		"	 )	;
+        GEL_WatchAdd("*(int*) currentOverVal			     "   ) 	;
+        GEL_WatchAdd("*(int*) currentOverDelayTime			"  )  ;
+        GEL_WatchAdd("*(int*) arriveCurrent1			     "   ) 	;
+        GEL_WatchAdd("*(int*) arriveCurrent1Width			"  )    	;
+        GEL_WatchAdd("*(int*) arriveCurrent2			     "   ) 	;
+        GEL_WatchAdd("*(int*) arriveCurrent2Width			"  )    	;
+        GEL_WatchAdd("*(int*) timingFunSel			       "   ) ;
+        GEL_WatchAdd("*(int*) timingRunTimeSel			   "   ) ;
+        GEL_WatchAdd("*(int*) timintRunTime			     "   )   ;
+        GEL_WatchAdd("*(int*) ai1InVolProtLower			 "   )   ;
+        GEL_WatchAdd("*(int*) ai1InVolProtUpper			 "   )   ;
+        GEL_WatchAdd("*(int*) igbtTempArrive			     "   ) 	;
+        GEL_WatchAdd("*(int*) funCtrlMode			       "   )   	;
+        GEL_WatchAdd("*(int*) frqAwake			           "   ) ;
+        GEL_WatchAdd("*(int*) awakeDelayTime			     "   ) 	;
+        GEL_WatchAdd("*(int*) frqSleep			           "   ) ;
+        GEL_WatchAdd("*(int*) sleepDelayTime			     "   ) 	;
+        GEL_WatchAdd("*(int*) runAriveTimeSet			   "   )   	;
+}
+
+hotmenu F9_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) overloadMode			          ");
+        GEL_WatchAdd("*(int*) overloadGain			          ");
+        GEL_WatchAdd("*(int*) foreOverloadCoef			      ");
+        GEL_WatchAdd("*(int*) ovGain			                ");
+        GEL_WatchAdd("*(int*) ovPoint			              ");
+        GEL_WatchAdd("*(int*) ocGain			                ");
+        GEL_WatchAdd("*(int*) ocPoint			              ");
+        GEL_WatchAdd("*(int*) shortCheckMode			        ");
+        GEL_WatchAdd("*(int*) rsvd1F9			              ");
+        GEL_WatchAdd("*(int*) errAutoRstNumMax			      ");
+        GEL_WatchAdd("*(int*) errAutoRstRelayAct			    ");
+        GEL_WatchAdd("*(int*) errAutoRstSpaceTime			  ");
+        GEL_WatchAdd("*(int*) inPhaseLossProtect			    ");
+        GEL_WatchAdd("*(int*) outPhaseLossProtect			  ");
+        GEL_WatchAdd("*(int*) errorLatest1			          ");
+        GEL_WatchAdd("*(int*) errorLatest2			          ");
+        GEL_WatchAdd("*(int*) errorLatest3			          ");
+        GEL_WatchAdd("*(int*) error3Frq			            ");
+        GEL_WatchAdd("*(int*) error3Current			        ");
+        GEL_WatchAdd("*(int*) error3GeneratrixVoltage		");
+        GEL_WatchAdd("*(int*) error3DiStatus			        ");
+        GEL_WatchAdd("*(int*) error3DoStatus			        ");
+        GEL_WatchAdd("*(int*) error3InverterStatus			  ");
+        GEL_WatchAdd("*(int*) error3TimeFromPowerUp			");
+        GEL_WatchAdd("*(int*) error3TimeFromRun			    ");
+        GEL_WatchAdd("*(int*) rsvd2F9			              ");
+        GEL_WatchAdd("*(int*) rsvd3F9			              ");
+        GEL_WatchAdd("*(int*) error2Frq			            ");
+        GEL_WatchAdd("*(int*) error2Current			        ");
+        GEL_WatchAdd("*(int*) error2GeneratrixVoltage		");
+        GEL_WatchAdd("*(int*) error2DiStatus			        ");
+        GEL_WatchAdd("*(int*) error2DoStatus			        ");
+        GEL_WatchAdd("*(int*) error2InverterStatus			  ");
+        GEL_WatchAdd("*(int*) error2TimeFromPowerUp			");
+        GEL_WatchAdd("*(int*) error2TimeFromRun			    ");
+        GEL_WatchAdd("*(int*) rsvd4F9			              ");
+        GEL_WatchAdd("*(int*) rsvd5F9			              ");
+        GEL_WatchAdd("*(int*) error1Frq			            ");
+        GEL_WatchAdd("*(int*) error1Current			        ");
+        GEL_WatchAdd("*(int*) error1GeneratrixVoltage		");
+        GEL_WatchAdd("*(int*) error1DiStatus			        ");
+        GEL_WatchAdd("*(int*) error1DoStatus			        ");
+        GEL_WatchAdd("*(int*) error1InverterStatus			  ");
+        GEL_WatchAdd("*(int*) error1TimeFromPowerUp			");
+        GEL_WatchAdd("*(int*) error1TimeFromRun			    ");
+        GEL_WatchAdd("*(int*) rsvd6F9			              ");
+        GEL_WatchAdd("*(int*) rsvd7F9			              ");
+        GEL_WatchAdd("*(int*) errorAction1			          ");
+        GEL_WatchAdd("*(int*) errorAction2			          ");
+        GEL_WatchAdd("*(int*) errorAction3			          ");
+        GEL_WatchAdd("*(int*) errorAction4			          ");
+        GEL_WatchAdd("*(int*) rsvd8F9			              ");
+        GEL_WatchAdd("*(int*) rsvd9F9			              ");
+        GEL_WatchAdd("*(int*) rsvd10F9			              ");
+        GEL_WatchAdd("*(int*) errorRunFrqSrc			        ");
+        GEL_WatchAdd("*(int*) errorSecondFrq			        ");
+        GEL_WatchAdd("*(int*) motorOtType			          ");
+        GEL_WatchAdd("*(int*) motorOtLimit			          ");
+        GEL_WatchAdd("*(int*) motorOtAlarm			          ");
+        GEL_WatchAdd("*(int*) pOffTransitoryNoStop			  ");
+        GEL_WatchAdd("*(int*) rsvd11F9			              ");
+        GEL_WatchAdd("*(int*) pOffVolBackTime			      ");
+        GEL_WatchAdd("*(int*) pOffThresholdVol			      ");
+        GEL_WatchAdd("*(int*) loseLoadProtectMode			  ");
+        GEL_WatchAdd("*(int*) loseLoadLevel			        ");
+        GEL_WatchAdd("*(int*) loseLoadTime			          ");
+        GEL_WatchAdd("*(int*) rsvd12F9			              ");
+        GEL_WatchAdd("*(int*) overSpeedCheckVal			    ");
+        GEL_WatchAdd("*(int*) overSpeedCheckTime			    ");
+        GEL_WatchAdd("*(int*) errSpeedCheckVal			      ");
+        GEL_WatchAdd("*(int*) errSpeedCheckTime			    ");
+
+}
+
+hotmenu FA_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) pidSetSrc			          ");
+        GEL_WatchAdd("*(int*) pidSet			              ");
+        GEL_WatchAdd("*(int*) pidFdbSrc			          ");
+        GEL_WatchAdd("*(int*) pidDir			              ");
+        GEL_WatchAdd("*(int*) pidDisp			            ");
+        GEL_WatchAdd("*(int*) pidKp			              ");
+        GEL_WatchAdd("*(int*) pidTi			              ");
+        GEL_WatchAdd("*(int*) pidTd			              ");
+        GEL_WatchAdd("*(int*) reverseCutOffFrq			    ");
+        GEL_WatchAdd("*(int*) pidErrMin			          ");
+        GEL_WatchAdd("*(int*) pidDLimit			          ");
+        GEL_WatchAdd("*(int*) pidSetChangeTime			    ");
+        GEL_WatchAdd("*(int*) pidFdbLpfTime			      ");
+        GEL_WatchAdd("*(int*) pidOutLpfTime			      ");
+        GEL_WatchAdd("*(int*) rsvd1Fa			            ");
+        GEL_WatchAdd("*(int*) pidKp2			              ");
+        GEL_WatchAdd("*(int*) pidTi2			              ");
+        GEL_WatchAdd("*(int*) pidTd2			              ");
+        GEL_WatchAdd("*(int*) pidParaChangeCondition		");
+        GEL_WatchAdd("*(int*) pidDelta1			          ");
+        GEL_WatchAdd("*(int*) pidDelta2V               ");
+        GEL_WatchAdd("*(int*) pidInit			            ");
+        GEL_WatchAdd("*(int*) pidInitTime			        ");
+        GEL_WatchAdd("*(int*) outputErrPosMax			    ");
+        GEL_WatchAdd("*(int*) outputErrNegMax			    ");
+        GEL_WatchAdd("*(int*) pidIAttri			          ");
+        GEL_WatchAdd("*(int*) pidFdbLoseDetect			    ");
+        GEL_WatchAdd("*(int*) pidFdbLoseDetectTime			 ");
+        GEL_WatchAdd("*(int*) pidCalcMode			        ");
+}
+
+hotmenu FB_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) swingBaseMode			     ");
+        GEL_WatchAdd("*(int*) swingAmplitude			     ");
+        GEL_WatchAdd("*(int*) swingJumpRange			     ");
+        GEL_WatchAdd("*(int*) swingPeriod			       ");
+        GEL_WatchAdd("*(int*) swingRiseTimeCoeff			 ");
+        GEL_WatchAdd("*(int*) lengthSet			         ");
+        GEL_WatchAdd("*(int*) lengthCurrent			     ");
+        GEL_WatchAdd("*(int*) lengthPulsePerMeter			");
+        GEL_WatchAdd("*(int*) counterSet			         ");
+        GEL_WatchAdd("*(int*) counterPoint			       ");
+}
+
+hotmenu FC_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) plcFrq0			            ");
+        GEL_WatchAdd("*(int*) plcFrq1			            ");
+        GEL_WatchAdd("*(int*) plcFrq2			            ");
+        GEL_WatchAdd("*(int*) plcFrq3			            ");
+        GEL_WatchAdd("*(int*) plcFrq4			            ");
+        GEL_WatchAdd("*(int*) plcFrq5			            ");
+        GEL_WatchAdd("*(int*) plcFrq6			            ");
+        GEL_WatchAdd("*(int*) plcFrq7			            ");
+        GEL_WatchAdd("*(int*) plcFrq8			            ");
+        GEL_WatchAdd("*(int*) plcFrq9			            ");
+        GEL_WatchAdd("*(int*) plcFrq10			            ");
+        GEL_WatchAdd("*(int*) plcFrq11			            ");
+        GEL_WatchAdd("*(int*) plcFrq12			            ");
+        GEL_WatchAdd("*(int*) plcFrq13			            ");
+        GEL_WatchAdd("*(int*) plcFrq14			            ");
+        GEL_WatchAdd("*(int*) plcFrq15			            ");
+        GEL_WatchAdd("*(int*) plcRunMode			          ");
+        GEL_WatchAdd("*(int*) plcPowerOffRemMode			  ");
+        GEL_WatchAdd("*(int*) plcFrq0RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq0AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq1RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq1AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq2RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq2AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq3RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq3AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq4RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq4AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq5RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq5AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq6RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq6AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq7RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq7AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq8RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq8AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq9RunTime			      ");
+        GEL_WatchAdd("*(int*) plcFrq9AccDecTimeSel			");
+        GEL_WatchAdd("*(int*) plcFrq10RunTime			    ");
+        GEL_WatchAdd("*(int*) plcFrq10AccDecTimeSel		");
+        GEL_WatchAdd("*(int*) plcFrq11RunTime			    ");
+        GEL_WatchAdd("*(int*) plcFrq11AccDecTimeSel		");
+        GEL_WatchAdd("*(int*) plcFrq12RunTime			    ");
+        GEL_WatchAdd("*(int*) plcFrq12AccDecTimeSel		");
+        GEL_WatchAdd("*(int*) plcFrq13RunTime			    ");
+        GEL_WatchAdd("*(int*) plcFrq13AccDecTimeSel		");
+        GEL_WatchAdd("*(int*) plcFrq14RunTime			    ");
+        GEL_WatchAdd("*(int*) plcFrq14AccDecTimeSel		");
+        GEL_WatchAdd("*(int*) plcFrq15RunTime			    ");
+        GEL_WatchAdd("*(int*) plcFrq15AccDecTimeSel		");
+        GEL_WatchAdd("*(int*) plcTimeUnit			        ");
+        GEL_WatchAdd("*(int*) plcFrq0Src			          ");
+}
+
+hotmenu FD_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) commBaudRate			       ");
+        GEL_WatchAdd("*(int*) commParity				       ");
+        GEL_WatchAdd("*(int*) commSlaveAddress	       ");
+        GEL_WatchAdd("*(int*) commDelay				       ");
+        GEL_WatchAdd("*(int*) commOverTime		         ");
+        GEL_WatchAdd("*(int*) commProtSel		         ");
+        GEL_WatchAdd("*(int*) commReadCurrentPoint	   ");
+        GEL_WatchAdd("*(int*) rsvd1Fd		             ");
+}
+
+hotmenu FE_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) userFun0			      ");
+        GEL_WatchAdd("*(int*) userFun1			      ");
+        GEL_WatchAdd("*(int*) userFun2			      ");
+        GEL_WatchAdd("*(int*) userFun3			      ");
+        GEL_WatchAdd("*(int*) userFun4			      ");
+        GEL_WatchAdd("*(int*) userFun5			      ");
+        GEL_WatchAdd("*(int*) userFun6			      ");
+        GEL_WatchAdd("*(int*) userFun7			      ");
+        GEL_WatchAdd("*(int*) userFun8			      ");
+        GEL_WatchAdd("*(int*) userFun9			      ");
+        GEL_WatchAdd("*(int*) userFun10			    ");
+        GEL_WatchAdd("*(int*) userFun11			    ");
+        GEL_WatchAdd("*(int*) userFun12			    ");
+        GEL_WatchAdd("*(int*) userFun13			    ");
+        GEL_WatchAdd("*(int*) userFun14			    ");
+        GEL_WatchAdd("*(int*) userFun15			    ");
+        GEL_WatchAdd("*(int*) userFun16			    ");
+        GEL_WatchAdd("*(int*) userFun17			    ");
+        GEL_WatchAdd("*(int*) userFun18			    ");
+        GEL_WatchAdd("*(int*) userFun19			    ");
+        GEL_WatchAdd("*(int*) userFun20			    ");
+        GEL_WatchAdd("*(int*) userFun21			    ");
+        GEL_WatchAdd("*(int*) userFun22			    ");
+        GEL_WatchAdd("*(int*) userFun23			    ");
+        GEL_WatchAdd("*(int*) userFun24			    ");
+        GEL_WatchAdd("*(int*) userFun25			    ");
+        GEL_WatchAdd("*(int*) userFun26			    ");
+        GEL_WatchAdd("*(int*) userFun27			    ");
+        GEL_WatchAdd("*(int*) userFun28			    ");
+        GEL_WatchAdd("*(int*) userFun29			    ");
+
+}
+
+hotmenu FF_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) factoryPassword			 ");
+        GEL_WatchAdd("*(int*) inverterType			     ");
+        GEL_WatchAdd("*(int*) inverterGpType			   ");
+        GEL_WatchAdd("*(int*) inverterPower			   ");
+        GEL_WatchAdd("*(int*) tempCurve			       ");
+        GEL_WatchAdd("*(int*) uvGainWarp			       ");
+        GEL_WatchAdd("*(int*) uvPoint1			         ");
+        GEL_WatchAdd("*(int*) ocPoint1			         ");
+        GEL_WatchAdd("*(int*) volJudgeCoeff			   ");
+        GEL_WatchAdd("*(int*) curJudgeCoeff			   ");
+        GEL_WatchAdd("*(int*) motorDebugFc			     ");
+        GEL_WatchAdd("*(int*) aiaoCalibrateDisp		");
+        GEL_WatchAdd("*(int*) rsvd5Ff			         ");
+}
+
+hotmenu FP_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) passwordUser			   ");
+        GEL_WatchAdd("*(int*) paraInitMode			   ");
+        GEL_WatchAdd("*(int*) funGroupDispSel1		");
+        GEL_WatchAdd("*(int*) funGroupDispSel2		");
+        GEL_WatchAdd("*(int*) funCodeModAttri		");
+}
+
+hotmenu A0_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) torqueCtrl			          " )  	;
+        GEL_WatchAdd("*(int*) torqueCtrlSrc			      " )    ;
+        GEL_WatchAdd("*(int*) rsvd1A0			            " )    	;
+        GEL_WatchAdd("*(int*) torqueCtrlDigSet			    " )  ;
+        GEL_WatchAdd("*(int*) rsvd2A1			            " )    	;
+        GEL_WatchAdd("*(int*) torqueCtrlFwdMaxFrq			" )    	;
+        GEL_WatchAdd("*(int*) torqueCtrlRevMaxFrq			" )    	;
+        GEL_WatchAdd("*(int*) torqueCtrlAccTime			  " )    ;
+        GEL_WatchAdd("*(int*) torqueCtrlDecTime			  " )    ;
+ }
+
+hotmenu A1_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) vdi1Func			       ");
+        GEL_WatchAdd("*(int*) vdi2Func			       ");
+        GEL_WatchAdd("*(int*) vdi3Func			       ");
+        GEL_WatchAdd("*(int*) vdi4Func			       ");
+        GEL_WatchAdd("*(int*) vdi5Func			       ");
+        GEL_WatchAdd("*(int*) vdiStatusSetMode			" );
+        GEL_WatchAdd("*(int*) vdiStatusSet			   ");
+        GEL_WatchAdd("*(int*) ai1AsDiFunc			   ");
+        GEL_WatchAdd("*(int*) ai2AsDiFunc			   ");
+        GEL_WatchAdd("*(int*) ai3AsDiFunc			   ");
+        GEL_WatchAdd("*(int*) diLogicAiAsDi			 ");
+        GEL_WatchAdd("*(int*) vdo1Func			       ");
+        GEL_WatchAdd("*(int*) vdo2Func			       ");
+        GEL_WatchAdd("*(int*) vdo3Func			       ");
+        GEL_WatchAdd("*(int*) vdo4Func			       ");
+        GEL_WatchAdd("*(int*) vdo5Func			       ");
+        GEL_WatchAdd("*(int*) vdo1DelayTime			 ");
+        GEL_WatchAdd("*(int*) vdo2DelayTime			 ");
+        GEL_WatchAdd("*(int*) vdo3DelayTime			 ");
+        GEL_WatchAdd("*(int*) vdo4DelayTime			 ");
+        GEL_WatchAdd("*(int*) vdo5DelayTime			 ");
+        GEL_WatchAdd("*(int*) vdoLogic			       ");
+ }
+
+hotmenu A2_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) m2Fun_motorType					 ");
+        GEL_WatchAdd("*(int*) m2Fun_ratingPower				 ");
+        GEL_WatchAdd("*(int*) m2Fun_ratingVoltage			 ");
+        GEL_WatchAdd("*(int*) m2Fun_ratingCurrent			 ");
+        GEL_WatchAdd("*(int*) m2Fun_ratingFrq			     ");
+        GEL_WatchAdd("*(int*) m2Fun_ratingSpeed			   ");
+        GEL_WatchAdd("*(int*) m2Fun_statorResistance		 ");
+        GEL_WatchAdd("*(int*) m2Fun_rotorResistance		 ");
+        GEL_WatchAdd("*(int*) m2Fun_leakInductance			 ");
+        GEL_WatchAdd("*(int*) m2Fun_mutualInductance		 ");
+        GEL_WatchAdd("*(int*) m2Fun_zeroLoadCurrent		 ");
+        GEL_WatchAdd("*(int*) rsvd1A2							     ");
+        GEL_WatchAdd("*(int*) rsvd2A2			             ");
+        GEL_WatchAdd("*(int*) rsvd3A2			             ");
+        GEL_WatchAdd("*(int*) rsvd4A2			             ");
+        GEL_WatchAdd("*(int*) rsvd5A2				           ");
+        GEL_WatchAdd("*(int*) m2Fun_pmsmRs					     ");
+        GEL_WatchAdd("*(int*) m2Fun_pmsmLd					     ");
+        GEL_WatchAdd("*(int*) m2Fun_pmsmLq					     ");
+        GEL_WatchAdd("*(int*) rsvd6A2							     ");
+        GEL_WatchAdd("*(int*) m2Fun_motorCoeff			     ");
+        GEL_WatchAdd("*(int*) rsvd7A2						       ");
+        GEL_WatchAdd("*(int*) rsvd8A2			             ");
+        GEL_WatchAdd("*(int*) rsvd9A2			             ");
+        GEL_WatchAdd("*(int*) rsvd10A2			             ");
+        GEL_WatchAdd("*(int*) rsvd11A2			             ");
+        GEL_WatchAdd("*(int*) rsvd12A2			             ");
+        GEL_WatchAdd("*(int*) m2Fun_encoderPulse		     ");
+        GEL_WatchAdd("*(int*) m2Fun_encoderType		     ");
+        GEL_WatchAdd("*(int*) rsvd13A2			             ");
+        GEL_WatchAdd("*(int*) m2Fun_encoderABZPhase			"	);
+        GEL_WatchAdd("*(int*) m2Fun_encoderAngle					" )  ;
+        GEL_WatchAdd("*(int*) m2Fun_encoderUVWPhase			"	);
+        GEL_WatchAdd("*(int*) m2Fun_encoderUVWBiasAngle	"	)	;
+        GEL_WatchAdd("*(int*) m2Fun_transfPal				   "  )  ;
+        GEL_WatchAdd("*(int*) rsvd14A2			             "  ) ;
+        GEL_WatchAdd("*(int*) m2Fun_fvcPgLoseTime			 "  )  	;
+        GEL_WatchAdd("*(int*) m2Fun_tuneCmd						 "  ) ;
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopKp1					" )  ;
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopTi1			   "  )	;
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopChgFrq1			" ) 	;
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopKp2			   "  )	;
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopTi2			   "  )	;
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopChgFrq2			"	);
+        GEL_WatchAdd("*(int*) m2Fun_vcSlipCompCoef			 "  );
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopFilterTime	"	)	;
+        GEL_WatchAdd("*(int*) m2Fun_vcOverMagGain				"	);
+        GEL_WatchAdd("*(int*) m2Fun_spdCtrlTorqueLimitSr"	)		;
+        GEL_WatchAdd("*(int*) m2Fun_spdCtrlTorqueLimit		"	);
+        GEL_WatchAdd("*(int*) rsvd15A2			             "  );
+        GEL_WatchAdd("*(int*) rsvd16A2			             "  );
+        GEL_WatchAdd("*(int*) m2Fun_magAdjKp						 "  );
+        GEL_WatchAdd("*(int*) m2Fun_magAdjTi			       "  )	;
+        GEL_WatchAdd("*(int*) m2Fun_torqueAdjKp			   "  )  ;
+        GEL_WatchAdd("*(int*) m2Fun_torqueAdjTi			   "  )  ;
+        GEL_WatchAdd("*(int*) m2Fun_vcSpdLoopTiAttri			" ) 	;
+        GEL_WatchAdd("*(int*) m2Fun_synFluxWeakMode			"	);
+        GEL_WatchAdd("*(int*) m2Fun_synFluxWeakDepth			"	);
+        GEL_WatchAdd("*(int*) m2Fun_maxFluxWeakCurr			"	);
+        GEL_WatchAdd("*(int*) m2Fun_fulxWeakAutAdjGain		" ) 	;
+        GEL_WatchAdd("*(int*) m2Fun_fulxWeakKiMult				" ) ;
+        GEL_WatchAdd("*(int*) m2Fun_motorCtrlMode				"	);
+        GEL_WatchAdd("*(int*) m2Fun_accDecTimeSel       "  ) 		;
+        GEL_WatchAdd("*(int*) m2Fun_torqueBoost			   "  ) 	;
+        GEL_WatchAdd("*(int*) rsvd17A2V                 "  ) 		;
+        GEL_WatchAdd("*(int*) m2Fun_antiVibrateGain			" ) 	;
+}
+
+hotmenu A3_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) m3Fun_motorType					");
+        GEL_WatchAdd("*(int*) m3Fun_ratingPower				");
+        GEL_WatchAdd("*(int*) m3Fun_ratingVoltage			");
+        GEL_WatchAdd("*(int*) m3Fun_ratingCurrent			");
+        GEL_WatchAdd("*(int*) m3Fun_ratingFrq			    ");
+        GEL_WatchAdd("*(int*) m3Fun_ratingSpeed			  ");
+        GEL_WatchAdd("*(int*) m3Fun_statorResistance		");
+        GEL_WatchAdd("*(int*) m3Fun_rotorResistance		");
+        GEL_WatchAdd("*(int*) m3Fun_leakInductance			");
+        GEL_WatchAdd("*(int*) m3Fun_mutualInductance		");
+        GEL_WatchAdd("*(int*) m3Fun_zeroLoadCurrent		");
+        GEL_WatchAdd("*(int*) rsvd1A3								  ");
+        GEL_WatchAdd("*(int*) rsvd2A3			            ");
+        GEL_WatchAdd("*(int*) rsvd3A3			            ");
+        GEL_WatchAdd("*(int*) rsvd4A3			            ");
+        GEL_WatchAdd("*(int*) rsvd5A3				          ");
+        GEL_WatchAdd("*(int*) m3Fun_pmsmRs						  ");
+        GEL_WatchAdd("*(int*) m3Fun_pmsmLd						  ");
+        GEL_WatchAdd("*(int*) m3Fun_pmsmLq						  ");
+        GEL_WatchAdd("*(int*) rsvd6A3								  ");
+        GEL_WatchAdd("*(int*) m3Fun_motorCoeff				  ");
+        GEL_WatchAdd("*(int*) rsvd7A3						      ");
+        GEL_WatchAdd("*(int*) rsvd8A3			            ");
+        GEL_WatchAdd("*(int*) rsvd9A3			            ");
+        GEL_WatchAdd("*(int*) rsvd10A3			            ");
+        GEL_WatchAdd("*(int*) rsvd11A3			            ");
+        GEL_WatchAdd("*(int*) rsvd12A3			            ");
+        GEL_WatchAdd("*(int*) m3Fun_encoderPulse			  ");
+        GEL_WatchAdd("*(int*) m3Fun_encoderType			  ");
+        GEL_WatchAdd("*(int*) rsvd13A3			            ");
+        GEL_WatchAdd("*(int*) m3Fun_encoderABZPhase		");
+        GEL_WatchAdd("*(int*) m3Fun_encoderAngle				");
+        GEL_WatchAdd("*(int*) m3Fun_encoderUVWPhase		");
+        GEL_WatchAdd("*(int*) m3Fun_encoderUVWBiasAngle");
+        GEL_WatchAdd("*(int*) m3Fun_transfPal			 		");
+        GEL_WatchAdd("*(int*) rsvd14A3			            ");
+        GEL_WatchAdd("*(int*) m3Fun_fvcPgLoseTime			");
+        GEL_WatchAdd("*(int*) m3Fun_tuneCmd						");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopKp1				");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopTi1			  ");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopChgFrq1		");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopKp2			  ");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopTi2			  ");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopChgFrq2		");
+        GEL_WatchAdd("*(int*) m3Fun_vcSlipCompCoef			");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopFilterTime");
+        GEL_WatchAdd("*(int*) m3Fun_vcOverMagGain			");
+        GEL_WatchAdd("*(int*) m3Fun_spdCtrlTorqueLimitSrc");
+        GEL_WatchAdd("*(int*) m3Fun_spdCtrlTorqueLimit ");
+        GEL_WatchAdd("*(int*) rsvd15A3			            ");
+        GEL_WatchAdd("*(int*) rsvd16A3			            ");
+        GEL_WatchAdd("*(int*) m3Fun_magAdjKp						");
+        GEL_WatchAdd("*(int*) m3Fun_magAdjTi			      ");
+        GEL_WatchAdd("*(int*) m3Fun_torqueAdjKp			  ");
+        GEL_WatchAdd("*(int*) m3Fun_torqueAdjTi			  ");
+        GEL_WatchAdd("*(int*) m3Fun_vcSpdLoopTiAttri   ");
+        GEL_WatchAdd("*(int*) m3Fun_synFluxWeakMode	 	");
+        GEL_WatchAdd("*(int*) m3Fun_synFluxWeakDepth		");
+        GEL_WatchAdd("*(int*) m3Fun_maxFluxWeakCurr		");
+        GEL_WatchAdd("*(int*) m3Fun_fulxWeakAutAdjGain ");
+        GEL_WatchAdd("*(int*) m3Fun_fulxWeakKiMult			");
+        GEL_WatchAdd("*(int*) m3Fun_motorCtrlMode		  ");
+        GEL_WatchAdd("*(int*) m3Fun_accDecTimeSel			");
+        GEL_WatchAdd("*(int*) m3Fun_torqueBoost		    ");
+        GEL_WatchAdd("*(int*) rsvd17A3			            ");
+        GEL_WatchAdd("*(int*) m3Fun_antiVibrateGain		");
+
+ }
+
+hotmenu A4_RAM_Regs()
+{
+
+        GEL_WatchAdd("*(int*) m4Fun_motorType					 " )   	;
+        GEL_WatchAdd("*(int*) m4Fun_ratingPower				 " )   	;
+        GEL_WatchAdd("*(int*) m4Fun_ratingVoltage			 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_ratingCurrent			 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_ratingFrq			     " )        	;
+        GEL_WatchAdd("*(int*) m4Fun_ratingSpeed			   " )        	;
+        GEL_WatchAdd("*(int*) m4Fun_statorResistance		 " )   	 	;
+        GEL_WatchAdd("*(int*) m4Fun_rotorResistance		 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_leakInductance			 " )   	;
+        GEL_WatchAdd("*(int*) m4Fun_mutualInductance		 " )   	 	;
+        GEL_WatchAdd("*(int*) m4Fun_zeroLoadCurrent		 " )   		;
+        GEL_WatchAdd("*(int*) rsvd1A4									 " )   		;
+        GEL_WatchAdd("*(int*) rsvd2A4			             " )     	 	;
+        GEL_WatchAdd("*(int*) rsvd3A4			             " )     	 	;
+        GEL_WatchAdd("*(int*) rsvd4A4			             " )     	 	;
+        GEL_WatchAdd("*(int*) rsvd5A4				           " )     	;
+        GEL_WatchAdd("*(int*) m4Fun_pmsmRs							 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_pmsmLd							 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_pmsmLq							 " )   		;
+        GEL_WatchAdd("*(int*) rsvd6A4									 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_motorCoeff					 " )   	;
+        GEL_WatchAdd("*(int*) rsvd7A4						    	 " )   	;
+        GEL_WatchAdd("*(int*) rsvd8A4			             " )     	 	;
+        GEL_WatchAdd("*(int*) rsvd9A4			             " )     	 	;
+        GEL_WatchAdd("*(int*) rsvd10A4			             " )   	;
+        GEL_WatchAdd("*(int*) rsvd11A4			             " )   	;
+        GEL_WatchAdd("*(int*) rsvd12A4			             " )      	;
+        GEL_WatchAdd("*(int*) m4Fun_encoderPulse				 " )   	;
+        GEL_WatchAdd("*(int*) m4Fun_encoderType				 " )   	;
+        GEL_WatchAdd("*(int*) rsvd13A4			           	 " )   	;
+        GEL_WatchAdd("*(int*) m4Fun_encoderABZPhase		 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_encoderAngle				 " )   	;
+        GEL_WatchAdd("*(int*) m4Fun_encoderUVWPhase		 " )   		;
+        GEL_WatchAdd("*(int*) m4Fun_encoderUVWBiasAngle	");
+        GEL_WatchAdd("*(int*) m4Fun_transfPal			 		  ");
+        GEL_WatchAdd("*(int*) rsvd14A4			           	  ");
+        GEL_WatchAdd("*(int*) m4Fun_fvcPgLoseTime		    ");
+        GEL_WatchAdd("*(int*) m4Fun_tuneCmd							");
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopKp1					");
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopTi1			   " )	       ;
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopChgFrq1			");
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopKp2			   " )	     ;
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopTi2			   " )	     ;
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopChgFrq2			");
+        GEL_WatchAdd("*(int*) m4Fun_vcSlipCompCoef			 " )	     ;
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopFilterTime	");
+        GEL_WatchAdd("*(int*) m4Fun_vcOverMagGain				");
+        GEL_WatchAdd("*(int*) m4Fun_spdCtrlTorqueLimitSrc");
+        GEL_WatchAdd("*(int*) m4Fun_spdCtrlTorqueLimit		");
+        GEL_WatchAdd("*(int*) rsvd15A4			              ");
+        GEL_WatchAdd("*(int*) rsvd16A4			              ");
+        GEL_WatchAdd("*(int*) m4Fun_magAdjKp							");
+        GEL_WatchAdd("*(int*) m4Fun_magAdjTi			        ");
+        GEL_WatchAdd("*(int*) m4Fun_torqueAdjKp			    ");
+        GEL_WatchAdd("*(int*) m4Fun_torqueAdjTiV         ");
+        GEL_WatchAdd("*(int*) m4Fun_vcSpdLoopTiAttri			");
+        GEL_WatchAdd("*(int*) m4Fun_synFluxWeakMode			");
+        GEL_WatchAdd("*(int*) m4Fun_synFluxWeakDepth			");
+        GEL_WatchAdd("*(int*) m4Fun_maxFluxWeakCurr			");
+        GEL_WatchAdd("*(int*) m4Fun_fulxWeakAutAdjGain		");
+        GEL_WatchAdd("*(int*) m4Fun_fulxWeakKiMult				");
+        GEL_WatchAdd("*(int*) m4Fun_motorCtrlMode				");
+        GEL_WatchAdd("*(int*) m4Fun_accDecTimeSel			  ");
+        GEL_WatchAdd("*(int*) m4Fun_torqueBoost			    ");
+        GEL_WatchAdd("*(int*) rsvd17A4			              ");
+        GEL_WatchAdd("*(int*) m4Fun_antiVibrateGain			");
+}
+
+hotmenu A5_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) dpwmSwitUpperFrq			");
+        GEL_WatchAdd("*(int*) modulationMode			  ");
+        GEL_WatchAdd("*(int*) deadCompMode			    ");
+        GEL_WatchAdd("*(int*) softPwmDepth			    ");
+        GEL_WatchAdd("*(int*) curLimitEnable			  ");
+        GEL_WatchAdd("*(int*) curSampleComp			  ");
+        GEL_WatchAdd("*(int*) uvVoltage			      ");
+        GEL_WatchAdd("*(int*) svcOptMode			      ");
+        GEL_WatchAdd("*(int*) deadTimeAdj			    ");
+        }
+
+hotmenu A6_RAM_Regs()
+{
+
+        GEL_WatchAdd("*(int*) aiCurve4MinIn			  ");
+        GEL_WatchAdd("*(int*) aiCurve4MinInSet			");
+        GEL_WatchAdd("*(int*) aiCurve4Point1In			");
+        GEL_WatchAdd("*(int*) aiCurve4Point1InSet	");
+        GEL_WatchAdd("*(int*) aiCurve4Point2In			");
+        GEL_WatchAdd("*(int*) aiCurve4Point2InSet	");
+        GEL_WatchAdd("*(int*) aiCurve4MaxIn			  ");
+        GEL_WatchAdd("*(int*) aiCurve4MaxInSet			");
+        GEL_WatchAdd("*(int*) aiCurve5MinIn			  ");
+        GEL_WatchAdd("*(int*) aiCurve5MinInSet			");
+        GEL_WatchAdd("*(int*) aiCurve5Point1In			");
+        GEL_WatchAdd("*(int*) aiCurve5Point1InSet	");
+        GEL_WatchAdd("*(int*) aiCurve5Point2In			");
+        GEL_WatchAdd("*(int*) aiCurve5Point2InSet	");
+        GEL_WatchAdd("*(int*) aiCurve5MaxIn			  ");
+        GEL_WatchAdd("*(int*) aiCurve5MaxInSet			");
+        GEL_WatchAdd("*(int*) rsvd1A6			        ");
+        GEL_WatchAdd("*(int*) rsvd2A6			        ");
+        GEL_WatchAdd("*(int*) rsvd3A6			        ");
+        GEL_WatchAdd("*(int*) rsvd4A6			        ");
+        GEL_WatchAdd("*(int*) rsvd5A6			        ");
+        GEL_WatchAdd("*(int*) rsvd6A6			        ");
+        GEL_WatchAdd("*(int*) rsvd7A6			        ");
+        GEL_WatchAdd("*(int*) rsvd8A6			        ");
+        GEL_WatchAdd("*(int*) ai1JumpPoint			    ");
+        GEL_WatchAdd("*(int*) ai1JumpArrange			  ");
+        GEL_WatchAdd("*(int*) ai2JumpPoint			    ");
+        GEL_WatchAdd("*(int*) ai2JumpArrange			  ");
+        GEL_WatchAdd("*(int*) ai3JumpPoint			    ");
+        GEL_WatchAdd("*(int*) ai3JumpArrange			  ");
+
+}
+
+hotmenu A7_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) userProgrammableSel			 "  )   	;
+        GEL_WatchAdd("*(int*) boardCtrlMode			       "  )   ;
+        GEL_WatchAdd("*(int*) programmableCardExtAi3			" )	;
+        GEL_WatchAdd("*(int*) fmpOutput			           "  )   ;
+        GEL_WatchAdd("*(int*) ao1Output			           "  )   ;
+        GEL_WatchAdd("*(int*) switchOutput		           "  ) 	;
+        GEL_WatchAdd("*(int*) programmableCardFrqSet			" ) 	;
+        GEL_WatchAdd("*(int*) programmableCardTorqueSet	"	)	;
+        GEL_WatchAdd("*(int*) programmableCardCmdSet			" ) 	;
+        GEL_WatchAdd("*(int*) programmableCardErrSet			" ) 	;
+}
+
+hotmenu AC_RAM_Regs()
+{
+        GEL_WatchAdd("*(int*) ai1TestVol1			  ");
+        GEL_WatchAdd("*(int*) ai1DispVol1			  ");
+        GEL_WatchAdd("*(int*) ai1TestVol2			  ");
+        GEL_WatchAdd("*(int*) ai1DispVol2			  ");
+        GEL_WatchAdd("*(int*) ai2TestVol1			  ");
+        GEL_WatchAdd("*(int*) ai2DispVol1			  ");
+        GEL_WatchAdd("*(int*) ai2TestVol2			  ");
+        GEL_WatchAdd("*(int*) ai2DispVol2			  ");
+        GEL_WatchAdd("*(int*) ai3TestVol1			  ");
+        GEL_WatchAdd("*(int*) ai3DispVol1			  ");
+        GEL_WatchAdd("*(int*) ai3TestVol2			  ");
+        GEL_WatchAdd("*(int*) ai3DispVol2			  ");
+        GEL_WatchAdd("*(int*) ao1TargetVol1		  ");
+        GEL_WatchAdd("*(int*) ao1TestVol11		    ");
+        GEL_WatchAdd("*(int*) ao1TargetVol2		  ");
+        GEL_WatchAdd("*(int*) ao1TestVol12		    ");
+        GEL_WatchAdd("*(int*) ao2TargetVol1		  ");
+        GEL_WatchAdd("*(int*) ao2TestVol11		    ");
+        GEL_WatchAdd("*(int*) ao2TargetVol2		  ");
+        GEL_WatchAdd("*(int*) ao2TestVol12		    ");
+
+        }
+
+hotmenu U0_RAM_Regs()
+{
+
+        GEL_WatchAdd("*(int*) U0_00      ");
+        GEL_WatchAdd("*(int*) U0_01			");
+        GEL_WatchAdd("*(int*) U0_02			");
+        GEL_WatchAdd("*(int*) U0_03		  ");
+        GEL_WatchAdd("*(int*) U0_04			");
+        GEL_WatchAdd("*(int*) U0_05		  ");
+        GEL_WatchAdd("*(int*) U0_06		  ");
+        GEL_WatchAdd("*(int*) U0_07			");
+        GEL_WatchAdd("*(int*) U0_08		  ");
+        GEL_WatchAdd("*(int*) U0_09	    ");
+        GEL_WatchAdd("*(int*) U0_10			");
+        GEL_WatchAdd("*(int*) U0_11			");
+        GEL_WatchAdd("*(int*) U0_12      ");
+        GEL_WatchAdd("*(int*) U0_13			");
+        GEL_WatchAdd("*(int*) U0_14      ");
+        GEL_WatchAdd("*(int*) U0_15      ");
+        GEL_WatchAdd("*(int*) U0_16      ");
+        GEL_WatchAdd("*(int*) U0_17      ");
+        GEL_WatchAdd("*(int*) U0_18      ");
+        GEL_WatchAdd("*(int*) U0_19      ");
+        GEL_WatchAdd("*(int*) U0_20      ");
+        GEL_WatchAdd("*(int*) U0_21      ");
+        GEL_WatchAdd("*(int*) U0_22      ");
+        GEL_WatchAdd("*(int*) U0_23      ");
+        GEL_WatchAdd("*(int*) U0_24      ");
+        GEL_WatchAdd("*(int*) U0_25      ");
+        GEL_WatchAdd("*(int*) U0_26      ");
+        GEL_WatchAdd("*(int*) U0_27      ");
+        GEL_WatchAdd("*(int*) U0_28      ");
+        GEL_WatchAdd("*(int*) U0_29      ");
+        GEL_WatchAdd("*(int*) U0_30      ");
+        GEL_WatchAdd("*(int*) U0_31      ");
+        GEL_WatchAdd("*(int*) U0_32      ");
+        GEL_WatchAdd("*(int*) U0_33      ");
+        GEL_WatchAdd("*(int*) U0_34      ");
+        GEL_WatchAdd("*(int*) U0_35      ");
+        GEL_WatchAdd("*(int*) U0_36      ");
+        GEL_WatchAdd("*(int*) U0_37      ");
+        GEL_WatchAdd("*(int*) U0_38      ");
+        GEL_WatchAdd("*(int*) U0_39      ");
+        GEL_WatchAdd("*(int*) U0_40      ");
+        GEL_WatchAdd("*(int*) U0_41      ");
+        GEL_WatchAdd("*(int*) U0_42      ");
+        GEL_WatchAdd("*(int*) U0_43      ");
+        GEL_WatchAdd("*(int*) U0_44      ");
+        GEL_WatchAdd("*(int*) U0_45      ");
+        GEL_WatchAdd("*(int*) U0_46      ");
+        GEL_WatchAdd("*(int*) U0_47      ");
+        GEL_WatchAdd("*(int*) U0_48      ");
+        GEL_WatchAdd("*(int*) U0_49      ");
+        GEL_WatchAdd("*(int*) U0_50      ");
+        GEL_WatchAdd("*(int*) U0_51      ");
+        GEL_WatchAdd("*(int*) U0_52      ");
+        GEL_WatchAdd("*(int*) U0_53      ");
+        GEL_WatchAdd("*(int*) U0_54      ");
+        GEL_WatchAdd("*(int*) U0_55      ");
+        GEL_WatchAdd("*(int*) U0_56      ");
+        GEL_WatchAdd("*(int*) U0_57      ");
+        GEL_WatchAdd("*(int*) U0_58      ");
+        GEL_WatchAdd("*(int*) U0_59      ");
+        GEL_WatchAdd("*(int*) U0_60      ");
+        GEL_WatchAdd("*(int*) U0_61      ");
+        GEL_WatchAdd("*(int*) U0_62      ");
+        GEL_WatchAdd("*(int*) U0_63      ");
+        GEL_WatchAdd("*(int*) U0_64      ");
+        GEL_WatchAdd("*(int*) U0_65      ");
+        GEL_WatchAdd("*(int*) U0_66      ");
+        GEL_WatchAdd("*(int*) U0_67      ");
+        GEL_WatchAdd("*(int*) U0_68      ");
+}
+
+hotmenu Watch1_RAM_Regs()
+{
+
+        GEL_WatchAdd("dspMainCmd2P:*0x8440   ");
+        GEL_WatchAdd("frqAimPuP:*0x84AF      ");
+        GEL_WatchAdd("maxFrqP:*0x844D        ");
+        GEL_WatchAdd("carrierFrqP:*0x844E    ");
+        GEL_WatchAdd("Fun_ratingPowerP:*0x8462  ");
+}

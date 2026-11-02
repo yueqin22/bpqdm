@@ -1,0 +1,53 @@
+# Host passthrough list for the MotorPWM case (see tools/difftest/README.md).
+#
+# MotorPWM.c includes MotorPwmInclude.h, which pulls in SystemDefine.h /
+# MotorInclude.h / MotorDefine.h; MotorInclude.h then reaches the whole motor
+# include tree and, via SystemDefine.h -> DSP2803x_Device.h, the chip's
+# peripheral register model.  Same file set as the MotorMain case, which walks
+# the identical chain.
+#
+# Unlike MotorSVC this module drives real peripheral memory: EPwm1Regs /
+# EPwm2Regs / EPwm3Regs are written field by field in InitSetPWM() and again in
+# SendPWM().  The EPWM_REGS bitfield layout therefore has to come from the real
+# DSP2803x_EPwm.h, not from a hand-written stand-in -- otherwise the diff would
+# be comparing two layouts that are both wrong.
+#
+# Deliberately NOT forwarded (host_patch.json supplies a patched whole copy):
+#   DSP2803x_Device.h  -- `extern cregister volatile unsigned int IFR;` and the
+#                         EINT/DINT/EALLOW/EDIS `asm(...)` macros are C28x-only.
+#                         Replaced by cases/MotorPWM/shim/DSP2803x_Device.h.
+#   DSP2803x_PieVect.h -- `typedef interrupt void(*PINT)(void);`
+#   MotorInclude.h     -- four `extern interrupt void ..._isr(void);` prototypes
+#   SubPrgInclude.h    -- `(long int)` prototypes, illegal once the shim folds
+#                         `int` to the target's 16 bits (MSVC C2632)
+#   MotorPwmInclude.h  -- quoted `#include "MotorInclude.h"` would bypass the
+#                         patched gen_dir copy (same-directory rule)
+#   MotorVCInclude.h   -- same quoted include, reached from the patched
+#                         MotorInclude.h; patched for symmetry with MotorSVC
+#
+# Not forwarded either: DSP2803x_Examples.h / DSP2803x_GlobalPrototypes.h /
+# DSP2803x_DefaultISR.h are full of `__interrupt` and `asm()`.  DSP_CLOCK comes
+# from SystemDefine.h itself (it `#define`s DSP_CLOCK60 and then DSP_CLOCK).
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

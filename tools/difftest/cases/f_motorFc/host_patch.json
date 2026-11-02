@@ -1,0 +1,38 @@
+{
+  "why": [
+    "宿主构建专用补丁, 目标端不受影响。",
+    "",
+    "f_motorFc.c 在文件作用域有一张布局表:",
+    "    const Uint16 motorSnIndexNIncToMotor2[3] = { 0, M3, M4 };",
+    "其中 M3/M4 展开成 `&funcCode.<成员A> - &funcCode.<成员B>`。",
+    "",
+    "C28x 的 cl2000 把它当常量折叠, 正常编译。MSVC 的 C 前端不行: 它接受单个",
+    "地址常量 (offsetof 单独用没问题), 但**拒绝两个地址常量相减** (error C2099)。",
+    "实测过 6 种写法 —— 裸指针差 / char* 差 / 强转 size_t 后相减 / 经 long 中转 /",
+    "extern 对象 / offsetof 相减 —— 全部被拒。所以这不是换个 shim 写法能绕开的,",
+    "只能在宿主侧把这张表改成运行时填充。",
+    "",
+    "补丁只做一件事: 把静态初始化式换成不带初始化式的声明。值由 driver.c 在跑之前",
+    "用**模块自己的表达式** (GetCodeIndex) 填进去, 不是另写一份公式, 所以不会和",
+    "源码里的算法漂移。driver.c 还会断言填出来的值等于 {0, 步长, 2*步长}, 与静态",
+    "初始化式在目标端算出的结果一致。",
+    "",
+    "改动范围: 6 行 -> 1 行, 且只改这一处 (count=1, 失配就报错停下)。",
+    "目标端那张表的静态初始化由 COFF 比对 (段内容 + 符号表) 单独证明。"
+  ],
+  "modules": [
+    {
+      "ref_src": "ref/f_motorFc_ref.c",
+      "ref_out": "host_ref_f_motorFc.c",
+      "new_base": "f_motorFc.c",
+      "new_out": "host_new_f_motorFc.c",
+      "replace": [
+        {
+          "old": "const Uint16 motorSnIndexNIncToMotor2[3] =\n{\n    0,\n    MOTOR3_INDEX_N_INC_TO_MOTOR2,\n    MOTOR4_INDEX_N_INC_TO_MOTOR2,\n};",
+          "new": "Uint16 motorSnIndexNIncToMotor2[3];",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

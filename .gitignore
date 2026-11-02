@@ -1,0 +1,23 @@
+# Exclude local workspace notes and the previous README.
+.workbuddy-ai/
+README.md
+readme.md
+
+# Generated build products and Python cache files.
+build/
+docs/_difftest/
+docs/reference/
+__pycache__/
+*.py[cod]
+*.obj
+*.out
+*.hex
+*.map
+*.lst
+_mt_par_est_out.txt
+
+# Vendor runtime libraries are not project-authored source.
+linker/lib/*.lib
+
+# Contains device CSM password words; keep board credentials private.
+asm/DSP2803x_CSMPasswords.asm

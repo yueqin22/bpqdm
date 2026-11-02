@@ -1,0 +1,61 @@
+# Host passthrough list for the f_comm_DP case (see tools/difftest/README.md).
+#
+# Same chip-header set as the MotorPWM / MotorMain cases: this module drives
+# real peripheral memory, so the register models have to be the real ones.
+#
+#   SciaRegs        InitSetSciDp writes SCICTL1/SCICTL2/SCIFFTX/SCICCR/SCIPRI,
+#                   InitSciDpBaudRate writes SCIHBAUD/SCILBAUD, and
+#                   UpdateSciDpFormat READS SCIRXST.bit.RXERROR and branches on
+#                   it -- so the SCI_REGS bitfield layout is part of the
+#                   module's input as well as its output.
+#   PieCtrlRegs     PIEACK.bit.ACK9 in both ISRs, PIEIER9.bit.INTx1/INTx2 in
+#                   both GPIO init functions.
+#   GpioCtrlRegs    GPAPUD / GPAQSEL2 / GPAMUX2, four fields per init function.
+#   PieVectTable    SCIRXINTA / SCITXINTA are assigned the two ISR addresses.
+#
+# Deliberately NOT forwarded (the case shim supplies them):
+#   DSP2803x_Device.h   -- cregister / asm() / `interrupt`; see
+#                          cases/f_comm_DP/shim/DSP2803x_Device.h.
+#
+# Deliberately NOT forwarded (host_patch.json supplies a patched whole copy):
+#   f_comm_DP.h         -- quoted `#include "f_funcCode.h"` would resolve from
+#                          include/function/ (the same-directory rule) and reach
+#                          the real hub header, bypassing the case stub.  The
+#                          patch only changes the quote style; every #define in
+#                          that file (BUG_SCI_BACK_DATA 0, NO_FIFO 1, the five
+#                          data-format byte counts, the two CRC retry limits)
+#                          stays exactly as the firmware has it.  This is the
+#                          one header that decides what the module IS, so it is
+#                          forwarded real rather than hand-copied -- a copy
+#                          could disagree with the firmware about any of those
+#                          macros and the case would keep passing while testing
+#                          a different configuration.
+#
+# Not forwarded either: DSP28x_Project.h (reached only through the real
+# f_funcCode.h, which is stubbed), DSP2803x_Examples.h /
+# DSP2803x_GlobalPrototypes.h / DSP2803x_DefaultISR.h (full of `__interrupt`
+# and asm()).  DSP_CLOCK is never read by this module.
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_PieVect.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

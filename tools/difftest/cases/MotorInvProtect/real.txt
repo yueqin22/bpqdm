@@ -1,0 +1,54 @@
+# 转发到真头文件 (gen_dir 的转发头排在 include 路径最前面, 压过所有 shim)。
+#
+# 本模块要的真头文件分两类:
+#
+# 1. include/device 下的外设头 —— 它们**不在**宿主 include 路径上 (run_case 只挂了
+#    motor/common/function), 但 SystemDefine.h 会 `#include "DSP2803x_Device.h"`,
+#    而真实设备头里有 `extern cregister volatile unsigned int IFR;` 与
+#    `asm(" clrc INTM")` 这类 MSVC 不认的 C28x 语法。所以设备头由用例私有
+#    shim/DSP2803x_Device.h 顶上 (只保留类型 + BITn + 下面这批外设头), 外设头本身
+#    则是纯结构体 + extern 声明, 实测 MSVC 直接编得过, 所以照转 —— 寄存器结构体
+#    保持真身, 位域布局才不是仿制品。
+#
+#    本模块写 GpioDataRegs (DisableDrive/DisConnectRelay)、EPwm1/2/3Regs
+#    (SoftWareErrorDeal 清 TZCLR, SetCBCEnable/Disable 写 TZSEL.bit.CBC2),
+#    读 AdcResult.ADCRESULT13 (PL_INPUT_HIGH)。这些结构体必须是真的, 位域
+#    布局与偏移都要对得上 (AdcResult 见 DSP2803x_Adc.h, EPwm 见 DSP2803x_EPwm.h,
+#    GPIO 见 DSP2803x_Gpio.h)。
+#
+# 2. **例外: DSP2803x_PieVect.h 不在这份清单里**。它的 `PINT` 是
+#    `typedef interrupt void(*PINT)(void);`, 真文件 MSVC 编不过。它由
+#    host_patch.json 提供**打过补丁的整份副本** (去掉 `interrupt`)。
+#    若同时写进 real.txt, make_real_passthroughs 会把 gen_dir 里的补丁副本覆盖成
+#    一个转发头, 补丁就白打了 —— MotorInfoCollect 用例踩过同一个坑。
+#
+# 3. 同理 MotorInclude.h / MotorInvProtectInclude.h 也不在这里, 走 host_patch.json
+#    (真 MotorInclude.h 有 4 条 `extern interrupt void ...` 原型, 真
+#    MotorInvProtectInclude.h 又用引号 include 上面那份真文件)。
+#
+# 实测过的反例: 转发真 DSP2803x_Examples.h 会失败, 它 #include
+# DSP2803x_GlobalPrototypes.h, 那里全是 `__interrupt void ...` 原型; 紧接着的
+# DSP2803x_DefaultISR.h 同理。这两个都留在 shim 里不转发。
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

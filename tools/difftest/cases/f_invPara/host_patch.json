@@ -1,0 +1,29 @@
+{
+  "why": "宿主补丁, 两类, 都只作用于宿主副本, 交付源码与目标端编译不受影响。\n\n(1) C2099: motor1ParaIndex 与 motorSnIndexIncToMotor1 的静态初始值设定项是\n**地址常量之差**。GetCodeIndex(x) 展开成 ((Uint16)(&(x) - &(funcCode.all[0]))),\nMSVC 的 C 前端接受单个地址常量, 但拒绝任何两个地址常量之差 —— 实测 6 种写法\n全部报 C2099, 且本机没有 gcc/clang 可换。所以宿主副本去掉初始值设定项, 改由\ndriver.c 在运行期用**模块自己的表达式**填回去, 并断言填出来的形状正确。\n\n(2) sizeof 的词/字节差: C28x 的 sizeof 返回**16 位字数**, MSVC 返回**字节数**。\nSaveTuneData() 里 sizeof(motor1ParaIndex) 被当成**元素个数**用 (循环上界和\n数组尾判断), 于是宿主上算出 44 而不是 22, 循环越界写坏内存 (实测 0xC0000005)。\n改成 sizeof(motor1ParaIndex)/sizeof(Uint16): 目标端 22/1=22, 宿主 44/2=22,\n两边一致, 而且这个写法在目标端与原文**逐字等价**, 不是近似。\n\nside 字段: ref 侧是冻结的改写前版本, new 侧是改写后版本, 文本本来就不同。\n(2) 只标 ref —— 改写后的 SaveTuneData 自己已经用了可移植写法\nsizeof(motor1ParaIndex)/sizeof(motor1ParaIndex[0]), 目标端 22/1=22、宿主 44/2=22,\n两侧都对, 不需要补。基准那两处仍需补丁才跟得上。",
+  "modules": [
+    {
+      "ref_src": "ref/f_invPara_ref.c",
+      "ref_out": "host_ref_f_invPara.c",
+      "new_base": "f_invPara.c",
+      "new_out": "host_new_f_invPara.c",
+      "replace": [
+        {
+          "old": "const Uint16 motor1ParaIndex[] =\n{\n\n    GetCodeIndex(funcCode.code.motorParaM1.elem.ratingPower),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.ratingCurrent),\n\n    GetCodeIndex(funcCode.code.motorParaM1.elem.statorResistance),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.rotorResistance),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.leakInductance),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.mutualInductance),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.zeroLoadCurrent),\n\n    GetCodeIndex(funcCode.code.motorParaM1.elem.pmsmRs),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.pmsmLd),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.pmsmLq),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.pmsmRsLdUnit),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.pmsmCoeff),\n\n    GetCodeIndex(funcCode.code.vcParaM1.mAcrKp),\n    GetCodeIndex(funcCode.code.vcParaM1.mAcrKi),\n    GetCodeIndex(funcCode.code.vcParaM1.tAcrKp),\n    GetCodeIndex(funcCode.code.vcParaM1.tAcrKi),\n    GetCodeIndex(funcCode.code.motorParaM1.elem.pmsmCheckTime),\n\n    GetCodeIndex(funcCode.code.pgParaM1.elem.enCoderDir),\n    GetCodeIndex(funcCode.code.pgParaM1.elem.enCoderAngle),\n    GetCodeIndex(funcCode.code.uvGainWarp),\n    GetCodeIndex(funcCode.code.pgParaM1.elem.uvwSignDir),\n    GetCodeIndex(funcCode.code.pgParaM1.elem.uvwSignAngle),\n};",
+          "new": "Uint16 motor1ParaIndex[22];",
+          "count": 1
+        },
+        {
+          "old": "const Uint16 motorSnIndexIncToMotor1[4] =\n{\n    0,\n    MOTOR2_INDEX_INC_TO_MOTOR1,\n    MOTOR3_INDEX_INC_TO_MOTOR1,\n    MOTOR4_INDEX_INC_TO_MOTOR1,\n};",
+          "new": "Uint16 motorSnIndexIncToMotor1[4];",
+          "count": 1
+        },
+        {
+          "old": "sizeof(motor1ParaIndex)",
+          "new": "(sizeof(motor1ParaIndex)/sizeof(Uint16))",
+          "count": 2,
+          "side": "ref"
+        }
+      ]
+    }
+  ]
+}

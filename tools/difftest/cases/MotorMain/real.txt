@@ -1,0 +1,50 @@
+# Host passthrough list for the MotorMain case (see tools/difftest/README.md).
+#
+# MotorMain.c only includes MotorInclude.h / MotorDataExchange.h / SystemDefine.h
+# / MotorDefine.h, but that chain reaches the whole motor include tree and, via
+# SystemDefine.h -> DSP2803x_Device.h, the chip's peripheral register model.
+#
+# The peripheral headers below are pure `struct` + `extern` declarations and
+# compile under MSVC, so they are forwarded verbatim: the register structs stay
+# the chip's, which is what makes "did the module write GPASET.GPIO7" comparable
+# at all.  The module touches exactly one peripheral: GpioDataRegs, through the
+# DisableDrive()/EnableDrive()/TurnOffFan()/GetOverUdcFlag()/RT_SAMPLE_* macros
+# of SystemDefine.h / MotorDefine.h.  The rest are forwarded because the case
+# shim's DSP2803x_Device.h includes them, exactly as the real device header does.
+#
+# Deliberately NOT forwarded (host_patch.json supplies a patched whole copy):
+#   DSP2803x_Device.h  -- `extern cregister volatile unsigned int IFR;` and the
+#                         EINT/DINT/EALLOW/EDIS `asm(...)` macros are C28x-only.
+#                         Replaced by cases/MotorMain/shim/DSP2803x_Device.h.
+#   DSP2803x_PieVect.h -- `typedef interrupt void(*PINT)(void);`
+#   MotorInclude.h     -- four `extern interrupt void ..._isr(void);` prototypes
+#   SubPrgInclude.h    -- `(long int)` prototypes, illegal once the shim folds
+#                         `int` to the target's 16 bits (MSVC C2632)
+#
+# Not forwarded either, for the same reason MotorInvProtect does not forward
+# them: DSP2803x_Examples.h / DSP2803x_GlobalPrototypes.h / DSP2803x_DefaultISR.h
+# are full of `__interrupt` and `asm()` and are not needed here.  DSP_CLOCK comes
+# from SystemDefine.h itself (it `#define`s DSP_CLOCK60 and then DSP_CLOCK).
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

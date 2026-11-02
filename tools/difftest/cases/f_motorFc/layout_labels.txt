@@ -1,0 +1,20 @@
+# cases/f_motorFc 的布局对照标签。
+#
+# 顺序必须与 cases/f_motorFc/_layout_probe.c 里 LAYOUT_LIST 的展开顺序**逐项对应**;
+# 条数不符时 target_layout.py 会报错停下, 不会静默错位。
+#
+# 单位: B = 字节 (目标端 sizeof 数值 x2 才是宿主字节), W = 字偏移, C = 元素个数
+sizeof(MOTOR_FC)|B
+sizeof(MOTOR_PARA_STRUCT)|B
+sizeof(PG_PARA_STRUCT)|B
+sizeof(VC_PARA)|B
+sizeof(DI_FUNC)|B
+sizeof(FUNCCODE_ALL)|B
+sizeof(FUNCCODE_CODE)|B
+FNUM_ALL|C
+word off motorFcM2.motorType|W
+word off motorParaM1.ratingSpeed|W
+word off motorParaM1.ratingFrq|W
+word off frqPoint|W
+word off motorSn|W
+GetCodeIndex(motorFcM2.motorType)|W

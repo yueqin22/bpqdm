@@ -1,0 +1,13 @@
+# 转发到真头文件。
+#
+# 只转这一个: DSP2803x_CpuTimers.h 里是 CPUTIMER_REGS / TCR_BITS 等**位域**结构体。
+# 位域布局是宿主与目标端最可能不一致的地方 (分配单元、位序、对齐), 手抄一份
+# 就等于把被测对象换成仿制品, 差分测试会变成"仿制品 vs 仿制品"。
+#
+# 转发头放在 include 路径最前面, 内容是 `#include "<绝对路径>/include/device/
+# DSP2803x_CpuTimers.h"`。真文件里的同目录 `#include` 会按"相对包含者所在目录"
+# 解析, 所以不需要把 include/device 整个加进搜索路径。
+#
+# 不转发的两个 (DSP2803x_Device.h / DSP2803x_Examples.h) 由用例私有 shim 顶掉,
+# 理由写在 shim/ 里那两份文件的开头。
+DSP2803x_CpuTimers.h

@@ -1,0 +1,87 @@
+{
+  "modules": [
+    {
+      "ref_src": "ref/MotorEncoder_ref.c",
+      "ref_out": "MotorEncoder_ref.c",
+      "new_base": "MotorEncoder.c",
+      "new_out": "MotorEncoder.c",
+      "replace": [
+        {
+          "old": "asm(\" RPT #5 || NOP \");",
+          "new": ";",
+          "count": 11,
+          "side": "ref",
+          "why": "基准侧: GetRotorTransPos 的位拼循环**手工展开**成 12 段, 每段后面跟一条 `asm(\" RPT #5 || NOP \")` 展宽时钟低电平 —— 11 处 (bit15..bit5), bit4 那次后面没有。C28x 内联汇编, MSVC 不认识 (C2054)。"
+        },
+        {
+          "old": "asm(\" RPT #5 || NOP \");",
+          "new": ";",
+          "count": 1,
+          "side": "new",
+          "lenient": true,
+          "why": "改写侧 (正常差分测试): 12 段被折成一个 `for(mShift = 15; mShift >= 4; mShift--)` 循环, 那条 asm 只剩**一处**, 由 `if(mShift > 4)` 守住 —— 仍然是前 11 次有、最后一次没有, 于是两侧写寄存器/读串行脚的次序与次数逐项相同。"
+        },
+        {
+          "old": "asm(\" RPT #5 || NOP \");",
+          "new": ";",
+          "count": 11,
+          "side": "new",
+          "lenient": true,
+          "why": "改写侧 (负向对照): **负向对照的 new 侧编的不是交付源码, 而是'冻结基准 + 一处变异'**, 所以它那边的 asm 仍然是 11 处, 需要上面那条 count=1 之外的这一条。两条都必须是 `lenient`: 因为同一个 new 侧在两种跑法下的计数不同 (1 / 11), 而 apply_host_patch 要求计数**精确相符**, 不做 lenient 就会直接 SystemExit -> 变体全 BROKEN (实测: 只留 count=1 那条时, 4 个切片各报 18~19 个 BROKEN)。代价是每趟跑都会在台账里留下**一条** host_patch_skipped 记录 —— 那是框架设计里'跳过必须可见'的机制, 不是静默降级: 真正生效的是另一条。两条的顺序不能颠倒, 见 apply_host_patch 的逐条替换语义。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/MotorEncoder.h",
+      "ref_out": "MotorEncoder.h",
+      "new_base": "include/motor/MotorEncoder.h",
+      "new_out": "MotorEncoder.h",
+      "replace": [
+        {
+          "old": "#include \"MotorInclude.h\"",
+          "new": "#include <MotorInclude.h>",
+          "count": 1,
+          "side": "both",
+          "why": "**这一条不是为了让 MotorEncoder.h 本身编得过, 而是为了把整条 include 链引进 gen_dir。** MSVC 对 `#include \"...\"` 的查找顺序是: ①包含该指令的那个文件所在目录; ②此前打开过的那些头文件所在目录(逆序); ③`/I` 目录。gen_dir 只排在③, 所以只要链上出现一个**位于 include/motor 里**的头, 它里面的 `\"MotorInclude.h\"` 就会先命中 include/motor 的真文件, gen_dir 里那份打过补丁的副本永远轮不到 —— 这正是本用例第一版编译失败的根因 (报错行指向 include/motor/MotorInclude.h:72 的 `extern interrupt void`)。MotorPublicCal 用例用的也是这一招 (它把 `MotorPublicCalInclude.h` 整份搬进 gen_dir 并把这一行换成尖括号)。改成尖括号后只在 `/I` 里找, gen_dir 排第一, 拿到的就是打过补丁的那份。补丁只在宿主构建时生效, 目标端不经过 host_patch.json。"
+        },
+        {
+          "old": "extern void InitSetQEP(void);",
+          "new": "extern void InitSetQEP(void);\n\n/* -----------------------------------------------------------------\n * 宿主专用: 把串行输入脚 ROTOR_TRANS_SO 从\"一个固定的内存位\"改成\n * \"driver 喂进来的 12 位序列\"。\n *\n * 真定义在 SystemDefine.h:\n *     #define ROTOR_TRANS_SO   GpioDataRegs.GPADAT.bit.GPIO21\n * 它是一个**固定的内存位** —— driver 只能在调用前设一次, 不能在\n * GetRotorTransPos 的 12 次读取**之间**改它 (函数里没有钩子)。于是\n * mData 只可能是 0x0000 或 0xFFF0, 12 个移位量彼此无法区分:\n * `<<13` 改成 `<<12` 时, 两次读到的位一样, 结果也一模一样。\n *\n * 但**真机上这个脚是会变的** —— 旋变芯片在 12 个时钟里逐位送出数据。\n * 也就是说那个状态空间是**可达的**, 只是宿主没法表达。所以这里把常量\n * 变成输入 (本项目通用的\"把常量变成输入\"手法): 宏展开成一个带自增的\n * 数组下标, 每次读取取下一项。driver 在每一侧调用前把 gHostSoIdx 清零\n * 并填好 12 位图案, 两侧看到**同一串**位。\n *\n * 这一条只在宿主构建时生效; 交付源码与目标端构建不经过 host_patch.json,\n * SystemDefine.h 原文一字未改。副作用是: 若改写增删了对该脚的读取次数,\n * 下标就会错位 -> 结果不同 -> 被抓住 (这是想要的)。数组开 HOST_SO_LEN 项, 超出\n * 12 次的部分由 driver 填 0, 越界读不会发生。\n * ----------------------------------------------------------------- */\n#define HOST_SO_LEN 4096\n#undef  ROTOR_TRANS_SO\n#define ROTOR_TRANS_SO   (gHostSoBits[gHostSoIdx++])\nextern Uint32 gHostSoBits[HOST_SO_LEN];\nextern Uint16 gHostSoIdx;",
+          "count": 1,
+          "side": "both",
+          "why": "见 new 里的长注释。核心: 真机上旋变芯片会让这个脚在 12 个时钟里逐位变化, 而宿主只能把它读成一个固定内存位 —— 那会让 12 个移位量在测试台上不可区分 (`<<13` -> `<<12` 抓不到)。改成 driver 喂序列之后那 12 个移位量就可测了。只在宿主构建生效。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/MotorInclude.h",
+      "ref_out": "MotorInclude.h",
+      "new_base": "include/motor/MotorInclude.h",
+      "new_out": "MotorInclude.h",
+      "replace": [
+        {
+          "old": "extern interrupt void ",
+          "new": "extern void ",
+          "count": 4,
+          "side": "both",
+          "why": "真 MotorInclude.h 第 72~75 行有 4 条 `extern interrupt void ..._isr(void);` 原型, `interrupt` 是 C28x 关键字, MSVC 报 C2054/C2085 并连锁炸掉后面几十条声明。去掉关键字后原型就是普通的 void(void)。只改原型, 不改任何函数名与参数 —— 目标端不受影响 (本补丁只在宿主构建时用)。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/SubPrgInclude.h",
+      "ref_out": "SubPrgInclude.h",
+      "new_base": "include/motor/SubPrgInclude.h",
+      "new_out": "SubPrgInclude.h",
+      "replace": [
+        {
+          "old": "(long int)",
+          "new": "(long)",
+          "count": 2,
+          "side": "both",
+          "why": "`extern int absl(long int);` 与 `extern int qatan(long int);`。用例私有 shim/DSP2803x_Device.h 末尾 `#define int short` (见那里的长注释: 不这么折, `typedef unsigned int Uint;` 就会展开成 MSVC 不接受的 `unsigned int16`), 于是 `long int` 会展开成 `long short` —— C2632。`long int` 与 `long` 是同一个类型, 去掉 `int` 位宽不变。这两条只是原型, 本模块一个都不调, 它们编得过就行。"
+        }
+      ]
+    }
+  ]
+}

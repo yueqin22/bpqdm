@@ -1,0 +1,1507 @@
+{
+ "per_module": {
+  "DSP2803x_CpuTimers": {
+   "InitCpuTimers": 12,
+   "ConfigCpuTimer": 12
+  },
+  "MotorCarrier": {
+   "CalCarrierWaveFreq": 40,
+   "AsynPWMAngleCal": 12,
+   "SynPWMAngleCal": 14,
+   "SoftPWMProcess": 14,
+   "CalOutputPhase": 13,
+   "CalDeadBandComp": 13
+  },
+  "MotorCurrentTransform": {
+   "UVWToAlphBetaAxes": 5,
+   "AlphBetaToDQ": 5,
+   "DQToAmpTheta": 3,
+   "ChangeCurrent": 10
+  },
+  "MotorDataExchange": {
+   "ParGet05Ms": 14,
+   "ParSend2Ms": 40,
+   "ParGet2Ms": 40,
+   "ParSendTune": 13
+  },
+  "MotorDebug": {
+   "DebugSaveDeal": 22,
+   "SaveDebugData16": 3,
+   "SaveDebugData32": 5,
+   "ResetDebugBuffer": 3,
+   "(文件级: 宏/表/全局)": 1
+  },
+  "MotorEncoder": {
+   "InitRtInterface": 6,
+   "InitSetQEP": 8,
+   "ReInitForPG": 6,
+   "JudgeABDir": 6,
+   "JudgeUVWDir": 4,
+   "JudgeRTDir": 3,
+   "GetUvwPhase": 8,
+   "(文件级: 宏/表/全局)": 1,
+   "VCGetFeedBackSpeed": 4,
+   "GetSpeedMMethod": 7,
+   "GetSpeedMTMethod": 12,
+   "SpeedSmoothDeal": 5,
+   "GetMDetaPos": 4,
+   "GetMTTimeNum": 4,
+   "GetRotorTransPos": 23,
+   "RotorTransSamplePos": 3,
+   "RotorTransCalVel": 13
+  },
+  "MotorImParEst": {
+   "ChgParForEst": 15,
+   "RsIdentify": 83,
+   "RrLoIdentify": 45,
+   "SetPwmForRrLoId": 36,
+   "InitRrLoVariable": 7,
+   "EnableTimer": 7,
+   "RrLoInPeriodAndCmpInt": 16,
+   "RrWaitAddGetUdc": 9,
+   "RrGetVoltReBegin": 7,
+   "RrLoCalVaule": 35,
+   "ImCalKpKi": 8,
+   "LmIoIdentify": 55,
+   "InitLmIoVaribale": 4,
+   "LmIoCalValue": 12,
+   "LmIoInPeriodInt": 17
+  },
+  "MotorInfoCollect": {
+   "GetCurExcursion": 19,
+   "GetUDCInfo": 5,
+   "GetCurrentInfo": 20
+  },
+  "MotorInvProtect": {
+   "InvDeviceControl": 5,
+   "SoftWareErrorDeal": 21,
+   "TemperatureCheck": 23,
+   "OutputPhaseLoseDetect": 10,
+   "OutputLoseAdd": 4,
+   "InputPhaseLoseDetect": 11,
+   "ControlFan": 8,
+   "OverLoadProtect": 38,
+   "CBCLimitCurProtect": 19,
+   "SetCBCEnable": 1,
+   "SetCBCDisable": 1,
+   "LoadLoseDetect": 12,
+   "BufferResProtect": 4
+  },
+  "MotorMain": {
+   "InitForMotorApp": 36,
+   "Main0msMotor": 2,
+   "Main05msMotor": 2,
+   "Main2msMotorA": 8,
+   "Main2msMotorC": 3,
+   "Main2msMotorD": 7,
+   "Main2msMotorB": 61,
+   "SendDataPrepare": 25,
+   "RunCaseRun2Ms": 23,
+   "PrepareParForRun": 21,
+   "TurnToStopStatus": 3,
+   "RunCaseStop": 20,
+   "CalRatioFromVot": 7,
+   "ADCOverInterrupt": 27,
+   "PWMZeroInterrupt": 11
+  },
+  "MotorPWM": {
+   "InitSetPWM": 54,
+   "(文件级: 宏/表/全局)": 5,
+   "OutPutPWMVC": 18,
+   "OutPutPWMVF": 41,
+   "DeadBandComp": 13,
+   "SendPWM": 43
+  },
+  "MotorParChange": {
+   "SystemParChg2Ms": 71,
+   "RunStateParChg2Ms": 66,
+   "SystemParChg05Ms": 14,
+   "ChangeMotorPar": 28,
+   "InvCalcPower": 15
+  },
+  "MotorParEst": {
+   "RunCaseGetPar": 15,
+   "PrepareParForTune": 24,
+   "EndOfParIdentify": 25
+  },
+  "MotorPmsmMain": {
+   "PG_Zero_isr": 35,
+   "IPMCheckInitPos": 25,
+   "PmChkInitPosRest": 3,
+   "RunCaseIpmInitPos": 26,
+   "SynCalRealPos": 18,
+   "SynCalLdAndLq": 13,
+   "IPMCalAcrPIDCoff": 6,
+   "PrepPmsmCsrPrar": 14,
+   "PmFluxWeakDeal": 27,
+   "PmDecoupleDeal": 8
+  },
+  "MotorPmsmParEst": {
+   "InitSetPosTune": 10,
+   "SynTuneInitPos": 23,
+   "SynInitPosDetect": 73,
+   "SetIPMPos": 8,
+   "SetIPMPos_ABZRef": 6,
+   "SynCalLabAndLbc": 9,
+   "SynInitPosDetCal": 9,
+   "SynInitPosDetSetTs": 7,
+   "SynInitPosDetSetPwm": 8,
+   "DetectZeroPosOnce": 7,
+   "SynTunePGZero_No_Load": 36,
+   "SynTunePGZero_Load": 14,
+   "SynTuneBemf": 9
+  },
+  "MotorPublicCal": {
+   "RunCaseShortGnd": 17,
+   "RunCaseLowPower": 21,
+   "CBCLimitCurPrepare": 7,
+   "MaxUVWCurrent": 4,
+   "HardWareErrorDeal": 9,
+   "HardWareOverUDCDeal": 5,
+   "RunCaseDcBrake": 15,
+   "BrakeResControl": 20
+  },
+  "MotorSVC": {
+   "ResetSVC": 18,
+   "SVCCalFlux_380": 79,
+   "SVCCalRotorSpeed": 41,
+   "SVCCalRotorSpeed_380": 33
+  },
+  "MotorSpeedCheck": {
+   "PrepareForSpeedCheck": 14,
+   "RunCaseSpeedCheck": 87,
+   "SpeedCheckSUB1": 8,
+   "SpeedCheckUdcRiseDeal": 13,
+   "SpeedCheckCycleOver": 7,
+   "SpeedCheckCycleSUB2": 2
+  },
+  "MotorVCMain": {
+   "ResetParForVC": 4,
+   "ResetAsrPar": 5,
+   "ResetCsrPar": 20,
+   "CalIMSet": 23,
+   "CalTorqueLimitPar": 31,
+   "PrepareAsrPar": 34,
+   "CalUdcLimitIT": 20,
+   "VcAsrControl": 26,
+   "CalWsAndSynFreq": 8,
+   "CalWsAndSynFreq_380": 6,
+   "PrepImCsrPara": 5,
+   "VCCsrControl": 22,
+   "SvcCalOutVolt": 48,
+   "SvcCalOutVolt_380": 24,
+   "CalcABVolt": 8,
+   "VCCsrControl_380": 20
+  },
+  "MotorVF": {
+   "VfVarInitiate": 9,
+   "VFOVUdcLimit": 4,
+   "CalOutVotInVFStatus": 17,
+   "CalTorqueUp": 11,
+   "VFWsTorqueBoostComm": 14,
+   "VFAutoTorqueBoost": 20,
+   "VFWSCompControl": 16,
+   "VFOverMagneticControl": 8,
+   "VFSpeedControl": 2,
+   "VfOverCurDeal": 17,
+   "VfOverUdcDeal": 17,
+   "VfFreqDeal": 13,
+   "VfOscIndexCalc": 6,
+   "HVfDeadBandComp": 14,
+   "HVfOscDampDeal": 4,
+   "HVfCurReDecomp": 7
+  },
+  "SubPrg": {
+   "atan": 6,
+   "PID": 15,
+   "PIDLongRegulate": 9,
+   "PID32": 8,
+   "BurrFilter": 8,
+   "SlipFilter": 8
+  },
+  "f_canlink": {
+   "InitCanlinkTran": 8,
+   "CanlinkDataTran": 8,
+   "InitCanlinkRec": 7,
+   "CanlinkDataRec": 9,
+   "InitCanlink": 7,
+   "CanlinkFun": 44,
+   "CanLlinkDataDeal": 6,
+   "CanLinkRemoteDeal": 7,
+   "CanControlWriter": 5,
+   "CanControlRead": 4,
+   "CanLinkConDeal": 23,
+   "CanHostTx": 10
+  },
+  "f_comm": {
+   "SciDeal": 7,
+   "Lina_Level0_ISR": 3,
+   "CommRcvDataDeal": 6,
+   "SciErrCheck": 7,
+   "CommSendDataDeal": 4,
+   "CommWrite": 13,
+   "CommRead": 13,
+   "CommRwFuncCode": 26,
+   "CommStartSend": 1,
+   "resetLinSci": 2,
+   "closeRTX": 1,
+   "setRxConfig": 1,
+   "setTxConfig": 1,
+   "commErrorDeal": 4,
+   "commStatusDeal": 7,
+   "CommDataReRcv": 5,
+   "CommDataSend": 3,
+   "InitSetScia": 8,
+   "UpdateSciFormat": 8,
+   "InitSciaGpio": 8
+  },
+  "f_comm_DP": {
+   "SCI_DP_RXD_isr": 30,
+   "SCI_DP_TXD_isr": 4,
+   "CommDpStartSend": 2,
+   "CommDpRcvDataDeal": 17,
+   "CommDpSendDataDeal": 9,
+   "SciDpDeal": 7,
+   "ErrAgainSend": 8,
+   "InitSetSciDp": 5,
+   "UpdateSciDpFormat": 4,
+   "InitSciaGpioDp": 10,
+   "InitScibGpioDp": 3,
+   "InitSciDpBaudRate": 3,
+   "GetDataByteNum": 1,
+   "DpDataDeal": 3
+  },
+  "f_common": {
+   "CrcValueByteCalc": 8,
+   "Reverse4Bit": 2,
+   "Reverse8Bit": 2
+  },
+  "f_debug": {
+   "UniversalDebug": 33,
+   "BitAssign": 1
+  },
+  "f_dspcan": {
+   "InitdspECan": 45,
+   "InitTranMbox": 7,
+   "InitRecMbox": 7,
+   "eCanDataTran": 12,
+   "eCanDataRec": 9
+  },
+  "f_eeprom": {
+   "RwI2cBus": 12,
+   "I2cIntDeal": 11,
+   "RwEeprom": 4,
+   "ReadFuncCode": 21,
+   "WriteFuncCode": 25,
+   "EepromDeal": 50,
+   "UpdateIndexForEepromDeal": 12,
+   "EepromOperateTimeDeal": 11,
+   "InitI2CGpio": 7,
+   "InitSetI2ca": 7,
+   "I2cDealBeforeInit": 9,
+   "I2CRcvByte": 2,
+   "GetFcIndexFromEepromIndex": 1,
+   "GetEepromIndexFromFcIndex": 3
+  },
+  "f_error": {
+   "ErrorDeal": 4,
+   "underVoltageDeal": 14,
+   "UpdateError": 11,
+   "getMotorError": 14,
+   "GetNewError": 60,
+   "GetNewErrorAttribute": 3,
+   "ErrorSceneSave": 18,
+   "ErrorReset": 30,
+   "GetErrorResetDeal": 7,
+   "AutoResetErrorDeal": 1,
+   "AutoResetErrorTrueDeal": 7,
+   "AutoResetErrorFcDeal": 14,
+   "GetErrorAttribute": 19,
+   "(文件级: 宏/表/全局)": 2
+  },
+  "f_fcDeal": {
+   "GetFuncCodeInit": 48,
+   "ClearRecordDeal": 10,
+   "RestoreCompanyParaOtherDeal": 10,
+   "PowerOffRemDeal": 17,
+   "LimitOtherCodeDeal": 31,
+   "GetFuncCodeInitOriginal": 7,
+   "(文件级: 宏/表/全局)": 2
+  },
+  "f_frqSrc": {
+   "FrqSrcDeal": 19,
+   "UpdateFrqAim": 18,
+   "FrqAimUpDownDeal": 21,
+   "FrqPlcSetDeal": 20,
+   "UpdateMultiSetFrq": 4,
+   "UpdateLimitFrq": 4,
+   "JumpFrqDeal": 5,
+   "JumpFrqEndCalc": 2,
+   "UpdateRunMode": 5,
+   "FrqSrcOperate": 2,
+   "getUpDownLimit": 4,
+   "ResetUpDownFrq": 1,
+   "GetFrq": 10,
+   "GetFrqComp": 5,
+   "GetFrqX": 1,
+   "GetFrqY": 2,
+   "FrqXyCalc": 6
+  },
+  "f_frqSrc_pid": {
+   "FrqPidSetDeal": 38,
+   "PidFuncCalc": 55,
+   "UpdatePidFuncPara": 46,
+   "UpdatePidFuncRefFdb": 37
+  },
+  "f_interface": {
+   "copyDataFunc2Motor05ms": 12,
+   "copyDataFunc2Motor2ms": 45,
+   "copyDataFunc2CF2ms": 4,
+   "copyDataCore2Func2ms": 26,
+   "copyDataCore2Uf2ms": 3,
+   "checkSpeedFdbDir": 18,
+   "UpdateDataCore2Func": 59,
+   "UpdateDataFunc2Core0p5ms": 21,
+   "(文件级: 宏/表/全局)": 1,
+   "UpdateDataFunc2Core2ms": 19
+  },
+  "f_invPara": {
+   "TorqueBoostDeal": 3,
+   "ValidateInvType": 2,
+   "UpdateInvType": 3,
+   "InverterTypeRelatedNoMotorParaDeal": 2,
+   "InverterTypeRelatedParaDeal": 3,
+   "InverterTypeRelatedNoMotorParaSaveDeal": 1,
+   "MotorPowerRelatedParaDeal": 5,
+   "SaveTuneData": 3
+  },
+  "f_io": {
+   "DiCalc": 15,
+   "Dout1": 1,
+   "Dout2": 1,
+   "Dout38": 1,
+   "Dout41": 2,
+   "Dout3": 1,
+   "Dout4": 2,
+   "Dout5": 1,
+   "Dout23": 1,
+   "Dout6": 1,
+   "Dout7": 1,
+   "Dout8": 1,
+   "Dout9": 1,
+   "Dout10": 1,
+   "Dout11": 1,
+   "Dout12": 1,
+   "Dout13": 1,
+   "Dout14": 1,
+   "Dout15": 1,
+   "Dout16": 1,
+   "Dout17": 1,
+   "Dout19": 1,
+   "Dout24": 1,
+   "Dout25": 1,
+   "Dout26": 1,
+   "Dout27": 1,
+   "Dout28": 1,
+   "Dout29": 1,
+   "Dout30": 2,
+   "Dout31": 1,
+   "Dout32": 1,
+   "Dout33": 1,
+   "Dout34": 1,
+   "Dout35": 1,
+   "Dout36": 1,
+   "Dout37": 1,
+   "Dout39": 1,
+   "Dout40": 2,
+   "DoCalc": 12,
+   "TemperatureDeal": 2,
+   "TemperatureSensorDeal": 7,
+   "GetTemperature": 1,
+   "GetTemperatureCalc": 2,
+   "TemperatureAfterDeal": 3,
+   "AiCalc": 15,
+   "AoCalcChannel": 11,
+   "PulseInCalc": 15,
+   "PulseInSample": 4,
+   "FMPDeal": 4,
+   "PulseOutCalc": 10,
+   "UpdateFmpAoValue": 20,
+   "LineCalc": 5,
+   "LpfCalc": 5,
+   "InitSetEPWM4": 3,
+   "InitSetEPWM5": 2,
+   "InitSetEPWM6": 1,
+   "InitSetEcap1": 3,
+   "InitDIGpio": 2,
+   "InitDOGpio": 2,
+   "InitEPwm5Gpio": 1,
+   "InitEPwm4Gpio": 1,
+   "InitEPwm6Gpio": 1,
+   "InitECap1Gpio": 2,
+   "Di2Bin": 5,
+   "Do2Bin": 3,
+   "getDiHwStatus": 3,
+   "setDOStatus": 5
+  },
+  "f_main": {
+   "InitForFunctionApp": 2,
+   "InitDspFunc": 16,
+   "InitFuncCode": 50,
+   "FuncVariableInit": 20,
+   "Main0msFunction": 1,
+   "Main05msFunctionEachStart": 9,
+   "Main05msFunctionEachEnd": 5,
+   "Main05msFunctionB": 8,
+   "Main05msFunctionC": 9,
+   "Main05msFunctionD": 10,
+   "CodeRunMonitor": 8,
+   "GetNumberDigit": 5,
+   "GetNumberDigit1": 3,
+   "GetNumberDigit2": 3,
+   "SoftVersionDeal": 4,
+   "getMomeryValue": 2
+  },
+  "f_menu": {
+   "MenuOnQuick": 4,
+   "Menu1OnUp": 1,
+   "Menu2OnUp": 1,
+   "Menu3OnUp": 1,
+   "Menu1OnDown": 1,
+   "Menu3OnDown": 1,
+   "MenuOnMfk": 2,
+   "Menu0OnPrg": 5,
+   "Menu0OnEnter": 2,
+   "MenuModeSwitch": 14,
+   "Menu0OnUpDown": 2,
+   "Menu0OnShift": 1,
+   "Menu1OnPrg": 2,
+   "Menu1OnEnter": 4,
+   "Menu1OnUpDown": 2,
+   "Menu2OnPrg": 3,
+   "Menu2OnEnter": 8,
+   "Menu2OnUpDown": 11,
+   "Menu2OnShift": 4,
+   "Menu3OnPrg": 1,
+   "Menu3OnEnter": 17,
+   "ValidateTuneCmd": 9,
+   "Menu3OnUpDown": 12,
+   "Menu3OnShift": 4,
+   "LimitDeal": 6,
+   "NoSameDeal": 13,
+   "Menu2OnDown": 1,
+   "cycleShiftDeal": 15,
+   "OverTurnDeal": 6,
+   "UpdateMenu0DisplayBuffer": 18,
+   "UpdateMenu0DispStatus": 6,
+   "UpdateMenu1DisplayBuffer": 5,
+   "UpdateMenu2DisplayBuffer": 14,
+   "UpdateMenu3DisplayBuffer": 24,
+   "UpdateDisplayBufferAttribute": 33,
+   "UpdateErrorDisplayBuffer": 7,
+   "UpdateTuneDisplayBuffer": 5,
+   "ModifyFunccodeUpDown": 37,
+   "ModifyFunccodeEnter": 21,
+   "DispDataDeal": 11,
+   "Menu0AddMenuLevel": 3,
+   "GetDispDigits": 9,
+   "UpdateGroupDisplay": 9,
+   "GroupUpDown": 2,
+   "DealUserMenuModeGroupGrade": 2,
+   "LimitOverTurnDeal": 6,
+   "DealCheckMenuModeGroupGrade": 15,
+   "MenuModeDeal": 7,
+   "UpdataFuncCodeGrade": 8,
+   "FcDigit2Bin": 5,
+   "MotorDebugFcDeal": 7,
+   "MenuInit": 3,
+   "UpdateDisplayBufferVisualIoStatus": 8,
+   "UpdateDisplayBufferVisualDiFunc": 3,
+   "MenuPwdOnPrg": 3,
+   "MenuPwdHint2Input": 3,
+   "MenuPwdInputOnEnter": 3,
+   "MenuPwdHintOnShift": 1,
+   "MenuPwdInputOnUp": 1,
+   "MenuPwdInputOnDown": 1,
+   "MenuPwdInputOnUpDown": 3,
+   "MenuPwdInputOnShift": 3,
+   "UpdateMenuPwdHintDisplayBuffer": 3,
+   "UpdateMenuPwdInputDisplayBuffer": 5
+  },
+  "f_modbus": {
+   "ModbusRcvDataDeal": 7,
+   "ModbusStartDeal": 12,
+   "UpdateModbusCommFormat": 4,
+   "ModbusSendDataDeal": 20,
+   "ModbusCommErrCheck": 4
+  },
+  "f_motorFc": {
+   "UpdateMotorPara": 14
+  },
+  "f_osc": {
+   "(文件级: 宏/表/全局)": 3,
+   "OscSciFunction": 18,
+   "InitOsc": 9,
+   "InitSciOSC": 20,
+   "SciDataTX": 9,
+   "sciaTxFifoIsr": 8,
+   "SciDataRx": 18,
+   "sciaRxFifoIsr": 10,
+   "SciDataRxDeal": 42,
+   "OscDataQcq": 21,
+   "OscDataTxDeal": 17,
+   "GetOscData": 6,
+   "ClearOscBufEnd": 5,
+   "OscSciIoInit": 8,
+   "OscControlWriter": 4,
+   "OscControlRead": 3
+  },
+  "f_p2p": {
+   "P2PDataDeal": 7
+  },
+  "f_plc": {
+   "InvTranTabCfg": 5,
+   "InvRecTabCfg": 4,
+   "FuncCodeRwAtrrib": 13,
+   "PlcDataFramDeal": 16
+  },
+  "f_profibus": {
+   "ProfibusRcvDataDeal": 14,
+   "ProfibusStartDeal": 18,
+   "setDPStatusInfo": 7,
+   "UpdateProfibusCommFormat": 4,
+   "ProfibusSendDataDeal": 57,
+   "ProfibusCommErrCheck": 6
+  },
+  "f_runSrc": {
+   "UpdateRunCmd": 27,
+   "setTimeRun": 4,
+   "runTimeCal": 4,
+   "RunSrcDeal": 1,
+   "UpdateBenchTime": 1,
+   "RunSrcUpdateFrq": 19,
+   "StartRunCtrl": 9,
+   "NormalRunCtrl": 6,
+   "StopRunCtrl": 7,
+   "JogRunCtrl": 4,
+   "TuneRunCtrl": 8,
+   "LoseLoadRunCtrl": 4,
+   "ShutDownRunCtrl": 12,
+   "UpdateSwingPara": 10,
+   "SwingDeal": 8,
+   "LowerThanLowerFrqDeal": 7,
+   "PowerOffNoStopDeal": 9,
+   "AccDecTimeCalc": 13,
+   "DormantDeal": 8
+  },
+  "f_runSrc_accDecFrq": {
+   "AccDecFrqCalc": 49,
+   "SCurveOridinaryCalc": 55,
+   "SCurveSpecialCalc": 82,
+   "LineChangeCalc": 12
+  },
+  "f_torqueCtrl": {
+   "UpdateTorqueAim": 14,
+   "AccDecTorqueCalc": 11,
+   "TorqueLimitCalc": 6
+  },
+  "f_ui": {
+   "UpdateDisplayBuffer": 12,
+   "WinkDeal": 12,
+   "DisplayScanPrepare": 5,
+   "DisplayScan": 2,
+   "KeyScan": 9,
+   "KeyBordTest": 1,
+   "KeyProcess": 4,
+   "InitSpiaGpio": 3,
+   "InitSetSpiForFunc": 2,
+   "UpdateMenuModeDisplayBuffer": 2
+  },
+  "f_vf": {
+   "vfSeparateDeal": 38
+  },
+  "main": {
+   "main": 25,
+   "ADC_Over_isr": 7,
+   "EPWM1_zero_isr": 4,
+   "EPWM1_TZ_isr": 2
+  },
+  "mainInit_2803x": {
+   "InitSysCtrl": 4,
+   "InitInterrupt": 5,
+   "SetInterruptEnable": 2,
+   "InitPeripherals": 2,
+   "copy_prg": 3,
+   "InitFlash": 3,
+   "KickDog": 2,
+   "DisableDog": 1,
+   "EnableDog": 1,
+   "InitPll": 11,
+   "InitPeripheralClocks": 4,
+   "InitPieCtrl": 5,
+   "InitPieVectTable": 3,
+   "InitSetGpio": 9,
+   "InitSetAdc": 13,
+   "rsvd_ISR": 1
+  },
+  "ZeroPosCtl": {
+   "ZeroPosControl": 6,
+   "ZeroPosJudge": 1
+  }
+ },
+ "per_case": {
+  "DSP2803x_CpuTimers": {
+   "base": "DSP2803x_CpuTimers_ref.c",
+   "n": 24,
+   "funcs": {
+    "InitCpuTimers": 12,
+    "ConfigCpuTimer": 12
+   }
+  },
+  "MotorCarrier": {
+   "base": "MotorCarrier_ref.c",
+   "n": 106,
+   "funcs": {
+    "CalCarrierWaveFreq": 40,
+    "AsynPWMAngleCal": 12,
+    "SynPWMAngleCal": 14,
+    "SoftPWMProcess": 14,
+    "CalOutputPhase": 13,
+    "CalDeadBandComp": 13
+   }
+  },
+  "MotorCurrentTransform": {
+   "base": "MotorCurrentTransform_ref.c",
+   "n": 23,
+   "funcs": {
+    "UVWToAlphBetaAxes": 5,
+    "AlphBetaToDQ": 5,
+    "DQToAmpTheta": 3,
+    "ChangeCurrent": 10
+   }
+  },
+  "MotorDataExchange": {
+   "base": "MotorDataExchange_ref.c",
+   "n": 107,
+   "funcs": {
+    "ParGet05Ms": 14,
+    "ParSend2Ms": 40,
+    "ParGet2Ms": 40,
+    "ParSendTune": 13
+   }
+  },
+  "MotorDebug": {
+   "base": "MotorDebug_ref.c",
+   "n": 34,
+   "funcs": {
+    "DebugSaveDeal": 22,
+    "SaveDebugData16": 3,
+    "SaveDebugData32": 5,
+    "ResetDebugBuffer": 3,
+    "(文件级: 宏/表/全局)": 1
+   }
+  },
+  "MotorEncoder": {
+   "base": "MotorEncoder_ref.c",
+   "n": 117,
+   "funcs": {
+    "InitRtInterface": 6,
+    "InitSetQEP": 8,
+    "ReInitForPG": 6,
+    "JudgeABDir": 6,
+    "JudgeUVWDir": 4,
+    "JudgeRTDir": 3,
+    "GetUvwPhase": 8,
+    "(文件级: 宏/表/全局)": 1,
+    "VCGetFeedBackSpeed": 4,
+    "GetSpeedMMethod": 7,
+    "GetSpeedMTMethod": 12,
+    "SpeedSmoothDeal": 5,
+    "GetMDetaPos": 4,
+    "GetMTTimeNum": 4,
+    "GetRotorTransPos": 23,
+    "RotorTransSamplePos": 3,
+    "RotorTransCalVel": 13
+   }
+  },
+  "MotorImParEst": {
+   "base": "MotorImParEst_ref.c",
+   "n": 356,
+   "funcs": {
+    "ChgParForEst": 15,
+    "RsIdentify": 83,
+    "RrLoIdentify": 45,
+    "SetPwmForRrLoId": 36,
+    "InitRrLoVariable": 7,
+    "EnableTimer": 7,
+    "RrLoInPeriodAndCmpInt": 16,
+    "RrWaitAddGetUdc": 9,
+    "RrGetVoltReBegin": 7,
+    "RrLoCalVaule": 35,
+    "ImCalKpKi": 8,
+    "LmIoIdentify": 55,
+    "InitLmIoVaribale": 4,
+    "LmIoCalValue": 12,
+    "LmIoInPeriodInt": 17
+   }
+  },
+  "MotorInfoCollect": {
+   "base": "MotorInfoCollect_ref.c",
+   "n": 44,
+   "funcs": {
+    "GetCurExcursion": 19,
+    "GetUDCInfo": 5,
+    "GetCurrentInfo": 20
+   }
+  },
+  "MotorInvProtect": {
+   "base": "MotorInvProtect_ref.c",
+   "n": 157,
+   "funcs": {
+    "InvDeviceControl": 5,
+    "SoftWareErrorDeal": 21,
+    "TemperatureCheck": 23,
+    "OutputPhaseLoseDetect": 10,
+    "OutputLoseAdd": 4,
+    "InputPhaseLoseDetect": 11,
+    "ControlFan": 8,
+    "OverLoadProtect": 38,
+    "CBCLimitCurProtect": 19,
+    "SetCBCEnable": 1,
+    "SetCBCDisable": 1,
+    "LoadLoseDetect": 12,
+    "BufferResProtect": 4
+   }
+  },
+  "MotorMain": {
+   "base": "MotorMain_ref.c",
+   "n": 256,
+   "funcs": {
+    "InitForMotorApp": 36,
+    "Main0msMotor": 2,
+    "Main05msMotor": 2,
+    "Main2msMotorA": 8,
+    "Main2msMotorC": 3,
+    "Main2msMotorD": 7,
+    "Main2msMotorB": 61,
+    "SendDataPrepare": 25,
+    "RunCaseRun2Ms": 23,
+    "PrepareParForRun": 21,
+    "TurnToStopStatus": 3,
+    "RunCaseStop": 20,
+    "CalRatioFromVot": 7,
+    "ADCOverInterrupt": 27,
+    "PWMZeroInterrupt": 11
+   }
+  },
+  "MotorPWM": {
+   "base": "MotorPWM_ref.c",
+   "n": 174,
+   "funcs": {
+    "InitSetPWM": 54,
+    "(文件级: 宏/表/全局)": 5,
+    "OutPutPWMVC": 18,
+    "OutPutPWMVF": 41,
+    "DeadBandComp": 13,
+    "SendPWM": 43
+   }
+  },
+  "MotorParChange": {
+   "base": "MotorParChange_ref.c",
+   "n": 194,
+   "funcs": {
+    "SystemParChg2Ms": 71,
+    "RunStateParChg2Ms": 66,
+    "SystemParChg05Ms": 14,
+    "ChangeMotorPar": 28,
+    "InvCalcPower": 15
+   }
+  },
+  "MotorParEst": {
+   "base": "MotorParEst_ref.c",
+   "n": 64,
+   "funcs": {
+    "RunCaseGetPar": 15,
+    "PrepareParForTune": 24,
+    "EndOfParIdentify": 25
+   }
+  },
+  "MotorPmsmMain": {
+   "base": "MotorPmsmMain_ref.c",
+   "n": 175,
+   "funcs": {
+    "PG_Zero_isr": 35,
+    "IPMCheckInitPos": 25,
+    "PmChkInitPosRest": 3,
+    "RunCaseIpmInitPos": 26,
+    "SynCalRealPos": 18,
+    "SynCalLdAndLq": 13,
+    "IPMCalAcrPIDCoff": 6,
+    "PrepPmsmCsrPrar": 14,
+    "PmFluxWeakDeal": 27,
+    "PmDecoupleDeal": 8
+   }
+  },
+  "MotorPmsmParEst": {
+   "base": "MotorPmsmParEst_ref.c",
+   "n": 219,
+   "funcs": {
+    "InitSetPosTune": 10,
+    "SynTuneInitPos": 23,
+    "SynInitPosDetect": 73,
+    "SetIPMPos": 8,
+    "SetIPMPos_ABZRef": 6,
+    "SynCalLabAndLbc": 9,
+    "SynInitPosDetCal": 9,
+    "SynInitPosDetSetTs": 7,
+    "SynInitPosDetSetPwm": 8,
+    "DetectZeroPosOnce": 7,
+    "SynTunePGZero_No_Load": 36,
+    "SynTunePGZero_Load": 14,
+    "SynTuneBemf": 9
+   }
+  },
+  "MotorPublicCal": {
+   "base": "MotorPublicCal_ref.c",
+   "n": 98,
+   "funcs": {
+    "RunCaseShortGnd": 17,
+    "RunCaseLowPower": 21,
+    "CBCLimitCurPrepare": 7,
+    "MaxUVWCurrent": 4,
+    "HardWareErrorDeal": 9,
+    "HardWareOverUDCDeal": 5,
+    "RunCaseDcBrake": 15,
+    "BrakeResControl": 20
+   }
+  },
+  "MotorSVC": {
+   "base": "MotorSVC_ref.c",
+   "n": 171,
+   "funcs": {
+    "ResetSVC": 18,
+    "SVCCalFlux_380": 79,
+    "SVCCalRotorSpeed": 41,
+    "SVCCalRotorSpeed_380": 33
+   }
+  },
+  "MotorSpeedCheck": {
+   "base": "MotorSpeedCheck_ref.c",
+   "n": 131,
+   "funcs": {
+    "PrepareForSpeedCheck": 14,
+    "RunCaseSpeedCheck": 87,
+    "SpeedCheckSUB1": 8,
+    "SpeedCheckUdcRiseDeal": 13,
+    "SpeedCheckCycleOver": 7,
+    "SpeedCheckCycleSUB2": 2
+   }
+  },
+  "MotorVCMain": {
+   "base": "MotorVCMain_ref.c",
+   "n": 304,
+   "funcs": {
+    "ResetParForVC": 4,
+    "ResetAsrPar": 5,
+    "ResetCsrPar": 20,
+    "CalIMSet": 23,
+    "CalTorqueLimitPar": 31,
+    "PrepareAsrPar": 34,
+    "CalUdcLimitIT": 20,
+    "VcAsrControl": 26,
+    "CalWsAndSynFreq": 8,
+    "CalWsAndSynFreq_380": 6,
+    "PrepImCsrPara": 5,
+    "VCCsrControl": 22,
+    "SvcCalOutVolt": 48,
+    "SvcCalOutVolt_380": 24,
+    "CalcABVolt": 8,
+    "VCCsrControl_380": 20
+   }
+  },
+  "MotorVF": {
+   "base": "MotorVF_ref.c",
+   "n": 179,
+   "funcs": {
+    "VfVarInitiate": 9,
+    "VFOVUdcLimit": 4,
+    "CalOutVotInVFStatus": 17,
+    "CalTorqueUp": 11,
+    "VFWsTorqueBoostComm": 14,
+    "VFAutoTorqueBoost": 20,
+    "VFWSCompControl": 16,
+    "VFOverMagneticControl": 8,
+    "VFSpeedControl": 2,
+    "VfOverCurDeal": 17,
+    "VfOverUdcDeal": 17,
+    "VfFreqDeal": 13,
+    "VfOscIndexCalc": 6,
+    "HVfDeadBandComp": 14,
+    "HVfOscDampDeal": 4,
+    "HVfCurReDecomp": 7
+   }
+  },
+  "SubPrg": {
+   "base": "SubPrg_ref.c",
+   "n": 54,
+   "funcs": {
+    "atan": 6,
+    "PID": 15,
+    "PIDLongRegulate": 9,
+    "PID32": 8,
+    "BurrFilter": 8,
+    "SlipFilter": 8
+   }
+  },
+  "f_canlink": {
+   "base": "f_canlink_ref.c",
+   "n": 138,
+   "funcs": {
+    "InitCanlinkTran": 8,
+    "CanlinkDataTran": 8,
+    "InitCanlinkRec": 7,
+    "CanlinkDataRec": 9,
+    "InitCanlink": 7,
+    "CanlinkFun": 44,
+    "CanLlinkDataDeal": 6,
+    "CanLinkRemoteDeal": 7,
+    "CanControlWriter": 5,
+    "CanControlRead": 4,
+    "CanLinkConDeal": 23,
+    "CanHostTx": 10
+   }
+  },
+  "f_comm": {
+   "base": "f_comm_ref.c",
+   "n": 128,
+   "funcs": {
+    "SciDeal": 7,
+    "Lina_Level0_ISR": 3,
+    "CommRcvDataDeal": 6,
+    "SciErrCheck": 7,
+    "CommSendDataDeal": 4,
+    "CommWrite": 13,
+    "CommRead": 13,
+    "CommRwFuncCode": 26,
+    "CommStartSend": 1,
+    "resetLinSci": 2,
+    "closeRTX": 1,
+    "setRxConfig": 1,
+    "setTxConfig": 1,
+    "commErrorDeal": 4,
+    "commStatusDeal": 7,
+    "CommDataReRcv": 5,
+    "CommDataSend": 3,
+    "InitSetScia": 8,
+    "UpdateSciFormat": 8,
+    "InitSciaGpio": 8
+   }
+  },
+  "f_comm_DP": {
+   "base": "f_comm_DP_ref.c",
+   "n": 106,
+   "funcs": {
+    "SCI_DP_RXD_isr": 30,
+    "SCI_DP_TXD_isr": 4,
+    "CommDpStartSend": 2,
+    "CommDpRcvDataDeal": 17,
+    "CommDpSendDataDeal": 9,
+    "SciDpDeal": 7,
+    "ErrAgainSend": 8,
+    "InitSetSciDp": 5,
+    "UpdateSciDpFormat": 4,
+    "InitSciaGpioDp": 10,
+    "InitScibGpioDp": 3,
+    "InitSciDpBaudRate": 3,
+    "GetDataByteNum": 1,
+    "DpDataDeal": 3
+   }
+  },
+  "f_common": {
+   "base": "f_common_ref.c",
+   "n": 12,
+   "funcs": {
+    "CrcValueByteCalc": 8,
+    "Reverse4Bit": 2,
+    "Reverse8Bit": 2
+   }
+  },
+  "f_debug": {
+   "base": "f_debug_ref.c",
+   "n": 34,
+   "funcs": {
+    "UniversalDebug": 33,
+    "BitAssign": 1
+   }
+  },
+  "f_dspcan": {
+   "base": "f_dspcan_ref.c",
+   "n": 80,
+   "funcs": {
+    "InitdspECan": 45,
+    "InitTranMbox": 7,
+    "InitRecMbox": 7,
+    "eCanDataTran": 12,
+    "eCanDataRec": 9
+   }
+  },
+  "f_eeprom": {
+   "base": "f_eeprom_ref.c",
+   "n": 175,
+   "funcs": {
+    "RwI2cBus": 12,
+    "I2cIntDeal": 11,
+    "RwEeprom": 4,
+    "ReadFuncCode": 21,
+    "WriteFuncCode": 25,
+    "EepromDeal": 50,
+    "UpdateIndexForEepromDeal": 12,
+    "EepromOperateTimeDeal": 11,
+    "InitI2CGpio": 7,
+    "InitSetI2ca": 7,
+    "I2cDealBeforeInit": 9,
+    "I2CRcvByte": 2,
+    "GetFcIndexFromEepromIndex": 1,
+    "GetEepromIndexFromFcIndex": 3
+   }
+  },
+  "f_error": {
+   "base": "f_error_ref.c",
+   "n": 204,
+   "funcs": {
+    "ErrorDeal": 4,
+    "underVoltageDeal": 14,
+    "UpdateError": 11,
+    "getMotorError": 14,
+    "GetNewError": 60,
+    "GetNewErrorAttribute": 3,
+    "ErrorSceneSave": 18,
+    "ErrorReset": 30,
+    "GetErrorResetDeal": 7,
+    "AutoResetErrorDeal": 1,
+    "AutoResetErrorTrueDeal": 7,
+    "AutoResetErrorFcDeal": 14,
+    "GetErrorAttribute": 19,
+    "(文件级: 宏/表/全局)": 2
+   }
+  },
+  "f_fcDeal": {
+   "base": "f_fcDeal_ref.c",
+   "n": 125,
+   "funcs": {
+    "GetFuncCodeInit": 48,
+    "ClearRecordDeal": 10,
+    "RestoreCompanyParaOtherDeal": 10,
+    "PowerOffRemDeal": 17,
+    "LimitOtherCodeDeal": 31,
+    "GetFuncCodeInitOriginal": 7,
+    "(文件级: 宏/表/全局)": 2
+   }
+  },
+  "f_frqSrc": {
+   "base": "f_frqSrc_ref.c",
+   "n": 129,
+   "funcs": {
+    "FrqSrcDeal": 19,
+    "UpdateFrqAim": 18,
+    "FrqAimUpDownDeal": 21,
+    "FrqPlcSetDeal": 20,
+    "UpdateMultiSetFrq": 4,
+    "UpdateLimitFrq": 4,
+    "JumpFrqDeal": 5,
+    "JumpFrqEndCalc": 2,
+    "UpdateRunMode": 5,
+    "FrqSrcOperate": 2,
+    "getUpDownLimit": 4,
+    "ResetUpDownFrq": 1,
+    "GetFrq": 10,
+    "GetFrqComp": 5,
+    "GetFrqX": 1,
+    "GetFrqY": 2,
+    "FrqXyCalc": 6
+   }
+  },
+  "f_frqSrc_pid": {
+   "base": "f_frqSrc_pid_ref.c",
+   "n": 176,
+   "funcs": {
+    "FrqPidSetDeal": 38,
+    "PidFuncCalc": 55,
+    "UpdatePidFuncPara": 46,
+    "UpdatePidFuncRefFdb": 37
+   }
+  },
+  "f_interface": {
+   "base": "f_interface_ref.c",
+   "n": 208,
+   "funcs": {
+    "copyDataFunc2Motor05ms": 12,
+    "copyDataFunc2Motor2ms": 45,
+    "copyDataFunc2CF2ms": 4,
+    "copyDataCore2Func2ms": 26,
+    "copyDataCore2Uf2ms": 3,
+    "checkSpeedFdbDir": 18,
+    "UpdateDataCore2Func": 59,
+    "UpdateDataFunc2Core0p5ms": 21,
+    "(文件级: 宏/表/全局)": 1,
+    "UpdateDataFunc2Core2ms": 19
+   }
+  },
+  "f_invPara": {
+   "base": "f_invPara_ref.c",
+   "n": 22,
+   "funcs": {
+    "TorqueBoostDeal": 3,
+    "ValidateInvType": 2,
+    "UpdateInvType": 3,
+    "InverterTypeRelatedNoMotorParaDeal": 2,
+    "InverterTypeRelatedParaDeal": 3,
+    "InverterTypeRelatedNoMotorParaSaveDeal": 1,
+    "MotorPowerRelatedParaDeal": 5,
+    "SaveTuneData": 3
+   }
+  },
+  "f_io": {
+   "base": "f_io_ref.c",
+   "n": 206,
+   "funcs": {
+    "DiCalc": 15,
+    "Dout1": 1,
+    "Dout2": 1,
+    "Dout38": 1,
+    "Dout41": 2,
+    "Dout3": 1,
+    "Dout4": 2,
+    "Dout5": 1,
+    "Dout23": 1,
+    "Dout6": 1,
+    "Dout7": 1,
+    "Dout8": 1,
+    "Dout9": 1,
+    "Dout10": 1,
+    "Dout11": 1,
+    "Dout12": 1,
+    "Dout13": 1,
+    "Dout14": 1,
+    "Dout15": 1,
+    "Dout16": 1,
+    "Dout17": 1,
+    "Dout19": 1,
+    "Dout24": 1,
+    "Dout25": 1,
+    "Dout26": 1,
+    "Dout27": 1,
+    "Dout28": 1,
+    "Dout29": 1,
+    "Dout30": 2,
+    "Dout31": 1,
+    "Dout32": 1,
+    "Dout33": 1,
+    "Dout34": 1,
+    "Dout35": 1,
+    "Dout36": 1,
+    "Dout37": 1,
+    "Dout39": 1,
+    "Dout40": 2,
+    "DoCalc": 12,
+    "TemperatureDeal": 2,
+    "TemperatureSensorDeal": 7,
+    "GetTemperature": 1,
+    "GetTemperatureCalc": 2,
+    "TemperatureAfterDeal": 3,
+    "AiCalc": 15,
+    "AoCalcChannel": 11,
+    "PulseInCalc": 15,
+    "PulseInSample": 4,
+    "FMPDeal": 4,
+    "PulseOutCalc": 10,
+    "UpdateFmpAoValue": 20,
+    "LineCalc": 5,
+    "LpfCalc": 5,
+    "InitSetEPWM4": 3,
+    "InitSetEPWM5": 2,
+    "InitSetEPWM6": 1,
+    "InitSetEcap1": 3,
+    "InitDIGpio": 2,
+    "InitDOGpio": 2,
+    "InitEPwm5Gpio": 1,
+    "InitEPwm4Gpio": 1,
+    "InitEPwm6Gpio": 1,
+    "InitECap1Gpio": 2,
+    "Di2Bin": 5,
+    "Do2Bin": 3,
+    "getDiHwStatus": 3,
+    "setDOStatus": 5
+   }
+  },
+  "f_main": {
+   "base": "f_main_ref.c",
+   "n": 155,
+   "funcs": {
+    "InitForFunctionApp": 2,
+    "InitDspFunc": 16,
+    "InitFuncCode": 50,
+    "FuncVariableInit": 20,
+    "Main0msFunction": 1,
+    "Main05msFunctionEachStart": 9,
+    "Main05msFunctionEachEnd": 5,
+    "Main05msFunctionB": 8,
+    "Main05msFunctionC": 9,
+    "Main05msFunctionD": 10,
+    "CodeRunMonitor": 8,
+    "GetNumberDigit": 5,
+    "GetNumberDigit1": 3,
+    "GetNumberDigit2": 3,
+    "SoftVersionDeal": 4,
+    "getMomeryValue": 2
+   }
+  },
+  "f_menu": {
+   "base": "f_menu_ref.c",
+   "n": 447,
+   "funcs": {
+    "MenuOnQuick": 4,
+    "Menu1OnUp": 1,
+    "Menu2OnUp": 1,
+    "Menu3OnUp": 1,
+    "Menu1OnDown": 1,
+    "Menu3OnDown": 1,
+    "MenuOnMfk": 2,
+    "Menu0OnPrg": 5,
+    "Menu0OnEnter": 2,
+    "MenuModeSwitch": 14,
+    "Menu0OnUpDown": 2,
+    "Menu0OnShift": 1,
+    "Menu1OnPrg": 2,
+    "Menu1OnEnter": 4,
+    "Menu1OnUpDown": 2,
+    "Menu2OnPrg": 3,
+    "Menu2OnEnter": 8,
+    "Menu2OnUpDown": 11,
+    "Menu2OnShift": 4,
+    "Menu3OnPrg": 1,
+    "Menu3OnEnter": 17,
+    "ValidateTuneCmd": 9,
+    "Menu3OnUpDown": 12,
+    "Menu3OnShift": 4,
+    "LimitDeal": 6,
+    "NoSameDeal": 13,
+    "Menu2OnDown": 1,
+    "cycleShiftDeal": 15,
+    "OverTurnDeal": 6,
+    "UpdateMenu0DisplayBuffer": 18,
+    "UpdateMenu0DispStatus": 6,
+    "UpdateMenu1DisplayBuffer": 5,
+    "UpdateMenu2DisplayBuffer": 14,
+    "UpdateMenu3DisplayBuffer": 24,
+    "UpdateDisplayBufferAttribute": 33,
+    "UpdateErrorDisplayBuffer": 7,
+    "UpdateTuneDisplayBuffer": 5,
+    "ModifyFunccodeUpDown": 37,
+    "ModifyFunccodeEnter": 21,
+    "DispDataDeal": 11,
+    "Menu0AddMenuLevel": 3,
+    "GetDispDigits": 9,
+    "UpdateGroupDisplay": 9,
+    "GroupUpDown": 2,
+    "DealUserMenuModeGroupGrade": 2,
+    "LimitOverTurnDeal": 6,
+    "DealCheckMenuModeGroupGrade": 15,
+    "MenuModeDeal": 7,
+    "UpdataFuncCodeGrade": 8,
+    "FcDigit2Bin": 5,
+    "MotorDebugFcDeal": 7,
+    "MenuInit": 3,
+    "UpdateDisplayBufferVisualIoStatus": 8,
+    "UpdateDisplayBufferVisualDiFunc": 3,
+    "MenuPwdOnPrg": 3,
+    "MenuPwdHint2Input": 3,
+    "MenuPwdInputOnEnter": 3,
+    "MenuPwdHintOnShift": 1,
+    "MenuPwdInputOnUp": 1,
+    "MenuPwdInputOnDown": 1,
+    "MenuPwdInputOnUpDown": 3,
+    "MenuPwdInputOnShift": 3,
+    "UpdateMenuPwdHintDisplayBuffer": 3,
+    "UpdateMenuPwdInputDisplayBuffer": 5
+   }
+  },
+  "f_modbus": {
+   "base": "f_modbus_ref.c",
+   "n": 47,
+   "funcs": {
+    "ModbusRcvDataDeal": 7,
+    "ModbusStartDeal": 12,
+    "UpdateModbusCommFormat": 4,
+    "ModbusSendDataDeal": 20,
+    "ModbusCommErrCheck": 4
+   }
+  },
+  "f_motorFc": {
+   "base": "f_motorFc_ref.c",
+   "n": 14,
+   "funcs": {
+    "UpdateMotorPara": 14
+   }
+  },
+  "f_osc": {
+   "base": "f_osc_ref.c",
+   "n": 201,
+   "funcs": {
+    "(文件级: 宏/表/全局)": 3,
+    "OscSciFunction": 18,
+    "InitOsc": 9,
+    "InitSciOSC": 20,
+    "SciDataTX": 9,
+    "sciaTxFifoIsr": 8,
+    "SciDataRx": 18,
+    "sciaRxFifoIsr": 10,
+    "SciDataRxDeal": 42,
+    "OscDataQcq": 21,
+    "OscDataTxDeal": 17,
+    "GetOscData": 6,
+    "ClearOscBufEnd": 5,
+    "OscSciIoInit": 8,
+    "OscControlWriter": 4,
+    "OscControlRead": 3
+   }
+  },
+  "f_p2p": {
+   "base": "f_p2p_ref.c",
+   "n": 7,
+   "funcs": {
+    "P2PDataDeal": 7
+   }
+  },
+  "f_plc": {
+   "base": "f_plc_ref.c",
+   "n": 38,
+   "funcs": {
+    "InvTranTabCfg": 5,
+    "InvRecTabCfg": 4,
+    "FuncCodeRwAtrrib": 13,
+    "PlcDataFramDeal": 16
+   }
+  },
+  "f_profibus": {
+   "base": "f_profibus_ref.c",
+   "n": 106,
+   "funcs": {
+    "ProfibusRcvDataDeal": 14,
+    "ProfibusStartDeal": 18,
+    "setDPStatusInfo": 7,
+    "UpdateProfibusCommFormat": 4,
+    "ProfibusSendDataDeal": 57,
+    "ProfibusCommErrCheck": 6
+   }
+  },
+  "f_runSrc": {
+   "base": "f_runSrc_ref.c",
+   "n": 161,
+   "funcs": {
+    "UpdateRunCmd": 27,
+    "setTimeRun": 4,
+    "runTimeCal": 4,
+    "RunSrcDeal": 1,
+    "UpdateBenchTime": 1,
+    "RunSrcUpdateFrq": 19,
+    "StartRunCtrl": 9,
+    "NormalRunCtrl": 6,
+    "StopRunCtrl": 7,
+    "JogRunCtrl": 4,
+    "TuneRunCtrl": 8,
+    "LoseLoadRunCtrl": 4,
+    "ShutDownRunCtrl": 12,
+    "UpdateSwingPara": 10,
+    "SwingDeal": 8,
+    "LowerThanLowerFrqDeal": 7,
+    "PowerOffNoStopDeal": 9,
+    "AccDecTimeCalc": 13,
+    "DormantDeal": 8
+   }
+  },
+  "f_runSrc_accDecFrq": {
+   "base": "f_runSrc_accDecFrq_ref.c",
+   "n": 198,
+   "funcs": {
+    "AccDecFrqCalc": 49,
+    "SCurveOridinaryCalc": 55,
+    "SCurveSpecialCalc": 82,
+    "LineChangeCalc": 12
+   }
+  },
+  "f_torqueCtrl": {
+   "base": "f_torqueCtrl_ref.c",
+   "n": 31,
+   "funcs": {
+    "UpdateTorqueAim": 14,
+    "AccDecTorqueCalc": 11,
+    "TorqueLimitCalc": 6
+   }
+  },
+  "f_ui": {
+   "base": "f_ui_ref.c",
+   "n": 52,
+   "funcs": {
+    "UpdateDisplayBuffer": 12,
+    "WinkDeal": 12,
+    "DisplayScanPrepare": 5,
+    "DisplayScan": 2,
+    "KeyScan": 9,
+    "KeyBordTest": 1,
+    "KeyProcess": 4,
+    "InitSpiaGpio": 3,
+    "InitSetSpiForFunc": 2,
+    "UpdateMenuModeDisplayBuffer": 2
+   }
+  },
+  "f_vf": {
+   "base": "f_vf_ref.c",
+   "n": 38,
+   "funcs": {
+    "vfSeparateDeal": 38
+   }
+  },
+  "main": {
+   "base": "main_ref.c",
+   "n": 38,
+   "funcs": {
+    "main": 25,
+    "ADC_Over_isr": 7,
+    "EPWM1_zero_isr": 4,
+    "EPWM1_TZ_isr": 2
+   }
+  },
+  "mainInit_2803x": {
+   "base": "mainInit_2803x_ref.c",
+   "n": 69,
+   "funcs": {
+    "InitSysCtrl": 4,
+    "InitInterrupt": 5,
+    "SetInterruptEnable": 2,
+    "InitPeripherals": 2,
+    "copy_prg": 3,
+    "InitFlash": 3,
+    "KickDog": 2,
+    "DisableDog": 1,
+    "EnableDog": 1,
+    "InitPll": 11,
+    "InitPeripheralClocks": 4,
+    "InitPieCtrl": 5,
+    "InitPieVectTable": 3,
+    "InitSetGpio": 9,
+    "InitSetAdc": 13,
+    "rsvd_ISR": 1
+   }
+  },
+  "zeroPosCtl": {
+   "base": "ZeroPosCtl_ref.c",
+   "n": 7,
+   "funcs": {
+    "ZeroPosControl": 6,
+    "ZeroPosJudge": 1
+   }
+  }
+ },
+ "missing": []
+}

@@ -1,0 +1,32 @@
+# 转发到真头文件。
+#
+# f_ui.c 的 include 链是 f_ui.h / f_menu.h / f_frqSrc.h / f_comm.h / f_runSrc.h /
+# f_io.h / f_error.h。公共 shim 里这些全是 `#include "p2p_common.h"` 的空壳, 而本模块
+# **处处**要求它们是真的:
+#
+#   f_ui.h        DISPLAY_* 编码枚举 / KEY_* / LED_* / RCK / KEYSEL /
+#                 SPI_IN_OUT / DISPLAY_8LED_NUM / DISPLAY_LED_NUM
+#   f_menu.h      menu[] / menuAttri[] / menuLevel / menuMode / menuModeStatus /
+#                 menuModeTmp / accDecFrqPrcFlag / bFrqDigital / sysMenu /
+#                 MENU_MODE_* / MENU_LEVEL_NUM
+#   f_frqSrc.h    runMode / bFrqDigital
+#   f_runSrc.h    runFlag / runSrc / tuneCmd / FUNCCODE_runSrc_*
+#   f_error.h     errorCode / errorCodeOld / errAutoRstNum
+#
+# **必须一次全转发**: 只转发一个, 链条下游仍会撞上桩里的替身类型 (例如
+# `extern struct FUNCCODE_MOCK funcCode` 与真 `FUNCCODE_ALL funcCode` 重定义冲突)。
+# `*` 由 run_case.py 的 _expand_star() 展开成"公共 shim 里有真身的那一批"。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+#
+# 另外显式列出两个**外设**头: 本模块读写 SPI 与 GPIO 寄存器, 结构体位域布局必须是
+# 芯片的真布局。它们不在公共 shim 里 (所以 `*` 展不到), 只能手写。两者实测 MSVC
+# 直接编得过 —— 纯结构体 + extern 声明, 没有 cregister / interrupt / asm。
+# DSP2803x_Device.h 与 DSP2803x_Examples.h 有意不转发 (前者有
+# `extern cregister volatile unsigned int IFR;`, 后者拉进一堆 `__interrupt` 原型),
+# 由用例私有 shim/DSP28x_Project.h 顶替。
+*
+
+DSP2803x_Spi.h
+DSP2803x_Gpio.h

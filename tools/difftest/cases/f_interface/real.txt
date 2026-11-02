@@ -1,0 +1,45 @@
+# 转发到真头文件。
+#
+# f_interface.c 的 include 链是
+#   f_funcCode.h -> DSP28x_Project.h / f_debug.h / f_interface.h / f_p2p.h
+#   f_runSrc.h / f_main.h -> f_funcCode.h / f_error.h / f_common.h / f_canlink.h
+#   f_frqSrc.h / f_io.h / f_menu.h / f_posCtrl.h   (后四个都 -> f_funcCode.h)
+#
+# 公共 shim 里 f_comm.h / f_common.h / f_error.h / f_frqSrc.h / f_io.h /
+# f_menu.h / f_runSrc.h / f_ui.h 全是空壳 (只 include p2p_common.h), 而本模块
+# **处处**要求它们是真的:
+#
+#   f_funcCode.h    FUNCCODE_ALL / funcCode / funcCode.code.* / funcCode.group.cf|uf
+#                   FUNCCODE_motorCtrlMode_VF / MOTOR_TYPE_PMSM /
+#                   AI_NUMBER / TIME_UNIT_CURRENT_CHK
+#   f_runSrc.h      dspMainCmd / dspMainCmd1 / dspSubCmd / dspStatus / invtStatus /
+#                   runFlag / runStatus / tuneCmd / upperTorque / DEC_SPEED
+#   f_main.h        motorFc / ABS_INT16 / ABS_INT32 / FUNC_DEAL_PERIOD /
+#                   CORE_FUNC_PERIOD / RUN_CTRL_PERIOD
+#   f_frqSrc.h      frq / frqTmp / frqDroop / frqCurAim / frqCurAimFrac / frqPuQ15
+#   f_io.h          aiDeal[] / LowPassFilter / LPF_DEFALUTS / LpfCalc / itDisp
+#   f_menu.h        invPara / currentOcDisp / outCurrentDisp / outVoltageDisp /
+#                   frqRunDisp / torqueCurrentAct / vfSeparateVol
+#   f_posCtrl.h     bPcErrorOk / bPcErrorNear (只在 DEBUG_F_POSITION_CTRL 里用)
+#
+# **必须一次全转发**: 只转发一个, 链条下游仍会撞上桩里的替身类型 (例如
+# `extern struct FUNCCODE_MOCK funcCode` 与真 `FUNCCODE_ALL funcCode` 重定义冲突)。
+# `*` 由 run_case.py 的 _expand_star() 展开成"公共 shim 里有真身的那一批"。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+#
+# 另外显式列出外设头:
+#
+#   DSP2803x_EQep.h   UpdateDataCore2Func 在 `#if DSP_2803X` 里读
+#                     `EQep1Regs.QPOSCNT` (一个 Uint32) 再 `& 0x0000FFFF` 存进
+#                     Uint16 ABZPos。QPOSCNT 的**宽度与偏移**必须是芯片的真布局,
+#                     否则"改写把掩码写错"就测不出来。该头是纯结构体 + extern,
+#                     无 include、无 cregister, MSVC 直接编得过。
+#
+# DSP2803x_Device.h 与 DSP2803x_Examples.h 有意**不**转发 (前者有
+# `extern cregister volatile unsigned int IFR;`, 后者拉进一堆 `__interrupt`
+# 原型), 由用例私有 shim/DSP28x_Project.h 顶替 —— 本模块只用到 DSP_CLOCK /
+# BITn / 类型宽度三样。
+*
+DSP2803x_EQep.h

@@ -1,0 +1,53 @@
+# Host passthrough list for the f_comm case (see tools/difftest/README.md).
+#
+# 与 f_comm_DP / MotorPWM 同一套芯片头。f_comm 直接驱动真外设内存:
+#   LinaRegs      resetLinSci / closeRTX / setRxConfig / setTxConfig / InitSetScia
+#                 / UpdateSciFormat 一共写二十多个位域, 而 UpdateSciFormat 还要
+#                 **读** SCIFLR 的 BRKDT/PE/OE/FE 来决定要不要重新初始化 ——
+#                 所以 LINA_REGS 的位域布局既是输入面也是输出面, 必须用真头。
+#   GpioCtrlRegs  InitSciaGpio 写 GPAPUD/GPAMUX1/GPAQSEL1/GPBPUD/GPBMUX1/GPBDIR
+#   GpioDataRegs  RTS 宏 (GPBDAT.bit.GPIO39) 既是写 (RS485_T) 也是读
+#   PieCtrlRegs   PIEACK.bit.ACK9 (两个 ISR) / PIEIER9.bit.INTx3,INTx4
+#   PieVectTable  LIN0INTA / LIN1INTA 两个向量槽
+#   IER           `IER |= M_INT9;`
+#
+# 故意不转发 (由用例 shim 提供):
+#   DSP2803x_Device.h  -- cregister / asm() / interrupt; 见 cases/f_comm/shim/
+#   DSP28x_Project.h   -- 它是宽度钉死点, 见 cases/f_comm/shim/
+#
+# 必须转发 (真 DSP2803x_Examples.h 不在 include 路径上, 只有 include/device 里有):
+#   DSP2803x_Examples.h         DSP_CLOCK 60 / CPU_RATE / PARTNO_*
+#   DSP2803x_GlobalPrototypes.h 它被 Examples 引用
+#   DSP2803x_EPwm_defines.h     }
+#   DSP2803x_I2C_defines.h      } 同上
+#   DSP2803x_Cla_Defines.h      }
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Examples.h
+DSP2803x_Gpio.h
+DSP2803x_GlobalPrototypes.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_PieVect.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h
+
+# 工程头: 公共 shim 里有一批同名空壳 (f_comm.h / f_menu.h / f_ui.h ...),
+# 只转发其中一个会让链条下游撞上桩, 所以一次全转发。
+*

@@ -1,0 +1,19 @@
+# 只转发 MotorInclude.h。
+#
+# MotorDataExchange.c 的全部 include 就是这一行, 所以只有它必须是真的:
+# 49 个外部全局量的**类型与字段名**都要从真头文件里来, 抄一份就等于在测另一份
+# 结构体。转发是用绝对路径 include, 不依赖相对层级。
+#
+# 链上的其余头文件 (MotorDefine.h / SystemDefine.h / Motor*Include.h) 本来就在
+# include/ 里、本来就会被找到, 不需要转发。唯一要换掉的是
+# include/device/DSP2803x_Device.h —— 它末尾 include 了 19 个外设寄存器头, 宿主
+# 编不了; 用例私有 shim/DSP2803x_Device.h 顶掉它 (用例 shim 目录排在 include/
+# 之前), 只保留 BITn 宏与基础整型 typedef。
+#
+# 真 MotorInclude.h 里有一行 `extern interrupt void ADC_Over_isr(void);`。
+# `interrupt` 是 C28x 的扩展关键字, MSVC 不认识 —— defines.txt 里的 `interrupt=`
+# 把它展开成空, 于是那一行退化成普通的函数声明。
+#
+# f_*.h 一概不转发: 本模块不直接 include 它们, 转了只会把 funcCode 那套
+# FUNCCODE_MOCK 桩拉进来。
+MotorInclude.h

@@ -1,0 +1,65 @@
+# Forward to the real headers (the gen_dir forwarding headers sit at the front
+# of the include path, ahead of every shim).
+#
+# MotorParChange.c only includes MotorInclude.h, but that chain reaches the
+# whole motor include tree and, through SystemDefine.h -> DSP2803x_Device.h, the
+# chip's peripheral register model.
+#
+# The peripheral headers below are pure `struct` + `extern` declarations and
+# compile under MSVC, so they are forwarded verbatim: the register structs stay
+# the chip's, which is what makes "did the module write DBFED / DBRED / QDECCTL"
+# comparable at all. The module touches exactly four peripherals:
+#   EPwm1/2/3Regs  SystemParChg2Ms writes DBFED / DBRED (the dead-band delay)
+#                  on all three, inside one EALLOW/EDIS pair;
+#   EQep1Regs      SystemParChg05Ms takes its ADDRESS (`EQepRegs = &EQep1Regs`),
+#                  and the module writes QDECCTL.bit.SWAP / QEINT.all through
+#                  whatever EQepRegs points at;
+#   PieVectTable   SystemParChg05Ms stores &PG_Zero_isr into EQEP1_INT;
+#   PieCtrlRegs    PIEIER5.bit.INTx1;  SysCtrlRegs PCLKCR1.bit.EQEP1ENCLK.
+# EQepRegs is special: MotorEncoder.h declares it as a *pointer*
+# (`extern struct EQEP_REGS *EQepRegs;`) and this module REASSIGNS it, so the
+# case mock defines a real `struct EQEP_REGS` instance, points EQepRegs at it,
+# and the driver puts both the pointee and the pointer value in the compared
+# image.
+#
+# Deliberately NOT forwarded (host_patch.json supplies a patched whole copy):
+#   DSP2803x_Device.h  -- `extern cregister volatile unsigned int IFR;` and the
+#                         EINT/DINT/EALLOW/EDIS `asm(...)` macros are C28x-only.
+#                         Replaced by cases/MotorParChange/shim/DSP2803x_Device.h.
+#   DSP2803x_PieVect.h -- `typedef interrupt void(*PINT)(void);`
+#   MotorInclude.h     -- four `extern interrupt void ..._isr(void);` prototypes
+#   SubPrgInclude.h    -- `(long int)` prototypes, illegal once the shim folds
+#                         `int` to the target's 16 bits (MSVC C2632)
+#
+# MotorInvProtectInclude.h / MotorEncoder.h / MotorVCInclude.h and friends also
+# quote-include MotorInclude.h, but they need no patch: the top-level include
+# from MotorParChange.c already resolved to the patched gen_dir copy, whose
+# guard blocks the real file no matter which directory the quoted include is
+# resolved from.
+#
+# Not forwarded either, for the same reason MotorInvProtect / MotorMain do not
+# forward them: DSP2803x_Examples.h / DSP2803x_GlobalPrototypes.h /
+# DSP2803x_DefaultISR.h are full of `__interrupt` and `asm()`.
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

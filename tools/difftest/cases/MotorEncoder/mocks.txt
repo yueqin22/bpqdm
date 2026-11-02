@@ -1,0 +1,16 @@
+# 本模块 (MotorEncoder) 自己定义了 7 个全局量与一张表, 由 ref_tu.c / new_tu.c
+# 按侧重命名; 下面这些是它**引用但不定义**的外部量, 必须由 mock 提供一份实例,
+# 两个翻译单元看到的是**同一块内存** (所以"某一侧不再写某个字段"会立刻变成差异)。
+#
+# 清单来自 nm2000 对 build/Debug/MotorEncoder.obj 的 undefined (U) 集合, 23 条:
+#   L$$DIV / LL$$MPY / ULL$$CMP / ULL$$DIV   C28x 运行时助手, 宿主由 CRT 自己
+#                                         提供, 不需要 mock
+#   AdcResult / CpuTimer1 / GpioCtrlRegs / GpioDataRegs / SysCtrlRegs  外设
+#   _BurrFilter                                                     唯一的被调函数
+#   gBasePar / gCpuTime / gError / gExtendCmd / gIPMPos / gIPMZero / gMainCmd /
+#   gMainStatus / gMotorExtInfo / gMotorInfo / gPWM / gPmParEst / gVCPar   共享全局量
+#
+# EQepRegs 不在这张清单里: 它是**模块自己定义的指针** (`struct EQEP_REGS *EQepRegs;`),
+# mock 只负责提供两块 QEP 寄存器实例, 由 driver 把 ref_EQepRegs / new_EQepRegs
+# 分别指过去 —— 两侧各一块, 写操作才不会互相污染。
+cases/MotorEncoder/mock_encoder.c

@@ -1,0 +1,46 @@
+{
+  "why": "宿主保真补丁 —— 5 条替换, 两侧都打 (side=both), 只作用于 build/_difftest/gen_MotorInfoCollect/ 下的宿主副本, 交付源码与目标端编译不受影响。\n\n===== 问题 1: interrupt 是 C28x 关键字 =====\n真 include/motor/MotorInclude.h 第 72~75 行:\n    extern interrupt void ADC_Over_isr(void);\n    extern interrupt void EPWM1_TZ_isr(void);\n    extern interrupt void EPWM1_zero_isr(void);\n    extern interrupt void PG_Zero_isr(void);\nMSVC 不认 interrupt (error C2054)。全工程头文件里只有这 4 处 (已 grep 确认)。\n等价性: interrupt 只影响函数入口/出口的代码生成 (保存哪些寄存器、IRET 还是 RET), 不影响函数名、签名、调用约定或任何类型。本模块从不调用这 4 个 ISR, 它们在这里只是声明。\n\n===== 问题 2: 同目录的引号包含会绕开 include 路径 =====\n补丁产物放在 gen_dir (include 路径最前面), 但 C 的引号包含**先查包含者所在目录**。\nMotorInfoCollectInclude.h 与 MotorInclude.h 同在 include/motor/, 于是\n    #include \"MotorInclude.h\"\n永远命中真文件, gen_dir 里那份补丁副本根本轮不上 (实测: 报错路径仍是 include/motor/)。\n所以顺带把包含方式改成尖括号 —— 尖括号跳过同目录优先, 走 include 路径, gen_dir 先被查到。\n补丁只作用于宿主副本, 目标端看到的仍是原样的引号包含。\n\n为什么是补丁而不是用例 shim: MotorInclude.h 挂着 17 个子头 + 30 条 extern 声明。手抄一份 shim 就等于把『本模块依赖的整个头文件面』复制过来, 真文件一改 shim 不会跟着动, 而且没有任何机制会报警。补丁只改必须改的那几处, 每条都带出现次数校验 —— 真文件一改, count 立刻失配, run_case 直接停下。\n\n两侧路径深度不同 (ref_src 相对用例目录, new_base 相对 srcdir.txt 指的 src/motor), 所以 ../ 的个数不一样 —— 这是 apply_host_patch 的接口决定的, 不是笔误。",
+  "modules": [
+    {
+      "ref_src": "../../../../include/motor/MotorInclude.h",
+      "ref_out": "MotorInclude.h",
+      "new_base": "include/motor/MotorInclude.h",
+      "new_out": "MotorInclude.h",
+      "replace": [
+        {
+          "old": "extern interrupt void ADC_Over_isr(void);",
+          "new": "extern void ADC_Over_isr(void);",
+          "count": 1
+        },
+        {
+          "old": "extern interrupt void EPWM1_TZ_isr(void);",
+          "new": "extern void EPWM1_TZ_isr(void);",
+          "count": 1
+        },
+        {
+          "old": "extern interrupt void EPWM1_zero_isr(void);",
+          "new": "extern void EPWM1_zero_isr(void);",
+          "count": 1
+        },
+        {
+          "old": "extern interrupt void PG_Zero_isr(void);",
+          "new": "extern void PG_Zero_isr(void);",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/MotorInfoCollectInclude.h",
+      "ref_out": "MotorInfoCollectInclude.h",
+      "new_base": "include/motor/MotorInfoCollectInclude.h",
+      "new_out": "MotorInfoCollectInclude.h",
+      "replace": [
+        {
+          "old": "#include \"MotorInclude.h\"",
+          "new": "#include <MotorInclude.h>",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

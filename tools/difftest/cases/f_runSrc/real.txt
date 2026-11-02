@@ -1,0 +1,33 @@
+# 全部转发到真头文件。
+#
+# f_runSrc.c 的 include 链是 f_runSrc.h / f_frqSrc.h / f_io.h / f_comm.h /
+# f_ui.h / f_main.h / f_menu.h / f_eeprom.h / f_posCtrl.h。其中:
+#
+#   - f_runSrc.h  提供本模块自己的 extern 声明 (runCmd / runFlag / runStatus /
+#                 swingStatus / accFrqTime / frqLine / motorCtrlTuneStatus ...)
+#                 以及 union RUN_CMD / union RUN_FLAG / LINE_CHANGE_STRUCT 的布局,
+#                 还有 AccDecFrqCalc / LineChangeCalc 的声明;
+#   - f_frqSrc.h  提供 frq / frqAim / frqAimTmp / frqAimTmp0 / frqCurAim /
+#                 frqFrac / frqTmp / frqTmpFrac / frqFlag / upperFrq / lowerFrq /
+#                 maxFrq / runMode / timeBench / plcStep / plcTime / upDownFrq /
+#                 bStopPlc / bAntiReverseRun / frqAimOld4Dir 以及 UpdateFrqAim 的声明;
+#   - f_io.h      提供 aiDeal[] / struct DI_FUNC / diFunc / diSelectFunc / pulseInSet;
+#   - f_comm.h    提供 commRunCmd;
+#   - f_ui.h      提供 keyFunc;
+#   - f_main.h    提供 struct MOTOR_FC motorFc / enum MOTOR_SN motorSn /
+#                 enum POWER_ON_STATUS powerOnStatus / ABS_INT16 / ABS_INT32;
+#   - f_menu.h    提供 invPara / menu0DispStatus / mainLoopTicker;
+#   - f_eeprom.h  提供 funcCodeRwMode;
+#   - f_posCtrl.h 提供 pcRef / pcFdb 的 extern (f_runSrc.c 顶部自己又声明了一遍)。
+#
+# f_funcCode.h 由 f_runSrc.h 拉进来, 提供 FUNCCODE_ALL funcCode 与全部
+# FUNCCODE_* 常量、enum RUN_MODE / enum RUN_STATUS / enum START_RUN_STATUS /
+# enum STOP_RUN_STATUS / enum SWING_STATUS / enum TUNE_RUN_STATUS 等枚举。
+#
+# 公共 shim 里这些头都是空壳, 而 p2p_common.h 无条件声明
+# `extern struct FUNCCODE_MOCK funcCode`, 与真的 FUNCCODE_ALL funcCode 冲突。
+# 所以**必须一次全转发** —— 只转发一个, 链条下游仍会撞上桩。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

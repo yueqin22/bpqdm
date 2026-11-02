@@ -1,0 +1,65 @@
+# 转发到真头文件。
+#
+# f_eeprom.c 的 include 链是
+#   f_eeprom.h  -> f_funcCode.h -> DSP28x_Project.h
+#   f_main.h    -> ...
+#   f_menu.h    -> ...
+#
+# 公共 shim 里 f_comm.h / f_common.h / f_error.h / f_frqSrc.h / f_io.h /
+# f_menu.h / f_runSrc.h / f_ui.h 全是空壳 (只 include p2p_common.h), 而本模块
+# **处处**要求它们是真的:
+#
+#   f_funcCode.h    FUNCCODE_ALL / funcCode / funcCode.code.* /
+#                   funcCode.group.fChk[] / GetCodeIndex / FNUM_PARA /
+#                   EEPROM_INDEX_USE_LENGTH / EEPROM_INDEX_USE_INDEX /
+#                   FUNCCODE_RSVD4ALL_INDEX / AI1_CALB_START / AO1_CALB_STOP /
+#                   SAVE_USER_PARA_PARA1/PARA2 / funcCode.code.saveUserParaFlag1/2
+#   f_main.h        powerOnStatus / POWER_ON_WAIT / aiaoChckReadOK /
+#                   AIAO_CHK_READ_OK / USER_PARA_SAVE_FLAG1/2
+#   f_menu.h        GetFuncCodeInit / GetFuncCodeInitOriginal /
+#                   RestoreCompanyParaOtherDeal
+#
+# **必须一次全转发**: 只转发一个, 链条下游仍会撞上桩里的替身类型 (例如
+# `extern struct FUNCCODE_MOCK funcCode` 与真 `FUNCCODE_ALL funcCode` 重定义冲突)。
+# `*` 由 run_case.py 的 _expand_star() 展开成"公共 shim 里有真身的那一批"。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+#
+# 另外显式列出外设头。本模块**摸外设**, 而且摸得很深:
+#
+#   DSP2803x_I2c.h          I2caRegs 的 I2CMDR/I2CSTR/I2CISRC/I2CCNT/I2CDXR/
+#                           I2CDRR/I2CSAR/I2CPSC/I2CCLKL/I2CCLKH/I2CIER/
+#                           I2CFFTX/I2CFFRX —— RwI2cBus / I2cIntDeal /
+#                           InitSetI2ca 全靠它。**位域位置与字段宽度必须是芯片
+#                           真布局**, 否则"改写把某条位操作写错"测不出来。
+#   DSP2803x_I2C_defines.h  I2C_SUCCESS / I2C_NO_ISRC / I2C_SCD_ISRC /
+#                           I2C_ARDY_ISRC / I2C_CLR_NACK_BIT /
+#                           I2C_BUS_BUSY_ERROR / I2C_STP_NOT_READY_ERROR
+#   DSP2803x_Gpio.h         GpioCtrlRegs.GPBPUD/GPBQSEL1/GPBMUX1/GPBDIR 的
+#                           GPIO32/GPIO33 —— I2cDealBeforeInit 用它们设方向。
+#
+#   !!! DSP2803x_Gpio.h **故意不列在下面** !!!
+#
+#   原因是 GpioDataRegs 需要一层"寄存器写语义"包装 (GPBSET/GPBCLEAR 是写 1
+#   生效的侧写寄存器, 普通内存变量不会自动实现)。用例私有 shim 里有一份
+#   DSP2803x_Gpio.h 包装: 它用绝对路径 include 真文件 (所以位域布局仍是真身),
+#   再把 `GpioDataRegs` 重定义成一个每次都先跑 gpio_apply() 的宏。
+#
+#   如果把 DSP2803x_Gpio.h 列进 real.txt, run_case.py 会在生成目录 (inc 路径
+#   最前) 里放一个"转发到真文件"的头, 它会**先于**用例私有 shim 被找到,
+#   包装就失效了。不列它, 用例私有 shim 就能正常生效 —— 而它自己已经包含了
+#   真头文件, 所以"真布局"这一条仍然成立。
+#
+#   DSP2803x_I2c.h 与 DSP2803x_I2C_defines.h 照常转发 (它们不需要包装:
+#   I2CDXR/I2CCNT/I2CSAR 都是普通可读写寄存器, 没有侧写语义)。
+#
+# DSP2803x_Device.h 与 DSP2803x_Examples.h **有意不转发** (由用例私有 shim 顶替):
+#   前者有 `extern cregister volatile unsigned int IFR;` 与 `#define EALLOW
+#   asm(" EALLOW")` 一族, MSVC 编不过; 后者 `#include "DSP2803x_GlobalPrototypes.h"`
+#   (全是 `__interrupt void ...`) 与 DSP2803x_DefaultISR.h, 同理。
+#   用例私有 shim 把 EALLOW/EDIS 改成共享计数表自增, 把 DELAY_US 留给真宏
+#   (它展开成一次 DSP28x_usDelay 调用, 由 mock 记录)。
+*
+DSP2803x_I2c.h
+DSP2803x_I2C_defines.h

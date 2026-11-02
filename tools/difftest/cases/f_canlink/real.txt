@@ -1,0 +1,28 @@
+# 全部转发到真头文件。
+#
+# f_canlink.c 的 include 链是 f_funcCode.h / f_dspcan.h / f_canlink.h /
+# f_comm.h / f_plc.h / f_p2p.h。其中:
+#
+#   - f_canlink.h   提供本模块自己的全部宏与三个结构体 —— union CANLINK_MsgID
+#                   (含 8/8/8/1/4/1/1/1 位域), struct CANLINK_DATA_BUF,
+#                   struct CANLINK_REC_BUF。位域布局是本用例的观测前提: 模块
+#                   按位写 msgId.all 再整体比较, 抄一份就等着漂移;
+#   - f_dspcan.h    提供 CAN_INIT_* / CAN_MBOX_* 状态码与五个外部函数的原型。
+#                   它自己不含任何 include, 也不引用寄存器 (ECANREGS 只在
+#                   `#if (1 == CAN_LINK_TIME_DEBUG)` (=0) 的死区里出现);
+#   - f_plc.h       提供 PlcDataFramDeal / InvTranTabCfg / InvRecTabCfg 与
+#                   INV_PLC_ID;
+#   - f_p2p.h       提供 P2P_DATA_STRUCT p2pData 与 COMM_P2P_* 地址常量;
+#   - f_comm.h      提供 union SCI_FLAG sciFlag / COMM_RCV_DATA commRcvData /
+#                   Uint16 commReadData[] 与 CommWrite / CommRead 原型;
+#   - f_funcCode.h  提供 FUNCCODE_ALL funcCode 与 curTime / errorOther /
+#                   errorInfo (经 f_debug.h / f_interface.h / f_error.h)。
+#
+# 为什么用 `*` 而不是一个个列: 公共 shim 里这些头都是 `#include "p2p_common.h"`
+# 的空壳, 而 p2p_common.h 无条件声明 `extern struct FUNCCODE_MOCK funcCode`,
+# 与真的 `FUNCCODE_ALL funcCode` 冲突。**必须一次全转发** —— 只转发一个,
+# 链条下游仍会撞上桩。展开结果记进记录的 real_forwarded 字段, 可查。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

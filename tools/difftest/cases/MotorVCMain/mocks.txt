@@ -1,0 +1,24 @@
+# MotorVCMain 用例要链接的 mock 清单 (相对 tools/difftest/)。
+#
+# hostlib_mock.c  -- abs / labs / qsin / qsqrt 的宿主替身。目标端 abs 与
+#   __IQsat 都是 cl2000 内建 (nm2000 -u build/Debug/MotorVCMain.obj 的未定义
+#   集合里既没有 _abs 也没有 __IQsat: 全部行内展开), 宿主上 abs 走
+#   SubPrgInclude.h 的原型 -> 本文件给出 16 位语义的定义; qsin / qsqrt 在
+#   asm/ASMSubPrg.asm 里, 是多项式, 不逐位复刻, 但两侧调同一份, 差分仍然有效。
+#   __IQsat 由 shim/DSP2803x_Device.h 里的 static long __IQsat(long,long,long)
+#   提供 (C28x 内建, 工程里没有任何头文件定义它)。
+#
+# atan_mock.c     -- 本模块调 atan (VCCsrControl / SvcCalOutVolt / *_380 共 5 处),
+#   atan 的定义在 SubPrg.c, 不在本模块。本用例不链 SubPrg.c, 所以用它的宿主
+#   替身; 两侧调同一份, 差分有效。
+#
+# 不链 hw_mock.c: 本模块不直接碰任何外设寄存器 (唯一的"硬件"是 DINT/EINT,
+#   走 shim 的 gHostCpuCtl 计数表)。
+#
+# mock_vcmain.c -- 本用例私有: 21 个 "别的翻译单元拥有" 的全局量 + DINT/EINT
+#   计数表 + PID / PID32 / ResetSVC 三个被调函数的台账。
+#   模块自己的 16 个全局量 (gVCPar / gIMTSet / gAsr / ...) 由 ref_tu.c /
+#   new_tu.c 按侧重命名, 不在这里。
+hostlib_mock.c
+atan_mock.c
+cases/MotorVCMain/mock_vcmain.c

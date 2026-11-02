@@ -1,0 +1,45 @@
+# 转发到真头文件 (gen_dir 的转发头排在 include 路径最前面, 压过所有 shim)。
+#
+# 本模块 (src/motor/MotorEncoder.c) 的全部 include 就是 MotorEncoder.h /
+# MotorPmsmMain.h / MotorPmsmParEst.h / MotorVCInclude.h / SubPrgInclude.h
+# 这一串, 链尾都落到 SystemDefine.h -> DSP2803x_Device.h。分成两类处理:
+#
+# 1. include/device 下的外设头 —— 它们**不在**宿主 include 路径上 (run_case 只挂
+#    motor/common/function), 所以照转。它们只是结构体定义 + extern 声明, MSVC
+#    实测编得过; 寄存器结构体保持真身, 位域布局才不是仿制品。本模块碰的是
+#    GpioCtrlRegs / GpioDataRegs / SysCtrlRegs / AdcResult / EQep / CpuTimer。
+#
+# 2. **不在本清单里**的四颗, 全部由 host_patch.json 提供打过补丁的整份副本
+#    (若同时写进 real.txt, make_real_passthroughs 会把 gen_dir 里的补丁副本覆盖
+#    成转发头, 补丁就白打了 —— MotorInfoCollect 用例踩过同一个坑):
+#      DSP2803x_Device.h   由用例私有 shim/DSP2803x_Device.h 顶上 (cregister /
+#                          asm() 宏 / 末尾的 int/long 宽度钉死, 见该文件头)
+#      DSP2803x_Examples.h 由用例私有 shim 顶上 (long double / __interrupt)
+#      MotorInclude.h      4 条 `extern interrupt void ..._isr(void)` 原型
+#      MotorDefine.h       `typedef unsigned long long Ullong;` (与 shim 的
+#                          `#define long int64` 冲突, 见 host_patch.json)
+#
+# 实测过的反例: 转发真 DSP2803x_Examples.h 会失败, 它 #include
+# DSP2803x_GlobalPrototypes.h, 那里全是 `__interrupt void ...` 原型。
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

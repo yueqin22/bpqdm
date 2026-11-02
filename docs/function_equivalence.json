@@ -1,0 +1,8495 @@
+{
+ "modules": 59,
+ "total": {
+  "func": 582,
+  "same": 245,
+  "chg": 337,
+  "ext_same": 59,
+  "ext_bad": 0,
+  "cov_same": 245,
+  "cov_direct": 400,
+  "cov_table": 2,
+  "uncovered": 0,
+  "helper": 65
+ },
+ "problems": [],
+ "no_case": [
+  [
+   "ASMSubPrg",
+   "no-case",
+   6
+  ],
+  [
+   "DSP2803x_CodeStartBranch",
+   "no-case",
+   3
+  ],
+  [
+   "DSP2803x_usDelay",
+   "no-case",
+   1
+  ]
+ ],
+ "uncovered": [],
+ "detail": [
+  {
+   "stem": "ASMSubPrg",
+   "n_func": 6,
+   "same": 6,
+   "changed": 0,
+   "ext_o": 6,
+   "ext_n": 6,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": [
+    {
+     "f": "_abs",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_absl",
+     "state": "same",
+     "n_o": 2,
+     "n_n": 2,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_qatan",
+     "state": "same",
+     "n_o": 40,
+     "n_n": 40,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_qsin",
+     "state": "same",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_qsqrt",
+     "state": "same",
+     "n_o": 34,
+     "n_n": 34,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_swap",
+     "state": "same",
+     "n_o": 2,
+     "n_n": 2,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "DSP2803x_CSMPasswords",
+   "n_func": 0,
+   "same": 0,
+   "changed": 0,
+   "ext_o": 0,
+   "ext_n": 0,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": []
+  },
+  {
+   "stem": "DSP2803x_CodeStartBranch",
+   "n_func": 3,
+   "same": 3,
+   "changed": 0,
+   "ext_o": 1,
+   "ext_n": 1,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": [
+    {
+     "f": "_MovePrgFrFlashToRam",
+     "state": "same",
+     "n_o": 5,
+     "n_n": 5,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "code_start",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": false,
+     "cov": "identical"
+    },
+    {
+     "f": "main_init",
+     "state": "same",
+     "n_o": 23,
+     "n_n": 23,
+     "ext": false,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "DSP2803x_CpuTimers",
+   "n_func": 2,
+   "same": 0,
+   "changed": 2,
+   "ext_o": 2,
+   "ext_n": 2,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_InitOneTimer"
+   ],
+   "uncovered": [],
+   "cases": {
+    "DSP2803x_CpuTimers": {
+     "entry": [
+      "ConfigCpuTimer",
+      "CpuTimer0",
+      "CpuTimer1",
+      "CpuTimer2",
+      "InitCpuTimers"
+     ],
+     "calls": 0,
+     "cases": 20312,
+     "mism": 0,
+     "neg": 24,
+     "neg_rc1": 24
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ConfigCpuTimer",
+     "state": "changed",
+     "n_o": 42,
+     "n_n": 37,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitCpuTimers",
+     "state": "changed",
+     "n_o": 44,
+     "n_n": 10,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitOneTimer",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 22,
+     "ext": false,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "DSP2803x_GlobalVariableDefs",
+   "n_func": 0,
+   "same": 0,
+   "changed": 0,
+   "ext_o": 0,
+   "ext_n": 0,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": []
+  },
+  {
+   "stem": "DSP2803x_usDelay",
+   "n_func": 1,
+   "same": 1,
+   "changed": 0,
+   "ext_o": 0,
+   "ext_n": 0,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": [
+    {
+     "f": "_DSP28x_usDelay",
+     "state": "same",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": false,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorCarrier",
+   "n_func": 6,
+   "same": 1,
+   "changed": 5,
+   "ext_o": 6,
+   "ext_n": 6,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorCarrier": {
+     "entry": [
+      "AsynPWMAngleCal",
+      "CalCarrierWaveFreq",
+      "CalDeadBandComp",
+      "CalOutputPhase",
+      "SoftPWMProcess",
+      "SynPWMAngleCal",
+      "gDeadBand",
+      "gFcCal",
+      "gPhase",
+      "gSynPWM",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 32441,
+     "mism": 0,
+     "neg": 114,
+     "neg_rc1": 106
+    }
+   },
+   "funcs": [
+    {
+     "f": "_AsynPWMAngleCal",
+     "state": "changed",
+     "n_o": 77,
+     "n_n": 77,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalCarrierWaveFreq",
+     "state": "changed",
+     "n_o": 260,
+     "n_n": 254,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalDeadBandComp",
+     "state": "changed",
+     "n_o": 69,
+     "n_n": 69,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SoftPWMProcess",
+     "state": "changed",
+     "n_o": 62,
+     "n_n": 64,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynPWMAngleCal",
+     "state": "changed",
+     "n_o": 153,
+     "n_n": 156,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalOutputPhase",
+     "state": "same",
+     "n_o": 96,
+     "n_n": 96,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorConstant",
+   "n_func": 0,
+   "same": 0,
+   "changed": 0,
+   "ext_o": 0,
+   "ext_n": 0,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": []
+  },
+  {
+   "stem": "MotorCurrentTransform",
+   "n_func": 4,
+   "same": 0,
+   "changed": 4,
+   "ext_o": 3,
+   "ext_n": 3,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorCurrentTransform": {
+     "entry": [
+      "AlphBetaToDQ",
+      "ChangeCurrent",
+      "DQToAmpTheta",
+      "UVWToAlphBetaAxes",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 70932,
+     "mism": 0,
+     "neg": 25,
+     "neg_rc1": 23
+    }
+   },
+   "funcs": [
+    {
+     "f": "_AlphBetaToDQ",
+     "state": "changed",
+     "n_o": 40,
+     "n_n": 47,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ChangeCurrent",
+     "state": "changed",
+     "n_o": 86,
+     "n_n": 88,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DQToAmpTheta",
+     "state": "changed",
+     "n_o": 22,
+     "n_n": 27,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UVWToAlphBetaAxes",
+     "state": "changed",
+     "n_o": 24,
+     "n_n": 31,
+     "ext": false,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "MotorDataExchange",
+   "n_func": 5,
+   "same": 3,
+   "changed": 2,
+   "ext_o": 5,
+   "ext_n": 5,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorDataExchange": {
+     "entry": [
+      "ParGet05Ms",
+      "ParGet2Ms",
+      "ParSend05Ms",
+      "ParSend2Ms",
+      "ParSendTune",
+      "gParaIdToFunctionDataBuff",
+      "gRealTimeToFunctionDataBuff",
+      "gSendToFunctionDataBuff",
+      "gSendToMotor05MsDataBuff",
+      "gSendToMotor2MsDataBuff",
+      "gSoftVersion",
+      "uReservedData"
+     ],
+     "calls": 0,
+     "cases": 25233,
+     "mism": 0,
+     "neg": 107,
+     "neg_rc1": 107
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ParGet2Ms",
+     "state": "changed",
+     "n_o": 461,
+     "n_n": 487,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ParSend2Ms",
+     "state": "changed",
+     "n_o": 241,
+     "n_n": 283,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ParGet05Ms",
+     "state": "same",
+     "n_o": 57,
+     "n_n": 57,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_ParSend05Ms",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_ParSendTune",
+     "state": "same",
+     "n_o": 81,
+     "n_n": 81,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorDebug",
+   "n_func": 4,
+   "same": 2,
+   "changed": 2,
+   "ext_o": 4,
+   "ext_n": 4,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorDebug": {
+     "entry": [
+      "DebugSaveDeal",
+      "ResetDebugBuffer",
+      "SaveDebugData16",
+      "SaveDebugData32",
+      "SaveTmCnt",
+      "gDebugBuffer",
+      "gDebugFlag",
+      "gDebugPoint",
+      "pVD1",
+      "pVD2",
+      "pVD3",
+      "pVD4",
+      "saveCurveNum",
+      "saveIndexFunc",
+      "saveIndexP",
+      "saveRstMem",
+      "startSave"
+     ],
+     "calls": 0,
+     "cases": 758330,
+     "mism": 0,
+     "neg": 35,
+     "neg_rc1": 34
+    }
+   },
+   "funcs": [
+    {
+     "f": "_DebugSaveDeal",
+     "state": "changed",
+     "n_o": 161,
+     "n_n": 129,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SaveDebugData32",
+     "state": "changed",
+     "n_o": 21,
+     "n_n": 24,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ResetDebugBuffer",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_SaveDebugData16",
+     "state": "same",
+     "n_o": 13,
+     "n_n": 13,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorEncoder",
+   "n_func": 16,
+   "same": 8,
+   "changed": 8,
+   "ext_o": 16,
+   "ext_n": 16,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_UvwLogicLevel"
+   ],
+   "uncovered": [],
+   "cases": {
+    "MotorEncoder": {
+     "entry": [
+      "EQepRegs",
+      "GetMDetaPos",
+      "GetMTTimeNum",
+      "GetRotorTransPos",
+      "GetSpeedMMethod",
+      "GetSpeedMTMethod",
+      "GetUvwPhase",
+      "InitRtInterface",
+      "InitSetQEP",
+      "JudgeABDir",
+      "JudgeRTDir",
+      "JudgeUVWDir",
+      "ReInitForPG",
+      "RotorTransCalVel",
+      "RotorTransSamplePos",
+      "SpeedSmoothDeal",
+      "VCGetFeedBackSpeed",
+      "gFVCSpeed",
+      "gPGData",
+      "gPGDir",
+      "gRotorTrans",
+      "gSpeedFilter",
+      "gSpeedLine",
+      "gUVWAngleTable",
+      "gUVWPG"
+     ],
+     "calls": 0,
+     "cases": 76063,
+     "mism": 0,
+     "neg": 118,
+     "neg_rc1": 117
+    }
+   },
+   "funcs": [
+    {
+     "f": "_GetRotorTransPos",
+     "state": "changed",
+     "n_o": 183,
+     "n_n": 98,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetSpeedMMethod",
+     "state": "changed",
+     "n_o": 88,
+     "n_n": 88,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetUvwPhase",
+     "state": "changed",
+     "n_o": 95,
+     "n_n": 86,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_JudgeABDir",
+     "state": "changed",
+     "n_o": 37,
+     "n_n": 45,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_JudgeRTDir",
+     "state": "changed",
+     "n_o": 37,
+     "n_n": 45,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_JudgeUVWDir",
+     "state": "changed",
+     "n_o": 47,
+     "n_n": 55,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ReInitForPG",
+     "state": "changed",
+     "n_o": 73,
+     "n_n": 73,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UvwLogicLevel",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 18,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_VCGetFeedBackSpeed",
+     "state": "changed",
+     "n_o": 57,
+     "n_n": 57,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetMDetaPos",
+     "state": "same",
+     "n_o": 34,
+     "n_n": 34,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetMTTimeNum",
+     "state": "same",
+     "n_o": 38,
+     "n_n": 38,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetSpeedMTMethod",
+     "state": "same",
+     "n_o": 202,
+     "n_n": 202,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitRtInterface",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSetQEP",
+     "state": "same",
+     "n_o": 118,
+     "n_n": 118,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_RotorTransCalVel",
+     "state": "same",
+     "n_o": 121,
+     "n_n": 121,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_RotorTransSamplePos",
+     "state": "same",
+     "n_o": 21,
+     "n_n": 21,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_SpeedSmoothDeal",
+     "state": "same",
+     "n_o": 31,
+     "n_n": 31,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorImParEst",
+   "n_func": 15,
+   "same": 8,
+   "changed": 7,
+   "ext_o": 14,
+   "ext_n": 14,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_RrLoWaitTick"
+   ],
+   "uncovered": [],
+   "cases": {
+    "MotorImParEst": {
+     "entry": [
+      "CHG",
+      "ChgParForEst",
+      "EnableTimer",
+      "ImCalKpKi",
+      "InitLmIoVaribale",
+      "InitRrLoVariable",
+      "KPKI",
+      "LM",
+      "LM_CAL",
+      "LmIoCalValue",
+      "LmIoIdentify",
+      "LmIoInPeriodInt",
+      "NONE",
+      "PERIOD",
+      "RR",
+      "RR_CALV",
+      "RR_ISR",
+      "RR_WAIT",
+      "RS",
+      "RrGetVoltReBegin",
+      "RrLoCalVaule",
+      "RrLoIdentify",
+      "RrLoInPeriodAndCmpInt",
+      "RrWaitAddGetUdc",
+      "RsIdentify",
+      "SetPwmForRrLoId"
+     ],
+     "calls": 0,
+     "cases": 24299,
+     "mism": 0,
+     "neg": 356,
+     "neg_rc1": 356
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ChgParForEst",
+     "state": "changed",
+     "n_o": 44,
+     "n_n": 44,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_LmIoIdentify",
+     "state": "changed",
+     "n_o": 192,
+     "n_n": 194,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_LmIoInPeriodInt",
+     "state": "changed",
+     "n_o": 115,
+     "n_n": 114,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RrLoCalVaule",
+     "state": "changed",
+     "n_o": 244,
+     "n_n": 235,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RrLoIdentify",
+     "state": "changed",
+     "n_o": 180,
+     "n_n": 178,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RrLoInPeriodAndCmpInt",
+     "state": "changed",
+     "n_o": 104,
+     "n_n": 104,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_RrLoWaitTick",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 9,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_RsIdentify",
+     "state": "changed",
+     "n_o": 349,
+     "n_n": 343,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_EnableTimer",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_ImCalKpKi",
+     "state": "same",
+     "n_o": 58,
+     "n_n": 58,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitLmIoVaribale",
+     "state": "same",
+     "n_o": 16,
+     "n_n": 16,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitRrLoVariable",
+     "state": "same",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_LmIoCalValue",
+     "state": "same",
+     "n_o": 84,
+     "n_n": 84,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_RrGetVoltReBegin",
+     "state": "same",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_RrWaitAddGetUdc",
+     "state": "same",
+     "n_o": 29,
+     "n_n": 29,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_SetPwmForRrLoId",
+     "state": "same",
+     "n_o": 55,
+     "n_n": 55,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorInfoCollect",
+   "n_func": 3,
+   "same": 2,
+   "changed": 1,
+   "ext_o": 3,
+   "ext_n": 3,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorInfoCollect": {
+     "entry": [
+      "GetCurExcursion",
+      "GetCurrentInfo",
+      "GetUDCInfo",
+      "gAI",
+      "gCurSamp",
+      "gExcursionInfo",
+      "gIUVWQ24",
+      "gTemperature",
+      "gUDC"
+     ],
+     "calls": 0,
+     "cases": 515204,
+     "mism": 0,
+     "neg": 47,
+     "neg_rc1": 44
+    }
+   },
+   "funcs": [
+    {
+     "f": "_GetCurExcursion",
+     "state": "changed",
+     "n_o": 78,
+     "n_n": 78,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetCurrentInfo",
+     "state": "same",
+     "n_o": 118,
+     "n_n": 118,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetUDCInfo",
+     "state": "same",
+     "n_o": 34,
+     "n_n": 34,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorInvProtect",
+   "n_func": 14,
+   "same": 0,
+   "changed": 14,
+   "ext_o": 14,
+   "ext_n": 14,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorInvProtect": {
+     "entry": [
+      "BufferResProtect",
+      "CBCLimitCurProtect",
+      "ControlFan",
+      "InputPhaseLoseDetect",
+      "InvDeviceControl",
+      "LoadLoseDetect",
+      "OutputLoseAdd",
+      "OutputLoseReset",
+      "OutputPhaseLoseDetect",
+      "OverLoadProtect",
+      "SetCBCDisable",
+      "SetCBCEnable",
+      "SoftWareErrorDeal",
+      "TemperatureCheck",
+      "gBuffResCnt",
+      "gCBCProtect",
+      "gError",
+      "gFanCtrl",
+      "gInLose",
+      "gLoadLose",
+      "gOverLoad",
+      "gPhaseLose"
+     ],
+     "calls": 0,
+     "cases": 61694,
+     "mism": 0,
+     "neg": 163,
+     "neg_rc1": 157
+    }
+   },
+   "funcs": [
+    {
+     "f": "_BufferResProtect",
+     "state": "changed",
+     "n_o": 15,
+     "n_n": 19,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CBCLimitCurProtect",
+     "state": "changed",
+     "n_o": 179,
+     "n_n": 220,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ControlFan",
+     "state": "changed",
+     "n_o": 47,
+     "n_n": 50,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InputPhaseLoseDetect",
+     "state": "changed",
+     "n_o": 62,
+     "n_n": 78,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InvDeviceControl",
+     "state": "changed",
+     "n_o": 11,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_LoadLoseDetect",
+     "state": "changed",
+     "n_o": 83,
+     "n_n": 88,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OutputLoseAdd",
+     "state": "changed",
+     "n_o": 31,
+     "n_n": 35,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OutputLoseReset",
+     "state": "changed",
+     "n_o": 8,
+     "n_n": 18,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OutputPhaseLoseDetect",
+     "state": "changed",
+     "n_o": 87,
+     "n_n": 112,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OverLoadProtect",
+     "state": "changed",
+     "n_o": 369,
+     "n_n": 416,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetCBCDisable",
+     "state": "changed",
+     "n_o": 12,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetCBCEnable",
+     "state": "changed",
+     "n_o": 12,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SoftWareErrorDeal",
+     "state": "changed",
+     "n_o": 111,
+     "n_n": 126,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_TemperatureCheck",
+     "state": "changed",
+     "n_o": 167,
+     "n_n": 175,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "MotorMain",
+   "n_func": 15,
+   "same": 5,
+   "changed": 10,
+   "ext_o": 15,
+   "ext_n": 15,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorMain": {
+     "entry": [
+      "ADCOverInterrupt",
+      "CalRatioFromVot",
+      "InitForMotorApp",
+      "Main05msMotor",
+      "Main0msMotor",
+      "Main2msMotorA",
+      "Main2msMotorB",
+      "Main2msMotorC",
+      "Main2msMotorD",
+      "PWMZeroInterrupt",
+      "PrepareParForRun",
+      "RunCaseRun2Ms",
+      "RunCaseStop",
+      "SendDataPrepare",
+      "TurnToStopStatus"
+     ],
+     "calls": 0,
+     "cases": 22517,
+     "mism": 0,
+     "neg": 257,
+     "neg_rc1": 252
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ADCOverInterrupt",
+     "state": "changed",
+     "n_o": 165,
+     "n_n": 159,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalRatioFromVot",
+     "state": "changed",
+     "n_o": 41,
+     "n_n": 45,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitForMotorApp",
+     "state": "changed",
+     "n_o": 62,
+     "n_n": 67,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Main2msMotorA",
+     "state": "changed",
+     "n_o": 15,
+     "n_n": 16,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Main2msMotorB",
+     "state": "changed",
+     "n_o": 360,
+     "n_n": 350,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Main2msMotorD",
+     "state": "changed",
+     "n_o": 12,
+     "n_n": 12,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PWMZeroInterrupt",
+     "state": "changed",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunCaseRun2Ms",
+     "state": "changed",
+     "n_o": 96,
+     "n_n": 97,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunCaseStop",
+     "state": "changed",
+     "n_o": 76,
+     "n_n": 76,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SendDataPrepare",
+     "state": "changed",
+     "n_o": 135,
+     "n_n": 135,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Main05msMotor",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main0msMotor",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main2msMotorC",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PrepareParForRun",
+     "state": "same",
+     "n_o": 80,
+     "n_n": 80,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_TurnToStopStatus",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorPWM",
+   "n_func": 5,
+   "same": 0,
+   "changed": 5,
+   "ext_o": 5,
+   "ext_n": 5,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_DeadBandCompOne",
+    "_OutputOnePhase",
+    "_SendOneChannel",
+    "_SetPhaseLength",
+    "_SetPwmTimerBase",
+    "_SetPwmTripZone"
+   ],
+   "uncovered": [],
+   "cases": {
+    "MotorPWM": {
+     "entry": [
+      "DeadBandComp",
+      "EPWMFlagU",
+      "EPWMFlagV",
+      "EPWMFlagW",
+      "InitSetPWM",
+      "OutPutPWMVC",
+      "OutPutPWMVF",
+      "SendPWM",
+      "gOutVolt",
+      "gPWM",
+      "gRatio",
+      "iTrig1_Cpwm",
+      "iTrig1_Dpwm",
+      "iTrig2_Pwm",
+      "iTrig3_Cpwm",
+      "iTrig3_Dpwm",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 217585,
+     "mism": 0,
+     "neg": 177,
+     "neg_rc1": 174
+    }
+   },
+   "funcs": [
+    {
+     "f": "_DeadBandComp",
+     "state": "changed",
+     "n_o": 43,
+     "n_n": 16,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DeadBandCompOne",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 23,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSetPWM",
+     "state": "changed",
+     "n_o": 64,
+     "n_n": 34,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OutPutPWMVC",
+     "state": "changed",
+     "n_o": 70,
+     "n_n": 38,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OutPutPWMVF",
+     "state": "changed",
+     "n_o": 155,
+     "n_n": 145,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OutputOnePhase",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 26,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SendOneChannel",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 43,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SendPWM",
+     "state": "changed",
+     "n_o": 103,
+     "n_n": 44,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetPhaseLength",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 27,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetPwmTimerBase",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 44,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetPwmTripZone",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 16,
+     "ext": false,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "MotorParChange",
+   "n_func": 5,
+   "same": 0,
+   "changed": 5,
+   "ext_o": 5,
+   "ext_n": 5,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_s_DegScale",
+    "_s_FreqToReal",
+    "_s_IndScale",
+    "_s_PosScale",
+    "_s_ResScale"
+   ],
+   "uncovered": [],
+   "cases": {
+    "MotorParChange": {
+     "entry": [
+      "ChangeMotorPar",
+      "InvCalcPower",
+      "RunStateParChg2Ms",
+      "SystemParChg05Ms",
+      "SystemParChg2Ms"
+     ],
+     "calls": 0,
+     "cases": 20207,
+     "mism": 0,
+     "neg": 194,
+     "neg_rc1": 194
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ChangeMotorPar",
+     "state": "changed",
+     "n_o": 230,
+     "n_n": 192,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InvCalcPower",
+     "state": "changed",
+     "n_o": 109,
+     "n_n": 110,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunStateParChg2Ms",
+     "state": "changed",
+     "n_o": 393,
+     "n_n": 349,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SystemParChg05Ms",
+     "state": "changed",
+     "n_o": 71,
+     "n_n": 68,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SystemParChg2Ms",
+     "state": "changed",
+     "n_o": 315,
+     "n_n": 270,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_DegScale",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 7,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_FreqToReal",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 16,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_IndScale",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 16,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_PosScale",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 8,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_ResScale",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 17,
+     "ext": false,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "MotorParEst",
+   "n_func": 3,
+   "same": 0,
+   "changed": 3,
+   "ext_o": 3,
+   "ext_n": 3,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorParEst": {
+     "entry": [
+      "EndOfParIdentify",
+      "PrepareParForTune",
+      "RunCaseGetPar",
+      "gGetParVarable",
+      "gLmIoIdentify",
+      "gMotorExtReg",
+      "gRrLoIdentify",
+      "gUVCoff"
+     ],
+     "calls": 0,
+     "cases": 20786,
+     "mism": 0,
+     "neg": 64,
+     "neg_rc1": 64
+    }
+   },
+   "funcs": [
+    {
+     "f": "_EndOfParIdentify",
+     "state": "changed",
+     "n_o": 62,
+     "n_n": 65,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PrepareParForTune",
+     "state": "changed",
+     "n_o": 138,
+     "n_n": 142,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunCaseGetPar",
+     "state": "changed",
+     "n_o": 63,
+     "n_n": 66,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "MotorPmsmMain",
+   "n_func": 10,
+   "same": 5,
+   "changed": 5,
+   "ext_o": 9,
+   "ext_n": 9,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_FluxWeakIdClamp",
+    "_QepTotalWrap",
+    "_ZeroErrCount"
+   ],
+   "uncovered": [],
+   "cases": {
+    "MotorPmsmMain": {
+     "entry": [
+      "IPMCalAcrPIDCoff",
+      "IPMCheckInitPos",
+      "PG_Zero_isr",
+      "PmChkInitPosRest",
+      "PmDecoupleDeal",
+      "PmFluxWeakDeal",
+      "PrepPmsmCsrPrar",
+      "RunCaseIpmInitPos",
+      "SynCalLdAndLq",
+      "SynCalRealPos",
+      "gFluxWeak",
+      "gIPMPos",
+      "gIPMPosCheck",
+      "gPMInitPos",
+      "gPmDecoup"
+     ],
+     "calls": 0,
+     "cases": 113392,
+     "mism": 0,
+     "neg": 182,
+     "neg_rc1": 174
+    }
+   },
+   "funcs": [
+    {
+     "f": "_FluxWeakIdClamp",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 15,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_IPMCheckInitPos",
+     "state": "changed",
+     "n_o": 89,
+     "n_n": 89,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PG_Zero_isr",
+     "state": "changed",
+     "n_o": 137,
+     "n_n": 92,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_PmFluxWeakDeal",
+     "state": "changed",
+     "n_o": 214,
+     "n_n": 198,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_QepTotalWrap",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 29,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunCaseIpmInitPos",
+     "state": "changed",
+     "n_o": 76,
+     "n_n": 76,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynCalRealPos",
+     "state": "changed",
+     "n_o": 126,
+     "n_n": 76,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ZeroErrCount",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 47,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_IPMCalAcrPIDCoff",
+     "state": "same",
+     "n_o": 51,
+     "n_n": 51,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PmChkInitPosRest",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PmDecoupleDeal",
+     "state": "same",
+     "n_o": 79,
+     "n_n": 79,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PrepPmsmCsrPrar",
+     "state": "same",
+     "n_o": 77,
+     "n_n": 77,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_SynCalLdAndLq",
+     "state": "same",
+     "n_o": 51,
+     "n_n": 51,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorPmsmParEst",
+   "n_func": 13,
+   "same": 1,
+   "changed": 12,
+   "ext_o": 13,
+   "ext_n": 13,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_QepCountFromPos"
+   ],
+   "uncovered": [],
+   "cases": {
+    "MotorPmsmParEst": {
+     "entry": [
+      "DetectZeroPosOnce",
+      "InitSetPosTune",
+      "SetIPMPos",
+      "SetIPMPos_ABZRef",
+      "SynCalLabAndLbc",
+      "SynInitPosDetCal",
+      "SynInitPosDetSetPwm",
+      "SynInitPosDetSetTs",
+      "SynInitPosDetect",
+      "SynTuneBemf",
+      "SynTuneInitPos",
+      "SynTunePGZero_Load",
+      "SynTunePGZero_No_Load",
+      "gEstBemf",
+      "gIPMInitPos",
+      "gIPMZero",
+      "gPmParEst",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 20145,
+     "mism": 0,
+     "neg": 219,
+     "neg_rc1": 219
+    }
+   },
+   "funcs": [
+    {
+     "f": "_DetectZeroPosOnce",
+     "state": "changed",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSetPosTune",
+     "state": "changed",
+     "n_o": 21,
+     "n_n": 21,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_QepCountFromPos",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 16,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetIPMPos",
+     "state": "changed",
+     "n_o": 33,
+     "n_n": 19,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetIPMPos_ABZRef",
+     "state": "changed",
+     "n_o": 33,
+     "n_n": 19,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynCalLabAndLbc",
+     "state": "changed",
+     "n_o": 86,
+     "n_n": 88,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynInitPosDetCal",
+     "state": "changed",
+     "n_o": 69,
+     "n_n": 80,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynInitPosDetSetPwm",
+     "state": "changed",
+     "n_o": 101,
+     "n_n": 94,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynInitPosDetect",
+     "state": "changed",
+     "n_o": 364,
+     "n_n": 349,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynTuneBemf",
+     "state": "changed",
+     "n_o": 299,
+     "n_n": 293,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynTuneInitPos",
+     "state": "changed",
+     "n_o": 71,
+     "n_n": 65,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynTunePGZero_Load",
+     "state": "changed",
+     "n_o": 336,
+     "n_n": 315,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynTunePGZero_No_Load",
+     "state": "changed",
+     "n_o": 322,
+     "n_n": 314,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SynInitPosDetSetTs",
+     "state": "same",
+     "n_o": 19,
+     "n_n": 19,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorPublicCal",
+   "n_func": 8,
+   "same": 4,
+   "changed": 4,
+   "ext_o": 8,
+   "ext_n": 8,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorPublicCal": {
+     "entry": [
+      "BrakeResControl",
+      "CBCLimitCurPrepare",
+      "HardWareErrorDeal",
+      "HardWareOverUDCDeal",
+      "MaxUVWCurrent",
+      "RunCaseDcBrake",
+      "RunCaseLowPower",
+      "RunCaseShortGnd",
+      "gBrake",
+      "gDCBrake",
+      "gLowPower",
+      "gShortGnd"
+     ],
+     "calls": 0,
+     "cases": 217924,
+     "mism": 0,
+     "neg": 100,
+     "neg_rc1": 95
+    }
+   },
+   "funcs": [
+    {
+     "f": "_HardWareErrorDeal",
+     "state": "changed",
+     "n_o": 53,
+     "n_n": 49,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MaxUVWCurrent",
+     "state": "changed",
+     "n_o": 30,
+     "n_n": 29,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunCaseLowPower",
+     "state": "changed",
+     "n_o": 116,
+     "n_n": 113,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunCaseShortGnd",
+     "state": "changed",
+     "n_o": 122,
+     "n_n": 125,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_BrakeResControl",
+     "state": "same",
+     "n_o": 91,
+     "n_n": 91,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_CBCLimitCurPrepare",
+     "state": "same",
+     "n_o": 28,
+     "n_n": 28,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_HardWareOverUDCDeal",
+     "state": "same",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_RunCaseDcBrake",
+     "state": "same",
+     "n_o": 66,
+     "n_n": 66,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorSVC",
+   "n_func": 4,
+   "same": 0,
+   "changed": 4,
+   "ext_o": 4,
+   "ext_n": 4,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorSVC": {
+     "entry": [
+      "ResetSVC",
+      "SVCCalFlux_380",
+      "SVCCalRotorSpeed",
+      "SVCCalRotorSpeed_380",
+      "gABFluxS_LowFilter",
+      "gABFluxS_comp",
+      "gCalFlux",
+      "gFluxR",
+      "gFluxS",
+      "gIMTQ12_obs",
+      "gIMTQ24_obs",
+      "gSVCSpeed"
+     ],
+     "calls": 0,
+     "cases": 502,
+     "mism": 0,
+     "neg": 171,
+     "neg_rc1": 164
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ResetSVC",
+     "state": "changed",
+     "n_o": 35,
+     "n_n": 28,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SVCCalFlux_380",
+     "state": "changed",
+     "n_o": 326,
+     "n_n": 308,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SVCCalRotorSpeed",
+     "state": "changed",
+     "n_o": 170,
+     "n_n": 169,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SVCCalRotorSpeed_380",
+     "state": "changed",
+     "n_o": 153,
+     "n_n": 147,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "MotorSpeedCheck",
+   "n_func": 6,
+   "same": 3,
+   "changed": 3,
+   "ext_o": 6,
+   "ext_n": 6,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorSpeedCheck": {
+     "entry": [
+      "PrepareForSpeedCheck",
+      "RunCaseSpeedCheck",
+      "SpeedCheckCycleOver",
+      "SpeedCheckCycleSUB2",
+      "SpeedCheckSUB1",
+      "SpeedCheckUdcRiseDeal",
+      "gFeisu",
+      "gFeisuNew",
+      "gSpeedCheckPID",
+      "gSpeedCheckPID1"
+     ],
+     "calls": 0,
+     "cases": 33909,
+     "mism": 0,
+     "neg": 135,
+     "neg_rc1": 131
+    }
+   },
+   "funcs": [
+    {
+     "f": "_PrepareForSpeedCheck",
+     "state": "changed",
+     "n_o": 95,
+     "n_n": 97,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunCaseSpeedCheck",
+     "state": "changed",
+     "n_o": 330,
+     "n_n": 324,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SpeedCheckUdcRiseDeal",
+     "state": "changed",
+     "n_o": 81,
+     "n_n": 73,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SpeedCheckCycleOver",
+     "state": "same",
+     "n_o": 21,
+     "n_n": 21,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_SpeedCheckCycleSUB2",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_SpeedCheckSUB1",
+     "state": "same",
+     "n_o": 29,
+     "n_n": 29,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorVCMain",
+   "n_func": 16,
+   "same": 4,
+   "changed": 12,
+   "ext_o": 16,
+   "ext_n": 16,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_CalAsrKi",
+    "_ClearVoltWhenNotRun",
+    "_LimitVoltAmp",
+    "_PrepareTorqueLimitPid",
+    "_PrepareUdcPid",
+    "_ResetAsrTotals",
+    "_ResetVoltOut",
+    "_SetVoltPhase",
+    "_SnapshotImTs",
+    "_VcLowFreqHold"
+   ],
+   "uncovered": [],
+   "cases": {
+    "MotorVCMain": {
+     "entry": [
+      "CalIMSet",
+      "CalTorqueLimitPar",
+      "CalUdcLimitIT",
+      "CalWsAndSynFreq",
+      "CalWsAndSynFreq_380",
+      "CalcABVolt",
+      "PrepImCsrPara",
+      "PrepareAsrPar",
+      "ResetAsrPar",
+      "ResetCsrPar",
+      "ResetParForVC",
+      "SVC0Signal",
+      "SvcCalOutVolt",
+      "SvcCalOutVolt_380",
+      "VCCsrControl",
+      "VCCsrControl_380",
+      "VcAsrControl",
+      "gABVoltSet",
+      "gAsr",
+      "gIMSetAcr",
+      "gIMTSet",
+      "gIMTSetApply",
+      "gImAcrQ24",
+      "gItAcrQ24",
+      "gPWMVAlphBeta",
+      "gSvcVoltAdj",
+      "gUAmpTheta",
+      "gUMTSet",
+      "gUdcLimitIt",
+      "gVCPar",
+      "gVcCsrPara",
+      "gWspid",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 86945,
+     "mism": 0,
+     "neg": 304,
+     "neg_rc1": 304
+    }
+   },
+   "funcs": [
+    {
+     "f": "_CalAsrKi",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 20,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalIMSet",
+     "state": "changed",
+     "n_o": 134,
+     "n_n": 134,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalTorqueLimitPar",
+     "state": "changed",
+     "n_o": 203,
+     "n_n": 175,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalUdcLimitIT",
+     "state": "changed",
+     "n_o": 89,
+     "n_n": 81,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ClearVoltWhenNotRun",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 18,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_LimitVoltAmp",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 29,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_PrepareAsrPar",
+     "state": "changed",
+     "n_o": 225,
+     "n_n": 172,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PrepareTorqueLimitPid",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 33,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_PrepareUdcPid",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 19,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ResetAsrPar",
+     "state": "changed",
+     "n_o": 10,
+     "n_n": 2,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ResetAsrTotals",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 10,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ResetCsrPar",
+     "state": "changed",
+     "n_o": 49,
+     "n_n": 48,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ResetParForVC",
+     "state": "changed",
+     "n_o": 8,
+     "n_n": 8,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ResetVoltOut",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 9,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetVoltPhase",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 11,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SnapshotImTs",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 9,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SvcCalOutVolt",
+     "state": "changed",
+     "n_o": 202,
+     "n_n": 177,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SvcCalOutVolt_380",
+     "state": "changed",
+     "n_o": 190,
+     "n_n": 165,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VCCsrControl",
+     "state": "changed",
+     "n_o": 164,
+     "n_n": 144,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VCCsrControl_380",
+     "state": "changed",
+     "n_o": 153,
+     "n_n": 122,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VcAsrControl",
+     "state": "changed",
+     "n_o": 149,
+     "n_n": 126,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VcLowFreqHold",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 10,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalWsAndSynFreq",
+     "state": "same",
+     "n_o": 48,
+     "n_n": 48,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_CalWsAndSynFreq_380",
+     "state": "same",
+     "n_o": 49,
+     "n_n": 49,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_CalcABVolt",
+     "state": "same",
+     "n_o": 39,
+     "n_n": 39,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PrepImCsrPara",
+     "state": "same",
+     "n_o": 29,
+     "n_n": 29,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorVF",
+   "n_func": 16,
+   "same": 3,
+   "changed": 13,
+   "ext_o": 16,
+   "ext_n": 16,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "MotorVF": {
+     "entry": [
+      "CalOutVotInVFStatus",
+      "CalTorqueUp",
+      "HVfCurReDecomp",
+      "HVfDeadBandComp",
+      "HVfOscDampDeal",
+      "VFAutoTorqueBoost",
+      "VFOVUdcLimit",
+      "VFOverMagneticControl",
+      "VFSpeedControl",
+      "VFWSCompControl",
+      "VFWsTorqueBoostComm",
+      "VfFreqDeal",
+      "VfOscIndexCalc",
+      "VfOverCurDeal",
+      "VfOverUdcDeal",
+      "VfVarInitiate",
+      "gHVfCur",
+      "gHVfDeadBandCompOpt",
+      "gHVfOscDamp",
+      "gHVfOscIndex",
+      "gOscAmp",
+      "gOvCur",
+      "gOvCur2",
+      "gOvUdc",
+      "gVFAutoVar",
+      "gVFPar",
+      "gVarAvr",
+      "gVfFreq2",
+      "gVfOsc",
+      "gVfOverUdc",
+      "gWsComp",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 32503,
+     "mism": 0,
+     "neg": 179,
+     "neg_rc1": 179
+    }
+   },
+   "funcs": [
+    {
+     "f": "_CalOutVotInVFStatus",
+     "state": "changed",
+     "n_o": 240,
+     "n_n": 237,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CalTorqueUp",
+     "state": "changed",
+     "n_o": 81,
+     "n_n": 81,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_HVfDeadBandComp",
+     "state": "changed",
+     "n_o": 209,
+     "n_n": 199,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VFAutoTorqueBoost",
+     "state": "changed",
+     "n_o": 144,
+     "n_n": 147,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VFOVUdcLimit",
+     "state": "changed",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VFOverMagneticControl",
+     "state": "changed",
+     "n_o": 70,
+     "n_n": 70,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VFSpeedControl",
+     "state": "changed",
+     "n_o": 21,
+     "n_n": 21,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VFWSCompControl",
+     "state": "changed",
+     "n_o": 164,
+     "n_n": 164,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VFWsTorqueBoostComm",
+     "state": "changed",
+     "n_o": 181,
+     "n_n": 181,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VfFreqDeal",
+     "state": "changed",
+     "n_o": 176,
+     "n_n": 177,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VfOverCurDeal",
+     "state": "changed",
+     "n_o": 210,
+     "n_n": 214,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VfOverUdcDeal",
+     "state": "changed",
+     "n_o": 196,
+     "n_n": 189,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_VfVarInitiate",
+     "state": "changed",
+     "n_o": 74,
+     "n_n": 73,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_HVfCurReDecomp",
+     "state": "same",
+     "n_o": 95,
+     "n_n": 95,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_HVfOscDampDeal",
+     "state": "same",
+     "n_o": 42,
+     "n_n": 42,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_VfOscIndexCalc",
+     "state": "same",
+     "n_o": 68,
+     "n_n": 68,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "MotorVar",
+   "n_func": 0,
+   "same": 0,
+   "changed": 0,
+   "ext_o": 0,
+   "ext_n": 0,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": []
+  },
+  {
+   "stem": "SubPrg",
+   "n_func": 6,
+   "same": 1,
+   "changed": 5,
+   "ext_o": 6,
+   "ext_n": 6,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "SubPrg": {
+     "entry": [
+      "BurrFilter",
+      "PID",
+      "PID32",
+      "PIDLongRegulate",
+      "SlipFilter",
+      "atan"
+     ],
+     "calls": 0,
+     "cases": 517311,
+     "mism": 0,
+     "neg": 55,
+     "neg_rc1": 53
+    }
+   },
+   "funcs": [
+    {
+     "f": "_PID",
+     "state": "changed",
+     "n_o": 128,
+     "n_n": 116,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PID32",
+     "state": "changed",
+     "n_o": 74,
+     "n_n": 78,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PIDLongRegulate",
+     "state": "changed",
+     "n_o": 179,
+     "n_n": 174,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SlipFilter",
+     "state": "changed",
+     "n_o": 67,
+     "n_n": 71,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_atan",
+     "state": "changed",
+     "n_o": 25,
+     "n_n": 29,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_BurrFilter",
+     "state": "same",
+     "n_o": 53,
+     "n_n": 53,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "ZeroPosCtl",
+   "n_func": 3,
+   "same": 0,
+   "changed": 3,
+   "ext_o": 3,
+   "ext_n": 3,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "zeroPosCtl": {
+     "entry": [
+      "GetPGPos",
+      "ZeroPosControl",
+      "ZeroPosJudge",
+      "gZeroPos",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 243472,
+     "mism": 0,
+     "neg": 7,
+     "neg_rc1": 7
+    }
+   },
+   "funcs": [
+    {
+     "f": "_GetPGPos",
+     "state": "changed",
+     "n_o": 4,
+     "n_n": 8,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ZeroPosControl",
+     "state": "changed",
+     "n_o": 39,
+     "n_n": 45,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ZeroPosJudge",
+     "state": "changed",
+     "n_o": 12,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_canlink",
+   "n_func": 12,
+   "same": 8,
+   "changed": 4,
+   "ext_o": 12,
+   "ext_n": 12,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_canlink": {
+     "entry": [
+      "CanControlRead",
+      "CanControlWriter",
+      "CanHostTx",
+      "CanLinkChara",
+      "CanLinkConDeal",
+      "CanLinkRemoteDeal",
+      "CanLlinkDataDeal",
+      "CanlinkDataRec",
+      "CanlinkDataTran",
+      "CanlinkFun",
+      "CanlinkRecBuf",
+      "InitCanlink",
+      "InitCanlinkRec",
+      "InitCanlinkTran"
+     ],
+     "calls": 0,
+     "cases": 20175,
+     "mism": 0,
+     "neg": 138,
+     "neg_rc1": 138
+    }
+   },
+   "funcs": [
+    {
+     "f": "_CanLinkConDeal",
+     "state": "changed",
+     "n_o": 105,
+     "n_n": 103,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CanLlinkDataDeal",
+     "state": "changed",
+     "n_o": 30,
+     "n_n": 30,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CanlinkDataTran",
+     "state": "changed",
+     "n_o": 41,
+     "n_n": 41,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CanlinkFun",
+     "state": "changed",
+     "n_o": 182,
+     "n_n": 152,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CanControlRead",
+     "state": "same",
+     "n_o": 15,
+     "n_n": 15,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_CanControlWriter",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_CanHostTx",
+     "state": "same",
+     "n_o": 36,
+     "n_n": 36,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_CanLinkRemoteDeal",
+     "state": "same",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_CanlinkDataRec",
+     "state": "same",
+     "n_o": 42,
+     "n_n": 42,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitCanlink",
+     "state": "same",
+     "n_o": 18,
+     "n_n": 18,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitCanlinkRec",
+     "state": "same",
+     "n_o": 38,
+     "n_n": 38,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitCanlinkTran",
+     "state": "same",
+     "n_o": 31,
+     "n_n": 31,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_comm",
+   "n_func": 23,
+   "same": 6,
+   "changed": 17,
+   "ext_o": 20,
+   "ext_n": 20,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_commSendPrepare",
+    "_commSetAo",
+    "_setLinParity"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_comm": {
+     "entry": [
+      "Close",
+      "CommDataReRcv",
+      "CommDataSend",
+      "CommRcvDataDeal",
+      "CommRead",
+      "CommRwFuncCode",
+      "CommSendDataDeal",
+      "CommStartSend",
+      "CommWrite",
+      "DataSend",
+      "ErrCheck",
+      "ErrDeal",
+      "InitGpio",
+      "InitScia",
+      "InitSciaGpio",
+      "InitSetScia",
+      "L0",
+      "L1",
+      "Lina_Level0_ISR",
+      "Lina_Level1_ISR",
+      "RXD",
+      "RcvDeal",
+      "ReRcv",
+      "Read",
+      "Reset",
+      "RwFc",
+      "SCI_RXD_isr",
+      "SCI_TXD_isr",
+      "SciDeal",
+      "SciErrCheck",
+      "SendDeal",
+      "SetRx",
+      "SetTx",
+      "StartSend",
+      "StatusDeal",
+      "TXD",
+      "UpdFormat",
+      "UpdateSciFormat",
+      "Write",
+      "aoComm",
+      "canLinkTicker",
+      "closeRTX",
+      "commErrorDeal",
+      "commProtocol",
+      "commRcvData",
+      "commReadData",
+      "commRunCmd",
+      "commSendData",
+      "commStatus",
+      "commStatusDeal",
+      "commTicker",
+      "commType",
+      "companyPwdPass4Comm",
+      "doComm",
+      "groupHidePassComm",
+      "rcvFrame",
+      "resetLinSci",
+      "sciFlag",
+      "sendFrame",
+      "setRxConfig",
+      "setTxConfig",
+      "userPwdPass4Comm"
+     ],
+     "calls": 49,
+     "cases": 24766,
+     "mism": 0,
+     "neg": 126,
+     "neg_rc1": 125
+    }
+   },
+   "funcs": [
+    {
+     "f": "_CommDataReRcv",
+     "state": "changed",
+     "n_o": 28,
+     "n_n": 28,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommDataSend",
+     "state": "changed",
+     "n_o": 15,
+     "n_n": 16,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommRcvDataDeal",
+     "state": "changed",
+     "n_o": 60,
+     "n_n": 62,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommRead",
+     "state": "changed",
+     "n_o": 154,
+     "n_n": 159,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommRwFuncCode",
+     "state": "changed",
+     "n_o": 414,
+     "n_n": 421,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommSendDataDeal",
+     "state": "changed",
+     "n_o": 29,
+     "n_n": 28,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommWrite",
+     "state": "changed",
+     "n_o": 167,
+     "n_n": 174,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSciaGpio",
+     "state": "changed",
+     "n_o": 30,
+     "n_n": 30,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSetScia",
+     "state": "changed",
+     "n_o": 40,
+     "n_n": 21,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Lina_Level0_ISR",
+     "state": "changed",
+     "n_o": 35,
+     "n_n": 39,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SCI_RXD_isr",
+     "state": "changed",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SCI_TXD_isr",
+     "state": "changed",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SciDeal",
+     "state": "changed",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SciErrCheck",
+     "state": "changed",
+     "n_o": 59,
+     "n_n": 59,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateSciFormat",
+     "state": "changed",
+     "n_o": 130,
+     "n_n": 111,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_commErrorDeal",
+     "state": "changed",
+     "n_o": 14,
+     "n_n": 14,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_commSendPrepare",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 19,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_commSetAo",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 14,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_commStatusDeal",
+     "state": "changed",
+     "n_o": 51,
+     "n_n": 37,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_setLinParity",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 19,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommStartSend",
+     "state": "same",
+     "n_o": 5,
+     "n_n": 5,
+     "ext": false,
+     "cov": "identical"
+    },
+    {
+     "f": "_Lina_Level1_ISR",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": false,
+     "cov": "identical"
+    },
+    {
+     "f": "_closeRTX",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_resetLinSci",
+     "state": "same",
+     "n_o": 5,
+     "n_n": 5,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_setRxConfig",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_setTxConfig",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_comm_DP",
+   "n_func": 14,
+   "same": 4,
+   "changed": 10,
+   "ext_o": 11,
+   "ext_n": 11,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_CompleteDpFrame",
+    "_ResetDpChannel",
+    "_StoreCrc"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_comm_DP": {
+     "entry": [
+      "CommDpRcvDataDeal",
+      "CommDpSendDataDeal",
+      "CommDpStartSend",
+      "DpDataDeal",
+      "ErrAgainSend",
+      "GetDataByteNum",
+      "InitSciDpBaudRate",
+      "InitSciaGpioDp",
+      "InitScibGpioDp",
+      "InitSetSciDp",
+      "SCI_DP_RXD_isr",
+      "SCI_DP_TXD_isr",
+      "SciDpDeal",
+      "UpdateSciDpFormat",
+      "dataByteNum",
+      "dpParameter",
+      "dpSciCommRcvFlag",
+      "dpSciCommSendFlag",
+      "rcvData_DP",
+      "sciM380DpData",
+      "sendData_DP",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 20991,
+     "mism": 0,
+     "neg": 106,
+     "neg_rc1": 105
+    }
+   },
+   "funcs": [
+    {
+     "f": "_CommDpRcvDataDeal",
+     "state": "changed",
+     "n_o": 117,
+     "n_n": 88,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommDpSendDataDeal",
+     "state": "changed",
+     "n_o": 70,
+     "n_n": 60,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CompleteDpFrame",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 22,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ErrAgainSend",
+     "state": "changed",
+     "n_o": 59,
+     "n_n": 49,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetDataByteNum",
+     "state": "changed",
+     "n_o": 7,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSciaGpioDp",
+     "state": "changed",
+     "n_o": 25,
+     "n_n": 25,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitScibGpioDp",
+     "state": "changed",
+     "n_o": 25,
+     "n_n": 2,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSetSciDp",
+     "state": "changed",
+     "n_o": 28,
+     "n_n": 24,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ResetDpChannel",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 34,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SCI_DP_RXD_isr",
+     "state": "changed",
+     "n_o": 151,
+     "n_n": 108,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SciDpDeal",
+     "state": "changed",
+     "n_o": 15,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_StoreCrc",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 16,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateSciDpFormat",
+     "state": "changed",
+     "n_o": 14,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CommDpStartSend",
+     "state": "same",
+     "n_o": 14,
+     "n_n": 14,
+     "ext": false,
+     "cov": "identical"
+    },
+    {
+     "f": "_DpDataDeal",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSciDpBaudRate",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_SCI_DP_TXD_isr",
+     "state": "same",
+     "n_o": 42,
+     "n_n": 42,
+     "ext": false,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_common",
+   "n_func": 3,
+   "same": 0,
+   "changed": 3,
+   "ext_o": 3,
+   "ext_n": 3,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_common": {
+     "entry": [
+      "CrcValueByteCalc",
+      "Reverse4Bit",
+      "Reverse8Bit"
+     ],
+     "calls": 0,
+     "cases": 17039736,
+     "mism": 0,
+     "neg": 12,
+     "neg_rc1": 12
+    }
+   },
+   "funcs": [
+    {
+     "f": "_CrcValueByteCalc",
+     "state": "changed",
+     "n_o": 31,
+     "n_n": 30,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Reverse4Bit",
+     "state": "changed",
+     "n_o": 18,
+     "n_n": 18,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Reverse8Bit",
+     "state": "changed",
+     "n_o": 25,
+     "n_n": 25,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_debug",
+   "n_func": 9,
+   "same": 7,
+   "changed": 2,
+   "ext_o": 9,
+   "ext_n": 9,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_debug": {
+     "entry": [
+      "ChgAttr",
+      "DealKeyDebug",
+      "I2CWrongTimer",
+      "InitDebug",
+      "InitI2cDebug",
+      "InitKeyDebug",
+      "PowerOnDebug",
+      "TestI2cDebug",
+      "UniversalDebug",
+      "UniversalDebug32",
+      "i",
+      "keyValueDebug",
+      "keyValueDebugIndex",
+      "matlabDebug",
+      "matlabDebugRsvd",
+      "rcvDataI2C",
+      "scope0",
+      "scope1",
+      "scope2",
+      "scope3",
+      "scope4",
+      "scope5",
+      "scopeIndex",
+      "scopeInterval",
+      "sendDataI2C",
+      "tu",
+      "vDL"
+     ],
+     "calls": 0,
+     "cases": 150226,
+     "mism": 0,
+     "neg": 35,
+     "neg_rc1": 33
+    }
+   },
+   "funcs": [
+    {
+     "f": "_InitDebug",
+     "state": "changed",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UniversalDebug",
+     "state": "changed",
+     "n_o": 113,
+     "n_n": 82,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ChgAttr",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_DealKeyDebug",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitI2cDebug",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitKeyDebug",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PowerOnDebug",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_TestI2cDebug",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UniversalDebug32",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_dspcan",
+   "n_func": 5,
+   "same": 0,
+   "changed": 5,
+   "ext_o": 5,
+   "ext_n": 5,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_dspcan": {
+     "entry": [
+      "InitRecMbox",
+      "InitTranMbox",
+      "InitdspECan",
+      "eCanDataRec",
+      "eCanDataTran",
+      "eCanReEnFlag",
+      "eCanTranEnFlag"
+     ],
+     "calls": 0,
+     "cases": 29356,
+     "mism": 0,
+     "neg": 82,
+     "neg_rc1": 80
+    }
+   },
+   "funcs": [
+    {
+     "f": "_InitRecMbox",
+     "state": "changed",
+     "n_o": 86,
+     "n_n": 82,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitTranMbox",
+     "state": "changed",
+     "n_o": 67,
+     "n_n": 66,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitdspECan",
+     "state": "changed",
+     "n_o": 179,
+     "n_n": 178,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_eCanDataRec",
+     "state": "changed",
+     "n_o": 77,
+     "n_n": 65,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_eCanDataTran",
+     "state": "changed",
+     "n_o": 95,
+     "n_n": 91,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_eeprom",
+   "n_func": 16,
+   "same": 10,
+   "changed": 6,
+   "ext_o": 16,
+   "ext_n": 16,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_eeprom": {
+     "entry": [
+      "EepromDeal",
+      "EepromOperateTimeDeal",
+      "GetEepromIndexFromFcIndex",
+      "GetFcIndexFromEepromIndex",
+      "I2CNoACK",
+      "I2CRcvByte",
+      "I2CStop",
+      "I2cDealBeforeInit",
+      "I2cIntDeal",
+      "I2cMsg",
+      "InitI2CGpio",
+      "InitSetI2ca",
+      "ReadFuncCode",
+      "RwEeprom",
+      "RwI2cBus",
+      "UpdateIndexForEepromDeal",
+      "WriteFuncCode",
+      "call_gefi",
+      "call_gfei",
+      "call_read",
+      "call_rweep",
+      "call_rwi2c",
+      "call_write",
+      "eeprom2Fc",
+      "eepromOperateTime",
+      "endIndexRwFuncCode",
+      "endIndexWriteSeries",
+      "funcCodeOneWriteIndex",
+      "funcCodeOneWriteNum",
+      "funcCodeRead",
+      "funcCodeRwMode",
+      "funcCodeRwModeTmp",
+      "funcCodeRwStatus",
+      "funcCodeWrite",
+      "rwFuncCodeRepeatDelayTicker",
+      "startIndexWriteSeries"
+     ],
+     "calls": 0,
+     "cases": 103745,
+     "mism": 0,
+     "neg": 190,
+     "neg_rc1": 171
+    }
+   },
+   "funcs": [
+    {
+     "f": "_EepromDeal",
+     "state": "changed",
+     "n_o": 283,
+     "n_n": 283,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_I2cDealBeforeInit",
+     "state": "changed",
+     "n_o": 60,
+     "n_n": 60,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_I2cIntDeal",
+     "state": "changed",
+     "n_o": 66,
+     "n_n": 68,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ReadFuncCode",
+     "state": "changed",
+     "n_o": 128,
+     "n_n": 128,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RwEeprom",
+     "state": "changed",
+     "n_o": 54,
+     "n_n": 67,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_WriteFuncCode",
+     "state": "changed",
+     "n_o": 178,
+     "n_n": 178,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_EepromOperateTimeDeal",
+     "state": "same",
+     "n_o": 32,
+     "n_n": 32,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetEepromIndexFromFcIndex",
+     "state": "same",
+     "n_o": 16,
+     "n_n": 16,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetFcIndexFromEepromIndex",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_I2CNoACK",
+     "state": "same",
+     "n_o": 15,
+     "n_n": 15,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_I2CRcvByte",
+     "state": "same",
+     "n_o": 34,
+     "n_n": 34,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_I2CStop",
+     "state": "same",
+     "n_o": 13,
+     "n_n": 13,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitI2CGpio",
+     "state": "same",
+     "n_o": 15,
+     "n_n": 15,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSetI2ca",
+     "state": "same",
+     "n_o": 10,
+     "n_n": 10,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_RwI2cBus",
+     "state": "same",
+     "n_o": 79,
+     "n_n": 79,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateIndexForEepromDeal",
+     "state": "same",
+     "n_o": 29,
+     "n_n": 29,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_error",
+   "n_func": 13,
+   "same": 2,
+   "changed": 11,
+   "ext_o": 13,
+   "ext_n": 13,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_ClassifySpeedFault",
+    "_ConsiderError",
+    "_GetActionLevel",
+    "_RollbackError",
+    "_SaveErrorScene"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_error": {
+     "entry": [
+      "ATTR",
+      "AUTOD",
+      "AUTOF",
+      "AUTOT",
+      "AutoResetErrorDeal",
+      "AutoResetErrorFcDeal",
+      "AutoResetErrorTrueDeal",
+      "ERRDEAL",
+      "ErrorDeal",
+      "ErrorReset",
+      "ErrorSceneSave",
+      "GetErrorAttribute",
+      "GetErrorResetDeal",
+      "GetNewError",
+      "GetNewErrorAttribute",
+      "MOTORERR",
+      "NEWATTR",
+      "NEWERR",
+      "RESET",
+      "RESETDEAL",
+      "SCENE",
+      "UPDATE",
+      "UV",
+      "UpdateError",
+      "bUv",
+      "curTime",
+      "errAutoRstClrWaitTicker",
+      "errAutoRstNum",
+      "errorAttribute",
+      "errorAttributeOld",
+      "errorCode",
+      "errorCodeFromMotorList",
+      "errorCodeOld",
+      "errorDealStatus",
+      "errorEeprom",
+      "errorInfo",
+      "errorInfoFromMotor",
+      "errorInfoOld",
+      "errorOther",
+      "errorOtherOld",
+      "errorSpaceTicker",
+      "getMotorError",
+      "tu",
+      "underVoltageDeal",
+      "uvDealStatus"
+     ],
+     "calls": 0,
+     "cases": 33762,
+     "mism": 0,
+     "neg": 204,
+     "neg_rc1": 204
+    }
+   },
+   "funcs": [
+    {
+     "f": "_AutoResetErrorDeal",
+     "state": "changed",
+     "n_o": 12,
+     "n_n": 12,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_AutoResetErrorFcDeal",
+     "state": "changed",
+     "n_o": 57,
+     "n_n": 63,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_AutoResetErrorTrueDeal",
+     "state": "changed",
+     "n_o": 34,
+     "n_n": 39,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ClassifySpeedFault",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 20,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ConsiderError",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 15,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ErrorDeal",
+     "state": "changed",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ErrorReset",
+     "state": "changed",
+     "n_o": 99,
+     "n_n": 99,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ErrorSceneSave",
+     "state": "changed",
+     "n_o": 75,
+     "n_n": 39,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetActionLevel",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 18,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetErrorAttribute",
+     "state": "changed",
+     "n_o": 139,
+     "n_n": 90,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetNewError",
+     "state": "changed",
+     "n_o": 317,
+     "n_n": 275,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetNewErrorAttribute",
+     "state": "changed",
+     "n_o": 13,
+     "n_n": 13,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RollbackError",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 6,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SaveErrorScene",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 38,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateError",
+     "state": "changed",
+     "n_o": 40,
+     "n_n": 34,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_getMotorError",
+     "state": "changed",
+     "n_o": 72,
+     "n_n": 78,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetErrorResetDeal",
+     "state": "same",
+     "n_o": 28,
+     "n_n": 28,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_underVoltageDeal",
+     "state": "same",
+     "n_o": 50,
+     "n_n": 50,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_fcDeal",
+   "n_func": 6,
+   "same": 2,
+   "changed": 4,
+   "ext_o": 6,
+   "ext_n": 6,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_GetCalibrateCurveInit",
+    "_IsAccDecTimeCode",
+    "_IsCalibrateCurveCode",
+    "_IsInitExceptSeries",
+    "_IsInitExceptSingle",
+    "_LimitOneCode"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_fcDeal": {
+     "entry": [
+      "CLEAR",
+      "ClearRecordDeal",
+      "GetFuncCodeInit",
+      "GetFuncCodeInitOriginal",
+      "INIT",
+      "LIMIT",
+      "LimitOtherCodeDeal",
+      "ORIG",
+      "POWEROFF",
+      "PowerOffRemDeal",
+      "RESTORE",
+      "RestoreCompanyParaOtherDeal",
+      "limitOtherCodeIndex",
+      "limitedByOtherCodeIndex",
+      "limitedByOtherCodeIndexNum",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 38923,
+     "mism": 0,
+     "neg": 125,
+     "neg_rc1": 125
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ClearRecordDeal",
+     "state": "changed",
+     "n_o": 63,
+     "n_n": 67,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetCalibrateCurveInit",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 24,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetFuncCodeInit",
+     "state": "changed",
+     "n_o": 252,
+     "n_n": 153,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_IsAccDecTimeCode",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 23,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_IsCalibrateCurveCode",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 11,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_IsInitExceptSeries",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 42,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_IsInitExceptSingle",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 44,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_LimitOneCode",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 98,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_LimitOtherCodeDeal",
+     "state": "changed",
+     "n_o": 143,
+     "n_n": 42,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RestoreCompanyParaOtherDeal",
+     "state": "changed",
+     "n_o": 24,
+     "n_n": 30,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetFuncCodeInitOriginal",
+     "state": "same",
+     "n_o": 31,
+     "n_n": 31,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PowerOffRemDeal",
+     "state": "same",
+     "n_o": 74,
+     "n_n": 74,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_frqSrc",
+   "n_func": 17,
+   "same": 13,
+   "changed": 4,
+   "ext_o": 17,
+   "ext_n": 17,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_frqSrc": {
+     "entry": [
+      "FrqAimUpDownDeal",
+      "FrqPlcSetDeal",
+      "FrqSrcDeal",
+      "FrqSrcOperate",
+      "FrqXyCalc",
+      "GetFrq",
+      "GetFrqComp",
+      "GetFrqX",
+      "GetFrqY",
+      "JumpFrqDeal",
+      "JumpFrqEndCalc",
+      "ResetUpDownFrq",
+      "UpdateFrqAim",
+      "UpdateLimitFrq",
+      "UpdateMultiSetFrq",
+      "UpdateRunMode",
+      "getUpDownLimit"
+     ],
+     "calls": 0,
+     "cases": 47949,
+     "mism": 0,
+     "neg": 132,
+     "neg_rc1": 129
+    }
+   },
+   "funcs": [
+    {
+     "f": "_FrqSrcOperate",
+     "state": "changed",
+     "n_o": 52,
+     "n_n": 52,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetFrq",
+     "state": "changed",
+     "n_o": 196,
+     "n_n": 196,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetFrqX",
+     "state": "changed",
+     "n_o": 20,
+     "n_n": 19,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetFrqY",
+     "state": "changed",
+     "n_o": 77,
+     "n_n": 76,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_FrqAimUpDownDeal",
+     "state": "same",
+     "n_o": 265,
+     "n_n": 265,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_FrqPlcSetDeal",
+     "state": "same",
+     "n_o": 195,
+     "n_n": 195,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_FrqSrcDeal",
+     "state": "same",
+     "n_o": 103,
+     "n_n": 103,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_FrqXyCalc",
+     "state": "same",
+     "n_o": 118,
+     "n_n": 118,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetFrqComp",
+     "state": "same",
+     "n_o": 141,
+     "n_n": 141,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_JumpFrqDeal",
+     "state": "same",
+     "n_o": 233,
+     "n_n": 233,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_JumpFrqEndCalc",
+     "state": "same",
+     "n_o": 19,
+     "n_n": 19,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_ResetUpDownFrq",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateFrqAim",
+     "state": "same",
+     "n_o": 203,
+     "n_n": 203,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateLimitFrq",
+     "state": "same",
+     "n_o": 95,
+     "n_n": 95,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateMultiSetFrq",
+     "state": "same",
+     "n_o": 89,
+     "n_n": 89,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateRunMode",
+     "state": "same",
+     "n_o": 48,
+     "n_n": 48,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_getUpDownLimit",
+     "state": "same",
+     "n_o": 109,
+     "n_n": 109,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_frqSrc_pid",
+   "n_func": 4,
+   "same": 2,
+   "changed": 2,
+   "ext_o": 4,
+   "ext_n": 4,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_frqSrc_pid": {
+     "entry": [
+      "FrqPidSetDeal",
+      "PidFuncCalc",
+      "UpdatePidFuncPara",
+      "UpdatePidFuncRefFdb"
+     ],
+     "calls": 0,
+     "cases": 21411,
+     "mism": 0,
+     "neg": 187,
+     "neg_rc1": 176
+    }
+   },
+   "funcs": [
+    {
+     "f": "_FrqPidSetDeal",
+     "state": "changed",
+     "n_o": 160,
+     "n_n": 170,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdatePidFuncRefFdb",
+     "state": "changed",
+     "n_o": 251,
+     "n_n": 252,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PidFuncCalc",
+     "state": "same",
+     "n_o": 691,
+     "n_n": 691,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdatePidFuncPara",
+     "state": "same",
+     "n_o": 385,
+     "n_n": 385,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_funcCode",
+   "n_func": 0,
+   "same": 0,
+   "changed": 0,
+   "ext_o": 0,
+   "ext_n": 0,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {},
+   "funcs": []
+  },
+  {
+   "stem": "f_interface",
+   "n_func": 10,
+   "same": 10,
+   "changed": 0,
+   "ext_o": 10,
+   "ext_n": 10,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_interface": {
+     "entry": [
+      "ABZPos",
+      "UpdateDataCore2Func",
+      "UpdateDataFunc2Core0p5ms",
+      "UpdateDataFunc2Core2ms",
+      "ZCount",
+      "antiVibrateCoeff",
+      "call_sdir",
+      "checkSpeedFdbDir",
+      "copyDataCore2Func05ms",
+      "copyDataCore2Func2ms",
+      "copyDataCore2Uf2ms",
+      "copyDataFunc2CF2ms",
+      "copyDataFunc2Motor05ms",
+      "copyDataFunc2Motor2ms",
+      "currentOc",
+      "currentPu",
+      "driveCoeffFrqFdb",
+      "enCoderPosition",
+      "errorCodeFromMotor",
+      "errorsCodeFromMotor",
+      "frq2Core",
+      "frqCurAim2Core",
+      "frqFdb",
+      "frqFdbDisp",
+      "frqFdbFlag",
+      "frqFdbTmp",
+      "frqRun",
+      "frqVFRun",
+      "frqVFRunRemainder",
+      "gPhiRt",
+      "gPhiRtDisp",
+      "generatrixVoltage",
+      "jerkFf",
+      "motorErrInfor",
+      "motorRun",
+      "outCurrent",
+      "outCurrentDispOld",
+      "outPower",
+      "outVoltage",
+      "pmsmRotorPos",
+      "powerAddDec",
+      "rsvdData",
+      "softOCTicker",
+      "spdLoopOut",
+      "speedMotor",
+      "torqueCurrent",
+      "vcSpdLoopKp1",
+      "vcSpdLoopKp2"
+     ],
+     "calls": 0,
+     "cases": 205651,
+     "mism": 0,
+     "neg": 209,
+     "neg_rc1": 208
+    }
+   },
+   "funcs": [
+    {
+     "f": "_UpdateDataCore2Func",
+     "state": "same",
+     "n_o": 255,
+     "n_n": 255,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateDataFunc2Core0p5ms",
+     "state": "same",
+     "n_o": 99,
+     "n_n": 99,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateDataFunc2Core2ms",
+     "state": "same",
+     "n_o": 154,
+     "n_n": 154,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_checkSpeedFdbDir",
+     "state": "same",
+     "n_o": 66,
+     "n_n": 66,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_copyDataCore2Func05ms",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_copyDataCore2Func2ms",
+     "state": "same",
+     "n_o": 117,
+     "n_n": 117,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_copyDataCore2Uf2ms",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_copyDataFunc2CF2ms",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_copyDataFunc2Motor05ms",
+     "state": "same",
+     "n_o": 52,
+     "n_n": 52,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_copyDataFunc2Motor2ms",
+     "state": "same",
+     "n_o": 230,
+     "n_n": 230,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_invPara",
+   "n_func": 8,
+   "same": 1,
+   "changed": 7,
+   "ext_o": 8,
+   "ext_n": 8,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_invPara": {
+     "entry": [
+      "InverterTypeRelatedNoMotorParaDeal",
+      "InverterTypeRelatedNoMotorParaSaveDeal",
+      "InverterTypeRelatedParaDeal",
+      "MotorPowerRelatedParaDeal",
+      "SaveTuneData",
+      "TorqueBoostDeal",
+      "UpdateInvType",
+      "ValidateInvType",
+      "invPara",
+      "motor1ParaIndex",
+      "motorSnIndexIncToMotor1"
+     ],
+     "calls": 0,
+     "cases": 68300,
+     "mism": 0,
+     "neg": 22,
+     "neg_rc1": 17
+    }
+   },
+   "funcs": [
+    {
+     "f": "_InverterTypeRelatedNoMotorParaDeal",
+     "state": "changed",
+     "n_o": 81,
+     "n_n": 82,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InverterTypeRelatedParaDeal",
+     "state": "changed",
+     "n_o": 178,
+     "n_n": 157,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MotorPowerRelatedParaDeal",
+     "state": "changed",
+     "n_o": 225,
+     "n_n": 245,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SaveTuneData",
+     "state": "changed",
+     "n_o": 44,
+     "n_n": 50,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_TorqueBoostDeal",
+     "state": "changed",
+     "n_o": 22,
+     "n_n": 22,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateInvType",
+     "state": "changed",
+     "n_o": 28,
+     "n_n": 30,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ValidateInvType",
+     "state": "changed",
+     "n_o": 36,
+     "n_n": 37,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InverterTypeRelatedNoMotorParaSaveDeal",
+     "state": "same",
+     "n_o": 57,
+     "n_n": 57,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_io",
+   "n_func": 74,
+   "same": 40,
+   "changed": 34,
+   "ext_o": 74,
+   "ext_n": 74,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_ioDoFuncFlag",
+    "_ioErrorOutputActive",
+    "_ioFrqFdtArrive",
+    "_ioHdoCompareTrack",
+    "_ioPulseSourceConflict",
+    "_ioSetOrClear"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_io": {
+     "entry": [
+      "AiCalc",
+      "AoCalc",
+      "AoCalcChannel",
+      "Di2Bin",
+      "DiCalc",
+      "Do2Bin",
+      "DoCalc",
+      "Dout",
+      "Dout1",
+      "Dout10",
+      "Dout11",
+      "Dout12",
+      "Dout13",
+      "Dout14",
+      "Dout15",
+      "Dout16",
+      "Dout17",
+      "Dout18",
+      "Dout19",
+      "Dout2",
+      "Dout21",
+      "Dout22",
+      "Dout23",
+      "Dout24",
+      "Dout25",
+      "Dout26",
+      "Dout27",
+      "Dout28",
+      "Dout29",
+      "Dout3",
+      "Dout30",
+      "Dout31",
+      "Dout32",
+      "Dout33",
+      "Dout34",
+      "Dout35",
+      "Dout36",
+      "Dout37",
+      "Dout38",
+      "Dout39",
+      "Dout4",
+      "Dout40",
+      "Dout41",
+      "Dout5",
+      "Dout6",
+      "Dout7",
+      "Dout8",
+      "Dout9",
+      "DoutRSVD",
+      "FMPDeal",
+      "GetTemperature",
+      "GetTemperatureCalc",
+      "InitDIGpio",
+      "InitDOGpio",
+      "InitECap1Gpio",
+      "InitECap2Gpio",
+      "InitECap3Gpio",
+      "InitECap4Gpio",
+      "InitEPwm4Gpio",
+      "InitEPwm5Gpio",
+      "InitEPwm6Gpio",
+      "InitSetEPWM4",
+      "InitSetEPWM5",
+      "InitSetEPWM6",
+      "InitSetEcap1",
+      "LineCalc",
+      "LpfCalc",
+      "NUM",
+      "PulseInCalc",
+      "PulseInSample",
+      "PulseOutCalc",
+      "TemperatureAfterDeal",
+      "TemperatureDeal",
+      "TemperatureSensorDeal",
+      "UpdateFmpAoValue",
+      "aiDeal",
+      "aiLpf",
+      "aoFmpMax",
+      "aoFmpValue",
+      "bOverFlowCounterTicker",
+      "bOverFlowLengthCurrent",
+      "capturePeriodSum",
+      "captureTicker",
+      "diDelayTicker",
+      "diFunc",
+      "diLogic",
+      "diSelectFunc",
+      "diStatus",
+      "doDelayTicker",
+      "doFunc",
+      "doHwStatus",
+      "doLogic",
+      "doStatus",
+      "getDiHwStatus",
+      "lineSpeed",
+      "motorForeOT",
+      "motorOT",
+      "noCaptureTicker",
+      "oCurrentCheckFlag",
+      "oCurrentChkTicker",
+      "pulseInFrq",
+      "pulseInFrq1",
+      "pulseInLpf",
+      "pulseInSet",
+      "setDOStatus",
+      "softOcDoFlag",
+      "tempSampleSum",
+      "temperature",
+      "temperatureVoltage",
+      "temperatureVoltageOrigin",
+      "tickerTempDeal",
+      "vdiFcSet",
+      "vdiSrc"
+     ],
+     "calls": 70,
+     "cases": 56213,
+     "mism": 0,
+     "neg": 206,
+     "neg_rc1": 206
+    }
+   },
+   "funcs": [
+    {
+     "f": "_AiCalc",
+     "state": "changed",
+     "n_o": 304,
+     "n_n": 304,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_AoCalcChannel",
+     "state": "changed",
+     "n_o": 141,
+     "n_n": 137,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Di2Bin",
+     "state": "changed",
+     "n_o": 80,
+     "n_n": 87,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DiCalc",
+     "state": "changed",
+     "n_o": 364,
+     "n_n": 335,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DoCalc",
+     "state": "changed",
+     "n_o": 265,
+     "n_n": 244,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout1",
+     "state": "changed",
+     "n_o": 6,
+     "n_n": 16,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout19",
+     "state": "changed",
+     "n_o": 6,
+     "n_n": 21,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout2",
+     "state": "changed",
+     "n_o": 22,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout25",
+     "state": "changed",
+     "n_o": 49,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout26",
+     "state": "changed",
+     "n_o": 48,
+     "n_n": 35,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout27",
+     "state": "changed",
+     "n_o": 48,
+     "n_n": 35,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout3",
+     "state": "changed",
+     "n_o": 49,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout34",
+     "state": "changed",
+     "n_o": 47,
+     "n_n": 46,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout36",
+     "state": "changed",
+     "n_o": 10,
+     "n_n": 14,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout38",
+     "state": "changed",
+     "n_o": 17,
+     "n_n": 6,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout4",
+     "state": "changed",
+     "n_o": 76,
+     "n_n": 51,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout41",
+     "state": "changed",
+     "n_o": 26,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout6",
+     "state": "changed",
+     "n_o": 6,
+     "n_n": 16,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout7",
+     "state": "changed",
+     "n_o": 6,
+     "n_n": 16,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout8",
+     "state": "changed",
+     "n_o": 13,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Dout9",
+     "state": "changed",
+     "n_o": 13,
+     "n_n": 11,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_FMPDeal",
+     "state": "changed",
+     "n_o": 33,
+     "n_n": 33,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetTemperature",
+     "state": "changed",
+     "n_o": 23,
+     "n_n": 25,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetTemperatureCalc",
+     "state": "changed",
+     "n_o": 62,
+     "n_n": 61,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_LineCalc",
+     "state": "changed",
+     "n_o": 100,
+     "n_n": 100,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_LpfCalc",
+     "state": "changed",
+     "n_o": 64,
+     "n_n": 52,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PulseInCalc",
+     "state": "changed",
+     "n_o": 264,
+     "n_n": 261,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PulseInSample",
+     "state": "changed",
+     "n_o": 57,
+     "n_n": 66,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PulseOutCalc",
+     "state": "changed",
+     "n_o": 223,
+     "n_n": 204,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_TemperatureAfterDeal",
+     "state": "changed",
+     "n_o": 23,
+     "n_n": 25,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_TemperatureDeal",
+     "state": "changed",
+     "n_o": 19,
+     "n_n": 19,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_TemperatureSensorDeal",
+     "state": "changed",
+     "n_o": 95,
+     "n_n": 97,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateFmpAoValue",
+     "state": "changed",
+     "n_o": 170,
+     "n_n": 151,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_getDiHwStatus",
+     "state": "changed",
+     "n_o": 142,
+     "n_n": 93,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ioDoFuncFlag",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 31,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ioErrorOutputActive",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 24,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ioFrqFdtArrive",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 39,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ioHdoCompareTrack",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 37,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ioPulseSourceConflict",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 43,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ioSetOrClear",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 16,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_Do2Bin",
+     "state": "same",
+     "n_o": 34,
+     "n_n": 34,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout10",
+     "state": "same",
+     "n_o": 10,
+     "n_n": 10,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout11",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout12",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout13",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout14",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout15",
+     "state": "same",
+     "n_o": 12,
+     "n_n": 12,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout16",
+     "state": "same",
+     "n_o": 15,
+     "n_n": 15,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout17",
+     "state": "same",
+     "n_o": 27,
+     "n_n": 27,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout18",
+     "state": "same",
+     "n_o": 30,
+     "n_n": 30,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout21",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout22",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout23",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout24",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout28",
+     "state": "same",
+     "n_o": 35,
+     "n_n": 35,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout29",
+     "state": "same",
+     "n_o": 37,
+     "n_n": 37,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout30",
+     "state": "same",
+     "n_o": 16,
+     "n_n": 16,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout31",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout32",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout33",
+     "state": "same",
+     "n_o": 14,
+     "n_n": 14,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout35",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout37",
+     "state": "same",
+     "n_o": 27,
+     "n_n": 27,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout39",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout40",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Dout5",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_DoutRSVD",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitDIGpio",
+     "state": "same",
+     "n_o": 49,
+     "n_n": 49,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitDOGpio",
+     "state": "same",
+     "n_o": 29,
+     "n_n": 29,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitECap1Gpio",
+     "state": "same",
+     "n_o": 8,
+     "n_n": 8,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitECap2Gpio",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitECap3Gpio",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitECap4Gpio",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitEPwm4Gpio",
+     "state": "same",
+     "n_o": 11,
+     "n_n": 11,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitEPwm5Gpio",
+     "state": "same",
+     "n_o": 11,
+     "n_n": 11,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitEPwm6Gpio",
+     "state": "same",
+     "n_o": 11,
+     "n_n": 11,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSetEPWM4",
+     "state": "same",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSetEPWM5",
+     "state": "same",
+     "n_o": 29,
+     "n_n": 29,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSetEPWM6",
+     "state": "same",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSetEcap1",
+     "state": "same",
+     "n_o": 8,
+     "n_n": 8,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_setDOStatus",
+     "state": "same",
+     "n_o": 44,
+     "n_n": 44,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_main",
+   "n_func": 18,
+   "same": 15,
+   "changed": 3,
+   "ext_o": 18,
+   "ext_n": 18,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_main": {
+     "entry": [
+      "CODE_RUN_DISPLAY_UPDATE_TIME",
+      "CodeRunMonitor",
+      "FuncVariableInit",
+      "GetNumberDigit",
+      "GetNumberDigit1",
+      "GetNumberDigit2",
+      "InitDspFunc",
+      "InitForFunctionApp",
+      "InitFuncCode",
+      "Main05msFunctionA",
+      "Main05msFunctionB",
+      "Main05msFunctionC",
+      "Main05msFunctionD",
+      "Main05msFunctionEachEnd",
+      "Main05msFunctionEachStart",
+      "Main0msFunction",
+      "Main2msFunction",
+      "SoftVersionDeal",
+      "aiaoChckReadOK",
+      "driveCoeff",
+      "funcCodeInitStatus",
+      "getMomeryValue",
+      "mainLoopTicker",
+      "memoryValue",
+      "motorFc",
+      "motorPara",
+      "motorSn",
+      "powerOnStatus",
+      "ticker05msFuncEa",
+      "ticker05msFuncEach",
+      "ticker05msFuncEachDisp",
+      "ticker05msFuncIn",
+      "ticker05msFuncInternal",
+      "ticker05msFuncInternalDisp",
+      "timeBase",
+      "timeBase05msOld"
+     ],
+     "calls": 0,
+     "cases": 77173,
+     "mism": 0,
+     "neg": 155,
+     "neg_rc1": 154
+    }
+   },
+   "funcs": [
+    {
+     "f": "_GetNumberDigit",
+     "state": "changed",
+     "n_o": 31,
+     "n_n": 31,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Main05msFunctionB",
+     "state": "changed",
+     "n_o": 15,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SoftVersionDeal",
+     "state": "changed",
+     "n_o": 14,
+     "n_n": 19,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_CodeRunMonitor",
+     "state": "same",
+     "n_o": 55,
+     "n_n": 55,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_FuncVariableInit",
+     "state": "same",
+     "n_o": 94,
+     "n_n": 94,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetNumberDigit1",
+     "state": "same",
+     "n_o": 69,
+     "n_n": 69,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetNumberDigit2",
+     "state": "same",
+     "n_o": 42,
+     "n_n": 42,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitDspFunc",
+     "state": "same",
+     "n_o": 28,
+     "n_n": 28,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitForFunctionApp",
+     "state": "same",
+     "n_o": 4,
+     "n_n": 4,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitFuncCode",
+     "state": "same",
+     "n_o": 335,
+     "n_n": 335,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main05msFunctionA",
+     "state": "same",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main05msFunctionC",
+     "state": "same",
+     "n_o": 18,
+     "n_n": 18,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main05msFunctionD",
+     "state": "same",
+     "n_o": 15,
+     "n_n": 15,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main05msFunctionEachEnd",
+     "state": "same",
+     "n_o": 27,
+     "n_n": 27,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main05msFunctionEachStart",
+     "state": "same",
+     "n_o": 31,
+     "n_n": 31,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main0msFunction",
+     "state": "same",
+     "n_o": 2,
+     "n_n": 2,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Main2msFunction",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_getMomeryValue",
+     "state": "same",
+     "n_o": 10,
+     "n_n": 10,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_menu",
+   "n_func": 70,
+   "same": 31,
+   "changed": 39,
+   "ext_o": 70,
+   "ext_n": 70,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_HandleQuickMenuSwitch",
+    "_SetWinkFlag"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_menu": {
+     "entry": [
+      "CYCLESHIFT",
+      "DEALCHECKGRADE",
+      "DEALUSERGRADE",
+      "DISPDATA",
+      "DealCheckMenuModeGroupGrade",
+      "DealUserMenuModeGroupGrade",
+      "DispDataDeal",
+      "FCDIGIT2BIN",
+      "FcDigit2Bin",
+      "GETDIGITS",
+      "GROUPUPDOWN",
+      "GetDispDigits",
+      "GroupUpDown",
+      "LIMITDEAL",
+      "LIMITOVTURN",
+      "LimitDeal",
+      "LimitOverTurnDeal",
+      "MENU0ADDLEVEL",
+      "MENU0ENTER",
+      "MENU0PRG",
+      "MENU0SHIFT",
+      "MENU0UP",
+      "MENU1DOWN",
+      "MENU1ENTER",
+      "MENU1PRG",
+      "MENU1SHIFT",
+      "MENU1UP",
+      "MENU1UPDN",
+      "MENU2DOWN",
+      "MENU2ENTER",
+      "MENU2PRG",
+      "MENU2SHIFT",
+      "MENU2UP",
+      "MENU2UPDN",
+      "MENU3DOWN",
+      "MENU3ENTER",
+      "MENU3PRG",
+      "MENU3SHIFT",
+      "MENU3UP",
+      "MENU3UPDN",
+      "MENUINIT",
+      "MENUMFK",
+      "MENUMODEDEAL",
+      "MENUMODESW",
+      "MENUQUICK",
+      "MENURUN",
+      "MENUSTOP",
+      "MODENTER",
+      "MODUPDOWN",
+      "MOTORDEBUG",
+      "Menu0AddMenuLevel",
+      "Menu0OnEnter",
+      "Menu0OnPrg",
+      "Menu0OnShift",
+      "Menu0OnUpDown",
+      "Menu1OnDown",
+      "Menu1OnEnter",
+      "Menu1OnPrg",
+      "Menu1OnShift",
+      "Menu1OnUp",
+      "Menu1OnUpDown",
+      "Menu2OnDown",
+      "Menu2OnEnter",
+      "Menu2OnPrg",
+      "Menu2OnShift",
+      "Menu2OnUp",
+      "Menu2OnUpDown",
+      "Menu3OnDown",
+      "Menu3OnEnter",
+      "Menu3OnPrg",
+      "Menu3OnShift",
+      "Menu3OnUp",
+      "Menu3OnUpDown",
+      "MenuInit",
+      "MenuModeDeal",
+      "MenuModeSwitch",
+      "MenuOnMfk",
+      "MenuOnQuick",
+      "MenuOnRun",
+      "MenuOnStop",
+      "MenuPwdHint2Input",
+      "MenuPwdHintOnQuick",
+      "MenuPwdHintOnShift",
+      "MenuPwdInputOnDown",
+      "MenuPwdInputOnEnter",
+      "MenuPwdInputOnQuick",
+      "MenuPwdInputOnShift",
+      "MenuPwdInputOnUp",
+      "MenuPwdInputOnUpDown",
+      "MenuPwdOnPrg",
+      "ModifyFunccodeEnter",
+      "ModifyFunccodeUpDown",
+      "MotorDebugFcDeal",
+      "N",
+      "NOSAME",
+      "NoSameDeal",
+      "OVERTURN",
+      "OverTurnDeal",
+      "PWDHINT2INPUT",
+      "PWDHINTONQUICK",
+      "PWDHINTONSHIFT",
+      "PWDINPUTDOWN",
+      "PWDINPUTENTER",
+      "PWDINPUTQUICK",
+      "PWDINPUTSHIFT",
+      "PWDINPUTUP",
+      "PWDINPUTUPDN",
+      "PWDONPRG",
+      "UPDATTR",
+      "UPDDIFUNC",
+      "UPDERR",
+      "UPDGRADE",
+      "UPDGROUP",
+      "UPDIOSTATUS",
+      "UPDMENU0",
+      "UPDMENU0ST",
+      "UPDMENU1",
+      "UPDMENU2",
+      "UPDMENU3",
+      "UPDPWDHINT",
+      "UPDPWDINPUT",
+      "UPDTUNE",
+      "UPDU0",
+      "UpdataFuncCodeGrade",
+      "UpdateDisplayBufferAttribute",
+      "UpdateDisplayBufferVisualDiFunc",
+      "UpdateDisplayBufferVisualIoStatus",
+      "UpdateErrorDisplayBuffer",
+      "UpdateGroupDisplay",
+      "UpdateMenu0DispStatus",
+      "UpdateMenu0DisplayBuffer",
+      "UpdateMenu1DisplayBuffer",
+      "UpdateMenu2DisplayBuffer",
+      "UpdateMenu3DisplayBuffer",
+      "UpdateMenuPwdHintDisplayBuffer",
+      "UpdateMenuPwdInputDisplayBuffer",
+      "UpdateTuneDisplayBuffer",
+      "UpdateU0Data",
+      "VALIDTUNE",
+      "ValidateTuneCmd",
+      "case",
+      "checkMenuModeDealStatus",
+      "commDispIndex",
+      "curFc",
+      "cycleShiftDeal",
+      "decNumber",
+      "deltaK",
+      "diFuncIndex",
+      "dispAttributeU0",
+      "facPassViewStatus",
+      "factoryPwdStatus",
+      "frqSrcFuncIndex",
+      "groupDisplay",
+      "hexNumber",
+      "menu",
+      "menu0DispStatus",
+      "menuAttri",
+      "menuFc",
+      "menuLevel",
+      "menuMode",
+      "menuModeOld",
+      "menuModeStatus",
+      "menuModeTmp",
+      "motorDebugFc",
+      "stopDispIndex",
+      "torQueFrqDispLpf",
+      "torqueCurrentAct",
+      "userMenuModeFcIndex"
+     ],
+     "calls": 0,
+     "cases": 107013,
+     "mism": 0,
+     "neg": 448,
+     "neg_rc1": 435
+    },
+    "f_menu_w1": {
+     "entry": [
+      "CYCLESHIFT",
+      "DEALCHECKGRADE",
+      "DEALUSERGRADE",
+      "DISPDATA",
+      "DealCheckMenuModeGroupGrade",
+      "DealUserMenuModeGroupGrade",
+      "DispDataDeal",
+      "FCDIGIT2BIN",
+      "FcDigit2Bin",
+      "GETDIGITS",
+      "GROUPUPDOWN",
+      "GetDispDigits",
+      "GroupUpDown",
+      "LIMITDEAL",
+      "LIMITOVTURN",
+      "LimitDeal",
+      "LimitOverTurnDeal",
+      "MENU0ADDLEVEL",
+      "MENU0ENTER",
+      "MENU0PRG",
+      "MENU0SHIFT",
+      "MENU0UP",
+      "MENU1DOWN",
+      "MENU1ENTER",
+      "MENU1PRG",
+      "MENU1SHIFT",
+      "MENU1UP",
+      "MENU1UPDN",
+      "MENU2DOWN",
+      "MENU2ENTER",
+      "MENU2PRG",
+      "MENU2SHIFT",
+      "MENU2UP",
+      "MENU2UPDN",
+      "MENU3DOWN",
+      "MENU3ENTER",
+      "MENU3PRG",
+      "MENU3SHIFT",
+      "MENU3UP",
+      "MENU3UPDN",
+      "MENUINIT",
+      "MENUMFK",
+      "MENUMODEDEAL",
+      "MENUMODESW",
+      "MENUQUICK",
+      "MENURUN",
+      "MENUSTOP",
+      "MODENTER",
+      "MODUPDOWN",
+      "MOTORDEBUG",
+      "Menu0AddMenuLevel",
+      "Menu0OnEnter",
+      "Menu0OnPrg",
+      "Menu0OnShift",
+      "Menu0OnUpDown",
+      "Menu1OnDown",
+      "Menu1OnEnter",
+      "Menu1OnPrg",
+      "Menu1OnShift",
+      "Menu1OnUp",
+      "Menu1OnUpDown",
+      "Menu2OnDown",
+      "Menu2OnEnter",
+      "Menu2OnPrg",
+      "Menu2OnShift",
+      "Menu2OnUp",
+      "Menu2OnUpDown",
+      "Menu3OnDown",
+      "Menu3OnEnter",
+      "Menu3OnPrg",
+      "Menu3OnShift",
+      "Menu3OnUp",
+      "Menu3OnUpDown",
+      "MenuInit",
+      "MenuModeDeal",
+      "MenuModeSwitch",
+      "MenuOnMfk",
+      "MenuOnQuick",
+      "MenuOnRun",
+      "MenuOnStop",
+      "MenuPwdHint2Input",
+      "MenuPwdHintOnQuick",
+      "MenuPwdHintOnShift",
+      "MenuPwdInputOnDown",
+      "MenuPwdInputOnEnter",
+      "MenuPwdInputOnQuick",
+      "MenuPwdInputOnShift",
+      "MenuPwdInputOnUp",
+      "MenuPwdInputOnUpDown",
+      "MenuPwdOnPrg",
+      "ModifyFunccodeEnter",
+      "ModifyFunccodeUpDown",
+      "MotorDebugFcDeal",
+      "N",
+      "NOSAME",
+      "NoSameDeal",
+      "OVERTURN",
+      "OverTurnDeal",
+      "PWDHINT2INPUT",
+      "PWDHINTONQUICK",
+      "PWDHINTONSHIFT",
+      "PWDINPUTDOWN",
+      "PWDINPUTENTER",
+      "PWDINPUTQUICK",
+      "PWDINPUTSHIFT",
+      "PWDINPUTUP",
+      "PWDINPUTUPDN",
+      "PWDONPRG",
+      "UPDATTR",
+      "UPDDIFUNC",
+      "UPDERR",
+      "UPDGRADE",
+      "UPDGROUP",
+      "UPDIOSTATUS",
+      "UPDMENU0",
+      "UPDMENU0ST",
+      "UPDMENU1",
+      "UPDMENU2",
+      "UPDMENU3",
+      "UPDPWDHINT",
+      "UPDPWDINPUT",
+      "UPDTUNE",
+      "UPDU0",
+      "UpdataFuncCodeGrade",
+      "UpdateDisplayBufferAttribute",
+      "UpdateDisplayBufferVisualDiFunc",
+      "UpdateDisplayBufferVisualIoStatus",
+      "UpdateErrorDisplayBuffer",
+      "UpdateGroupDisplay",
+      "UpdateMenu0DispStatus",
+      "UpdateMenu0DisplayBuffer",
+      "UpdateMenu1DisplayBuffer",
+      "UpdateMenu2DisplayBuffer",
+      "UpdateMenu3DisplayBuffer",
+      "UpdateMenuPwdHintDisplayBuffer",
+      "UpdateMenuPwdInputDisplayBuffer",
+      "UpdateTuneDisplayBuffer",
+      "UpdateU0Data",
+      "VALIDTUNE",
+      "ValidateTuneCmd",
+      "case",
+      "checkMenuModeDealStatus",
+      "commDispIndex",
+      "curFc",
+      "cycleShiftDeal",
+      "decNumber",
+      "deltaK",
+      "diFuncIndex",
+      "dispAttributeU0",
+      "facPassViewStatus",
+      "factoryPwdStatus",
+      "frqSrcFuncIndex",
+      "groupDisplay",
+      "hexNumber",
+      "menu",
+      "menu0DispStatus",
+      "menuAttri",
+      "menuFc",
+      "menuLevel",
+      "menuMode",
+      "menuModeOld",
+      "menuModeStatus",
+      "menuModeTmp",
+      "motorDebugFc",
+      "stopDispIndex",
+      "torQueFrqDispLpf",
+      "torqueCurrentAct",
+      "userMenuModeFcIndex"
+     ],
+     "calls": 0,
+     "cases": null,
+     "mism": null,
+     "neg": 112,
+     "neg_rc1": 110
+    },
+    "f_menu_w2": {
+     "entry": [
+      "CYCLESHIFT",
+      "DEALCHECKGRADE",
+      "DEALUSERGRADE",
+      "DISPDATA",
+      "DealCheckMenuModeGroupGrade",
+      "DealUserMenuModeGroupGrade",
+      "DispDataDeal",
+      "FCDIGIT2BIN",
+      "FcDigit2Bin",
+      "GETDIGITS",
+      "GROUPUPDOWN",
+      "GetDispDigits",
+      "GroupUpDown",
+      "LIMITDEAL",
+      "LIMITOVTURN",
+      "LimitDeal",
+      "LimitOverTurnDeal",
+      "MENU0ADDLEVEL",
+      "MENU0ENTER",
+      "MENU0PRG",
+      "MENU0SHIFT",
+      "MENU0UP",
+      "MENU1DOWN",
+      "MENU1ENTER",
+      "MENU1PRG",
+      "MENU1SHIFT",
+      "MENU1UP",
+      "MENU1UPDN",
+      "MENU2DOWN",
+      "MENU2ENTER",
+      "MENU2PRG",
+      "MENU2SHIFT",
+      "MENU2UP",
+      "MENU2UPDN",
+      "MENU3DOWN",
+      "MENU3ENTER",
+      "MENU3PRG",
+      "MENU3SHIFT",
+      "MENU3UP",
+      "MENU3UPDN",
+      "MENUINIT",
+      "MENUMFK",
+      "MENUMODEDEAL",
+      "MENUMODESW",
+      "MENUQUICK",
+      "MENURUN",
+      "MENUSTOP",
+      "MODENTER",
+      "MODUPDOWN",
+      "MOTORDEBUG",
+      "Menu0AddMenuLevel",
+      "Menu0OnEnter",
+      "Menu0OnPrg",
+      "Menu0OnShift",
+      "Menu0OnUpDown",
+      "Menu1OnDown",
+      "Menu1OnEnter",
+      "Menu1OnPrg",
+      "Menu1OnShift",
+      "Menu1OnUp",
+      "Menu1OnUpDown",
+      "Menu2OnDown",
+      "Menu2OnEnter",
+      "Menu2OnPrg",
+      "Menu2OnShift",
+      "Menu2OnUp",
+      "Menu2OnUpDown",
+      "Menu3OnDown",
+      "Menu3OnEnter",
+      "Menu3OnPrg",
+      "Menu3OnShift",
+      "Menu3OnUp",
+      "Menu3OnUpDown",
+      "MenuInit",
+      "MenuModeDeal",
+      "MenuModeSwitch",
+      "MenuOnMfk",
+      "MenuOnQuick",
+      "MenuOnRun",
+      "MenuOnStop",
+      "MenuPwdHint2Input",
+      "MenuPwdHintOnQuick",
+      "MenuPwdHintOnShift",
+      "MenuPwdInputOnDown",
+      "MenuPwdInputOnEnter",
+      "MenuPwdInputOnQuick",
+      "MenuPwdInputOnShift",
+      "MenuPwdInputOnUp",
+      "MenuPwdInputOnUpDown",
+      "MenuPwdOnPrg",
+      "ModifyFunccodeEnter",
+      "ModifyFunccodeUpDown",
+      "MotorDebugFcDeal",
+      "N",
+      "NOSAME",
+      "NoSameDeal",
+      "OVERTURN",
+      "OverTurnDeal",
+      "PWDHINT2INPUT",
+      "PWDHINTONQUICK",
+      "PWDHINTONSHIFT",
+      "PWDINPUTDOWN",
+      "PWDINPUTENTER",
+      "PWDINPUTQUICK",
+      "PWDINPUTSHIFT",
+      "PWDINPUTUP",
+      "PWDINPUTUPDN",
+      "PWDONPRG",
+      "UPDATTR",
+      "UPDDIFUNC",
+      "UPDERR",
+      "UPDGRADE",
+      "UPDGROUP",
+      "UPDIOSTATUS",
+      "UPDMENU0",
+      "UPDMENU0ST",
+      "UPDMENU1",
+      "UPDMENU2",
+      "UPDMENU3",
+      "UPDPWDHINT",
+      "UPDPWDINPUT",
+      "UPDTUNE",
+      "UPDU0",
+      "UpdataFuncCodeGrade",
+      "UpdateDisplayBufferAttribute",
+      "UpdateDisplayBufferVisualDiFunc",
+      "UpdateDisplayBufferVisualIoStatus",
+      "UpdateErrorDisplayBuffer",
+      "UpdateGroupDisplay",
+      "UpdateMenu0DispStatus",
+      "UpdateMenu0DisplayBuffer",
+      "UpdateMenu1DisplayBuffer",
+      "UpdateMenu2DisplayBuffer",
+      "UpdateMenu3DisplayBuffer",
+      "UpdateMenuPwdHintDisplayBuffer",
+      "UpdateMenuPwdInputDisplayBuffer",
+      "UpdateTuneDisplayBuffer",
+      "UpdateU0Data",
+      "VALIDTUNE",
+      "ValidateTuneCmd",
+      "case",
+      "checkMenuModeDealStatus",
+      "commDispIndex",
+      "curFc",
+      "cycleShiftDeal",
+      "decNumber",
+      "deltaK",
+      "diFuncIndex",
+      "dispAttributeU0",
+      "facPassViewStatus",
+      "factoryPwdStatus",
+      "frqSrcFuncIndex",
+      "groupDisplay",
+      "hexNumber",
+      "menu",
+      "menu0DispStatus",
+      "menuAttri",
+      "menuFc",
+      "menuLevel",
+      "menuMode",
+      "menuModeOld",
+      "menuModeStatus",
+      "menuModeTmp",
+      "motorDebugFc",
+      "stopDispIndex",
+      "torQueFrqDispLpf",
+      "torqueCurrentAct",
+      "userMenuModeFcIndex"
+     ],
+     "calls": 0,
+     "cases": null,
+     "mism": null,
+     "neg": 112,
+     "neg_rc1": 111
+    },
+    "f_menu_w3": {
+     "entry": [
+      "CYCLESHIFT",
+      "DEALCHECKGRADE",
+      "DEALUSERGRADE",
+      "DISPDATA",
+      "DealCheckMenuModeGroupGrade",
+      "DealUserMenuModeGroupGrade",
+      "DispDataDeal",
+      "FCDIGIT2BIN",
+      "FcDigit2Bin",
+      "GETDIGITS",
+      "GROUPUPDOWN",
+      "GetDispDigits",
+      "GroupUpDown",
+      "LIMITDEAL",
+      "LIMITOVTURN",
+      "LimitDeal",
+      "LimitOverTurnDeal",
+      "MENU0ADDLEVEL",
+      "MENU0ENTER",
+      "MENU0PRG",
+      "MENU0SHIFT",
+      "MENU0UP",
+      "MENU1DOWN",
+      "MENU1ENTER",
+      "MENU1PRG",
+      "MENU1SHIFT",
+      "MENU1UP",
+      "MENU1UPDN",
+      "MENU2DOWN",
+      "MENU2ENTER",
+      "MENU2PRG",
+      "MENU2SHIFT",
+      "MENU2UP",
+      "MENU2UPDN",
+      "MENU3DOWN",
+      "MENU3ENTER",
+      "MENU3PRG",
+      "MENU3SHIFT",
+      "MENU3UP",
+      "MENU3UPDN",
+      "MENUINIT",
+      "MENUMFK",
+      "MENUMODEDEAL",
+      "MENUMODESW",
+      "MENUQUICK",
+      "MENURUN",
+      "MENUSTOP",
+      "MODENTER",
+      "MODUPDOWN",
+      "MOTORDEBUG",
+      "Menu0AddMenuLevel",
+      "Menu0OnEnter",
+      "Menu0OnPrg",
+      "Menu0OnShift",
+      "Menu0OnUpDown",
+      "Menu1OnDown",
+      "Menu1OnEnter",
+      "Menu1OnPrg",
+      "Menu1OnShift",
+      "Menu1OnUp",
+      "Menu1OnUpDown",
+      "Menu2OnDown",
+      "Menu2OnEnter",
+      "Menu2OnPrg",
+      "Menu2OnShift",
+      "Menu2OnUp",
+      "Menu2OnUpDown",
+      "Menu3OnDown",
+      "Menu3OnEnter",
+      "Menu3OnPrg",
+      "Menu3OnShift",
+      "Menu3OnUp",
+      "Menu3OnUpDown",
+      "MenuInit",
+      "MenuModeDeal",
+      "MenuModeSwitch",
+      "MenuOnMfk",
+      "MenuOnQuick",
+      "MenuOnRun",
+      "MenuOnStop",
+      "MenuPwdHint2Input",
+      "MenuPwdHintOnQuick",
+      "MenuPwdHintOnShift",
+      "MenuPwdInputOnDown",
+      "MenuPwdInputOnEnter",
+      "MenuPwdInputOnQuick",
+      "MenuPwdInputOnShift",
+      "MenuPwdInputOnUp",
+      "MenuPwdInputOnUpDown",
+      "MenuPwdOnPrg",
+      "ModifyFunccodeEnter",
+      "ModifyFunccodeUpDown",
+      "MotorDebugFcDeal",
+      "N",
+      "NOSAME",
+      "NoSameDeal",
+      "OVERTURN",
+      "OverTurnDeal",
+      "PWDHINT2INPUT",
+      "PWDHINTONQUICK",
+      "PWDHINTONSHIFT",
+      "PWDINPUTDOWN",
+      "PWDINPUTENTER",
+      "PWDINPUTQUICK",
+      "PWDINPUTSHIFT",
+      "PWDINPUTUP",
+      "PWDINPUTUPDN",
+      "PWDONPRG",
+      "UPDATTR",
+      "UPDDIFUNC",
+      "UPDERR",
+      "UPDGRADE",
+      "UPDGROUP",
+      "UPDIOSTATUS",
+      "UPDMENU0",
+      "UPDMENU0ST",
+      "UPDMENU1",
+      "UPDMENU2",
+      "UPDMENU3",
+      "UPDPWDHINT",
+      "UPDPWDINPUT",
+      "UPDTUNE",
+      "UPDU0",
+      "UpdataFuncCodeGrade",
+      "UpdateDisplayBufferAttribute",
+      "UpdateDisplayBufferVisualDiFunc",
+      "UpdateDisplayBufferVisualIoStatus",
+      "UpdateErrorDisplayBuffer",
+      "UpdateGroupDisplay",
+      "UpdateMenu0DispStatus",
+      "UpdateMenu0DisplayBuffer",
+      "UpdateMenu1DisplayBuffer",
+      "UpdateMenu2DisplayBuffer",
+      "UpdateMenu3DisplayBuffer",
+      "UpdateMenuPwdHintDisplayBuffer",
+      "UpdateMenuPwdInputDisplayBuffer",
+      "UpdateTuneDisplayBuffer",
+      "UpdateU0Data",
+      "VALIDTUNE",
+      "ValidateTuneCmd",
+      "case",
+      "checkMenuModeDealStatus",
+      "commDispIndex",
+      "curFc",
+      "cycleShiftDeal",
+      "decNumber",
+      "deltaK",
+      "diFuncIndex",
+      "dispAttributeU0",
+      "facPassViewStatus",
+      "factoryPwdStatus",
+      "frqSrcFuncIndex",
+      "groupDisplay",
+      "hexNumber",
+      "menu",
+      "menu0DispStatus",
+      "menuAttri",
+      "menuFc",
+      "menuLevel",
+      "menuMode",
+      "menuModeOld",
+      "menuModeStatus",
+      "menuModeTmp",
+      "motorDebugFc",
+      "stopDispIndex",
+      "torQueFrqDispLpf",
+      "torqueCurrentAct",
+      "userMenuModeFcIndex"
+     ],
+     "calls": 0,
+     "cases": null,
+     "mism": null,
+     "neg": 112,
+     "neg_rc1": 112
+    },
+    "f_menu_w4": {
+     "entry": [
+      "CYCLESHIFT",
+      "DEALCHECKGRADE",
+      "DEALUSERGRADE",
+      "DISPDATA",
+      "DealCheckMenuModeGroupGrade",
+      "DealUserMenuModeGroupGrade",
+      "DispDataDeal",
+      "FCDIGIT2BIN",
+      "FcDigit2Bin",
+      "GETDIGITS",
+      "GROUPUPDOWN",
+      "GetDispDigits",
+      "GroupUpDown",
+      "LIMITDEAL",
+      "LIMITOVTURN",
+      "LimitDeal",
+      "LimitOverTurnDeal",
+      "MENU0ADDLEVEL",
+      "MENU0ENTER",
+      "MENU0PRG",
+      "MENU0SHIFT",
+      "MENU0UP",
+      "MENU1DOWN",
+      "MENU1ENTER",
+      "MENU1PRG",
+      "MENU1SHIFT",
+      "MENU1UP",
+      "MENU1UPDN",
+      "MENU2DOWN",
+      "MENU2ENTER",
+      "MENU2PRG",
+      "MENU2SHIFT",
+      "MENU2UP",
+      "MENU2UPDN",
+      "MENU3DOWN",
+      "MENU3ENTER",
+      "MENU3PRG",
+      "MENU3SHIFT",
+      "MENU3UP",
+      "MENU3UPDN",
+      "MENUINIT",
+      "MENUMFK",
+      "MENUMODEDEAL",
+      "MENUMODESW",
+      "MENUQUICK",
+      "MENURUN",
+      "MENUSTOP",
+      "MODENTER",
+      "MODUPDOWN",
+      "MOTORDEBUG",
+      "Menu0AddMenuLevel",
+      "Menu0OnEnter",
+      "Menu0OnPrg",
+      "Menu0OnShift",
+      "Menu0OnUpDown",
+      "Menu1OnDown",
+      "Menu1OnEnter",
+      "Menu1OnPrg",
+      "Menu1OnShift",
+      "Menu1OnUp",
+      "Menu1OnUpDown",
+      "Menu2OnDown",
+      "Menu2OnEnter",
+      "Menu2OnPrg",
+      "Menu2OnShift",
+      "Menu2OnUp",
+      "Menu2OnUpDown",
+      "Menu3OnDown",
+      "Menu3OnEnter",
+      "Menu3OnPrg",
+      "Menu3OnShift",
+      "Menu3OnUp",
+      "Menu3OnUpDown",
+      "MenuInit",
+      "MenuModeDeal",
+      "MenuModeSwitch",
+      "MenuOnMfk",
+      "MenuOnQuick",
+      "MenuOnRun",
+      "MenuOnStop",
+      "MenuPwdHint2Input",
+      "MenuPwdHintOnQuick",
+      "MenuPwdHintOnShift",
+      "MenuPwdInputOnDown",
+      "MenuPwdInputOnEnter",
+      "MenuPwdInputOnQuick",
+      "MenuPwdInputOnShift",
+      "MenuPwdInputOnUp",
+      "MenuPwdInputOnUpDown",
+      "MenuPwdOnPrg",
+      "ModifyFunccodeEnter",
+      "ModifyFunccodeUpDown",
+      "MotorDebugFcDeal",
+      "N",
+      "NOSAME",
+      "NoSameDeal",
+      "OVERTURN",
+      "OverTurnDeal",
+      "PWDHINT2INPUT",
+      "PWDHINTONQUICK",
+      "PWDHINTONSHIFT",
+      "PWDINPUTDOWN",
+      "PWDINPUTENTER",
+      "PWDINPUTQUICK",
+      "PWDINPUTSHIFT",
+      "PWDINPUTUP",
+      "PWDINPUTUPDN",
+      "PWDONPRG",
+      "UPDATTR",
+      "UPDDIFUNC",
+      "UPDERR",
+      "UPDGRADE",
+      "UPDGROUP",
+      "UPDIOSTATUS",
+      "UPDMENU0",
+      "UPDMENU0ST",
+      "UPDMENU1",
+      "UPDMENU2",
+      "UPDMENU3",
+      "UPDPWDHINT",
+      "UPDPWDINPUT",
+      "UPDTUNE",
+      "UPDU0",
+      "UpdataFuncCodeGrade",
+      "UpdateDisplayBufferAttribute",
+      "UpdateDisplayBufferVisualDiFunc",
+      "UpdateDisplayBufferVisualIoStatus",
+      "UpdateErrorDisplayBuffer",
+      "UpdateGroupDisplay",
+      "UpdateMenu0DispStatus",
+      "UpdateMenu0DisplayBuffer",
+      "UpdateMenu1DisplayBuffer",
+      "UpdateMenu2DisplayBuffer",
+      "UpdateMenu3DisplayBuffer",
+      "UpdateMenuPwdHintDisplayBuffer",
+      "UpdateMenuPwdInputDisplayBuffer",
+      "UpdateTuneDisplayBuffer",
+      "UpdateU0Data",
+      "VALIDTUNE",
+      "ValidateTuneCmd",
+      "case",
+      "checkMenuModeDealStatus",
+      "commDispIndex",
+      "curFc",
+      "cycleShiftDeal",
+      "decNumber",
+      "deltaK",
+      "diFuncIndex",
+      "dispAttributeU0",
+      "facPassViewStatus",
+      "factoryPwdStatus",
+      "frqSrcFuncIndex",
+      "groupDisplay",
+      "hexNumber",
+      "menu",
+      "menu0DispStatus",
+      "menuAttri",
+      "menuFc",
+      "menuLevel",
+      "menuMode",
+      "menuModeOld",
+      "menuModeStatus",
+      "menuModeTmp",
+      "motorDebugFc",
+      "stopDispIndex",
+      "torQueFrqDispLpf",
+      "torqueCurrentAct",
+      "userMenuModeFcIndex"
+     ],
+     "calls": 0,
+     "cases": null,
+     "mism": null,
+     "neg": 111,
+     "neg_rc1": 108
+    }
+   },
+   "funcs": [
+    {
+     "f": "_DealCheckMenuModeGroupGrade",
+     "state": "changed",
+     "n_o": 109,
+     "n_n": 109,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DealUserMenuModeGroupGrade",
+     "state": "changed",
+     "n_o": 31,
+     "n_n": 31,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_GroupUpDown",
+     "state": "changed",
+     "n_o": 14,
+     "n_n": 14,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_HandleQuickMenuSwitch",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 9,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu0AddMenuLevel",
+     "state": "changed",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu0OnEnter",
+     "state": "changed",
+     "n_o": 7,
+     "n_n": 2,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu0OnPrg",
+     "state": "changed",
+     "n_o": 30,
+     "n_n": 30,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu0OnShift",
+     "state": "changed",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu1OnDown",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu1OnEnter",
+     "state": "changed",
+     "n_o": 17,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu1OnUp",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu1OnUpDown",
+     "state": "changed",
+     "n_o": 12,
+     "n_n": 12,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu2OnDown",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu2OnEnter",
+     "state": "changed",
+     "n_o": 36,
+     "n_n": 34,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu2OnPrg",
+     "state": "changed",
+     "n_o": 10,
+     "n_n": 10,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu2OnUp",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu2OnUpDown",
+     "state": "changed",
+     "n_o": 74,
+     "n_n": 74,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu3OnDown",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu3OnEnter",
+     "state": "changed",
+     "n_o": 190,
+     "n_n": 188,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu3OnUp",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_Menu3OnUpDown",
+     "state": "changed",
+     "n_o": 93,
+     "n_n": 93,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuInit",
+     "state": "changed",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuModeDeal",
+     "state": "changed",
+     "n_o": 51,
+     "n_n": 51,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuModeSwitch",
+     "state": "changed",
+     "n_o": 83,
+     "n_n": 83,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuOnQuick",
+     "state": "changed",
+     "n_o": 39,
+     "n_n": 43,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuPwdHintOnShift",
+     "state": "changed",
+     "n_o": 2,
+     "n_n": 2,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuPwdInputOnDown",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuPwdInputOnEnter",
+     "state": "changed",
+     "n_o": 12,
+     "n_n": 12,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuPwdInputOnUp",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_MenuPwdInputOnUpDown",
+     "state": "changed",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ModifyFunccodeEnter",
+     "state": "changed",
+     "n_o": 176,
+     "n_n": 176,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ModifyFunccodeUpDown",
+     "state": "changed",
+     "n_o": 368,
+     "n_n": 368,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_NoSameDeal",
+     "state": "changed",
+     "n_o": 85,
+     "n_n": 86,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetWinkFlag",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 19,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdataFuncCodeGrade",
+     "state": "changed",
+     "n_o": 98,
+     "n_n": 98,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateDisplayBufferAttribute",
+     "state": "changed",
+     "n_o": 246,
+     "n_n": 246,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateMenu0DisplayBuffer",
+     "state": "changed",
+     "n_o": 110,
+     "n_n": 111,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateMenu1DisplayBuffer",
+     "state": "changed",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateMenu2DisplayBuffer",
+     "state": "changed",
+     "n_o": 134,
+     "n_n": 129,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateMenu3DisplayBuffer",
+     "state": "changed",
+     "n_o": 408,
+     "n_n": 403,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateMenuPwdInputDisplayBuffer",
+     "state": "changed",
+     "n_o": 41,
+     "n_n": 36,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DispDataDeal",
+     "state": "same",
+     "n_o": 150,
+     "n_n": 150,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_FcDigit2Bin",
+     "state": "same",
+     "n_o": 30,
+     "n_n": 30,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_GetDispDigits",
+     "state": "same",
+     "n_o": 56,
+     "n_n": 56,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_LimitDeal",
+     "state": "same",
+     "n_o": 36,
+     "n_n": 36,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_LimitOverTurnDeal",
+     "state": "same",
+     "n_o": 34,
+     "n_n": 34,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Menu0OnUpDown",
+     "state": "same",
+     "n_o": 11,
+     "n_n": 11,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Menu1OnPrg",
+     "state": "same",
+     "n_o": 5,
+     "n_n": 5,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Menu1OnShift",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Menu2OnShift",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Menu3OnPrg",
+     "state": "same",
+     "n_o": 5,
+     "n_n": 5,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_Menu3OnShift",
+     "state": "same",
+     "n_o": 18,
+     "n_n": 18,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuOnMfk",
+     "state": "same",
+     "n_o": 34,
+     "n_n": 34,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuOnRun",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuOnStop",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuPwdHint2Input",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuPwdHintOnQuick",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuPwdInputOnQuick",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuPwdInputOnShift",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MenuPwdOnPrg",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_MotorDebugFcDeal",
+     "state": "same",
+     "n_o": 26,
+     "n_n": 26,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_OverTurnDeal",
+     "state": "same",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateDisplayBufferVisualDiFunc",
+     "state": "same",
+     "n_o": 31,
+     "n_n": 31,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateDisplayBufferVisualIoStatus",
+     "state": "same",
+     "n_o": 67,
+     "n_n": 67,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateErrorDisplayBuffer",
+     "state": "same",
+     "n_o": 45,
+     "n_n": 45,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateGroupDisplay",
+     "state": "same",
+     "n_o": 32,
+     "n_n": 32,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateMenu0DispStatus",
+     "state": "same",
+     "n_o": 32,
+     "n_n": 32,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateMenuPwdHintDisplayBuffer",
+     "state": "same",
+     "n_o": 16,
+     "n_n": 16,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateTuneDisplayBuffer",
+     "state": "same",
+     "n_o": 18,
+     "n_n": 18,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateU0Data",
+     "state": "same",
+     "n_o": 222,
+     "n_n": 222,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_ValidateTuneCmd",
+     "state": "same",
+     "n_o": 44,
+     "n_n": 44,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_cycleShiftDeal",
+     "state": "same",
+     "n_o": 58,
+     "n_n": 58,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_modbus",
+   "n_func": 5,
+   "same": 0,
+   "changed": 5,
+   "ext_o": 5,
+   "ext_n": 5,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_modbus": {
+     "entry": [
+      "ModbusCommErrCheck",
+      "ModbusRcvDataDeal",
+      "ModbusSendDataDeal",
+      "ModbusStartDeal",
+      "UpdateModbusCommFormat"
+     ],
+     "calls": 0,
+     "cases": 414979,
+     "mism": 0,
+     "neg": 47,
+     "neg_rc1": 47
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ModbusCommErrCheck",
+     "state": "changed",
+     "n_o": 20,
+     "n_n": 22,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ModbusRcvDataDeal",
+     "state": "changed",
+     "n_o": 20,
+     "n_n": 33,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ModbusSendDataDeal",
+     "state": "changed",
+     "n_o": 115,
+     "n_n": 107,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ModbusStartDeal",
+     "state": "changed",
+     "n_o": 44,
+     "n_n": 40,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateModbusCommFormat",
+     "state": "changed",
+     "n_o": 16,
+     "n_n": 17,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_motorFc",
+   "n_func": 1,
+   "same": 0,
+   "changed": 1,
+   "ext_o": 1,
+   "ext_n": 1,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_motorFc": {
+     "entry": [
+      "UpdateMotorPara",
+      "motorSnIndexNIncToMotor2",
+      "polePair",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 260000,
+     "mism": 0,
+     "neg": 14,
+     "neg_rc1": 13
+    }
+   },
+   "funcs": [
+    {
+     "f": "_UpdateMotorPara",
+     "state": "changed",
+     "n_o": 91,
+     "n_n": 94,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_osc",
+   "n_func": 15,
+   "same": 1,
+   "changed": 14,
+   "ext_o": 3,
+   "ext_n": 3,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_osc": {
+     "entry": [
+      "CREAD",
+      "CWRITE",
+      "MAIN",
+      "OscControlRead",
+      "OscControlWriter",
+      "OscSciFunction",
+      "RXDIR",
+      "RXISR",
+      "TXISR",
+      "call_scidatarx",
+      "set_frame",
+      "set_rx_done",
+      "state_get",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 29123,
+     "mism": 0,
+     "neg": 201,
+     "neg_rc1": 201
+    }
+   },
+   "funcs": [
+    {
+     "f": "_ClearOscBufEnd",
+     "state": "changed",
+     "n_o": 13,
+     "n_n": 35,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_GetOscData",
+     "state": "changed",
+     "n_o": 107,
+     "n_n": 60,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitOsc",
+     "state": "changed",
+     "n_o": 13,
+     "n_n": 8,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSciOSC",
+     "state": "changed",
+     "n_o": 47,
+     "n_n": 45,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_OscControlRead",
+     "state": "changed",
+     "n_o": 16,
+     "n_n": 15,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OscDataQcq",
+     "state": "changed",
+     "n_o": 80,
+     "n_n": 81,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_OscDataTxDeal",
+     "state": "changed",
+     "n_o": 48,
+     "n_n": 45,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_OscSciFunction",
+     "state": "changed",
+     "n_o": 49,
+     "n_n": 49,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_OscSciIoInit",
+     "state": "changed",
+     "n_o": 16,
+     "n_n": 17,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SciDataRx",
+     "state": "changed",
+     "n_o": 64,
+     "n_n": 63,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SciDataRxDeal",
+     "state": "changed",
+     "n_o": 165,
+     "n_n": 172,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_SciDataTX",
+     "state": "changed",
+     "n_o": 37,
+     "n_n": 36,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_sciaRxFifoIsr",
+     "state": "changed",
+     "n_o": 64,
+     "n_n": 54,
+     "ext": false,
+     "cov": "table"
+    },
+    {
+     "f": "_sciaTxFifoIsr",
+     "state": "changed",
+     "n_o": 45,
+     "n_n": 44,
+     "ext": false,
+     "cov": "table"
+    },
+    {
+     "f": "_OscControlWriter",
+     "state": "same",
+     "n_o": 13,
+     "n_n": 13,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_p2p",
+   "n_func": 1,
+   "same": 0,
+   "changed": 1,
+   "ext_o": 1,
+   "ext_n": 1,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_p2p": {
+     "entry": [
+      "P2PDataDeal",
+      "p2pData"
+     ],
+     "calls": 0,
+     "cases": 2541160,
+     "mism": 0,
+     "neg": 7,
+     "neg_rc1": 7
+    }
+   },
+   "funcs": [
+    {
+     "f": "_P2PDataDeal",
+     "state": "changed",
+     "n_o": 108,
+     "n_n": 112,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_plc",
+   "n_func": 4,
+   "same": 0,
+   "changed": 4,
+   "ext_o": 4,
+   "ext_n": 4,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_plc": {
+     "entry": [
+      "FuncCodeRwAtrrib",
+      "InvRecFastTab",
+      "InvRecSlowTab",
+      "InvRecTabCfg",
+      "InvTrFastIndex",
+      "InvTrFastTab",
+      "InvTrSlowIndex",
+      "InvTrSlowTab",
+      "InvTranTabCfg",
+      "PlcDataFramDeal"
+     ],
+     "calls": 0,
+     "cases": 325966,
+     "mism": 0,
+     "neg": 38,
+     "neg_rc1": 38
+    }
+   },
+   "funcs": [
+    {
+     "f": "_FuncCodeRwAtrrib",
+     "state": "changed",
+     "n_o": 188,
+     "n_n": 216,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InvRecTabCfg",
+     "state": "changed",
+     "n_o": 34,
+     "n_n": 35,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InvTranTabCfg",
+     "state": "changed",
+     "n_o": 39,
+     "n_n": 39,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_PlcDataFramDeal",
+     "state": "changed",
+     "n_o": 174,
+     "n_n": 169,
+     "ext": true,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_profibus",
+   "n_func": 7,
+   "same": 6,
+   "changed": 1,
+   "ext_o": 7,
+   "ext_n": 7,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_DpLatchEepromIndex"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_profibus": {
+     "entry": [
+      "DPDataNum",
+      "DPRcvTest",
+      "ProfibusCommErrCheck",
+      "ProfibusRcvDataDeal",
+      "ProfibusSendDataDeal",
+      "ProfibusStartDeal",
+      "UpdateProfibusCommFormat",
+      "dpControlCmd",
+      "dpControlCmdBak",
+      "dpFrqAim",
+      "dpStatus",
+      "getDPControlCmd",
+      "rcvRigthFlag",
+      "saveEepromFlag",
+      "saveEepromIndex",
+      "setDPStatusInfo"
+     ],
+     "calls": 0,
+     "cases": 118120,
+     "mism": 0,
+     "neg": 106,
+     "neg_rc1": 101
+    }
+   },
+   "funcs": [
+    {
+     "f": "_DpLatchEepromIndex",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 45,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_ProfibusSendDataDeal",
+     "state": "changed",
+     "n_o": 287,
+     "n_n": 248,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ProfibusCommErrCheck",
+     "state": "same",
+     "n_o": 28,
+     "n_n": 28,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_ProfibusRcvDataDeal",
+     "state": "same",
+     "n_o": 64,
+     "n_n": 64,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_ProfibusStartDeal",
+     "state": "same",
+     "n_o": 83,
+     "n_n": 83,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateProfibusCommFormat",
+     "state": "same",
+     "n_o": 19,
+     "n_n": 19,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_getDPControlCmd",
+     "state": "same",
+     "n_o": 1,
+     "n_n": 1,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_setDPStatusInfo",
+     "state": "same",
+     "n_o": 33,
+     "n_n": 33,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_runSrc",
+   "n_func": 19,
+   "same": 10,
+   "changed": 9,
+   "ext_o": 19,
+   "ext_n": 19,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_runSrc": {
+     "entry": [
+      "AccDecTimeCalc",
+      "DormantDeal",
+      "JogRunCtrl",
+      "LoseLoadRunCtrl",
+      "LowerThanLowerFrqDeal",
+      "NormalRunCtrl",
+      "PowerOffNoStopDeal",
+      "RunSrcDeal",
+      "RunSrcUpdateFrq",
+      "ShutDownRunCtrl",
+      "StartRunCtrl",
+      "StopRunCtrl",
+      "SwingDeal",
+      "TuneRunCtrl",
+      "UpdateBenchTime",
+      "UpdateRunCmd",
+      "UpdateSwingPara",
+      "runTimeCal",
+      "setTimeRun"
+     ],
+     "calls": 0,
+     "cases": 49144,
+     "mism": 0,
+     "neg": 162,
+     "neg_rc1": 160
+    }
+   },
+   "funcs": [
+    {
+     "f": "_AccDecTimeCalc",
+     "state": "changed",
+     "n_o": 145,
+     "n_n": 147,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DormantDeal",
+     "state": "changed",
+     "n_o": 91,
+     "n_n": 76,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_NormalRunCtrl",
+     "state": "changed",
+     "n_o": 62,
+     "n_n": 62,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunSrcDeal",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_RunSrcUpdateFrq",
+     "state": "changed",
+     "n_o": 304,
+     "n_n": 304,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ShutDownRunCtrl",
+     "state": "changed",
+     "n_o": 78,
+     "n_n": 79,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_StopRunCtrl",
+     "state": "changed",
+     "n_o": 139,
+     "n_n": 138,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SwingDeal",
+     "state": "changed",
+     "n_o": 82,
+     "n_n": 82,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateRunCmd",
+     "state": "changed",
+     "n_o": 686,
+     "n_n": 700,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_JogRunCtrl",
+     "state": "same",
+     "n_o": 40,
+     "n_n": 40,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_LoseLoadRunCtrl",
+     "state": "same",
+     "n_o": 51,
+     "n_n": 51,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_LowerThanLowerFrqDeal",
+     "state": "same",
+     "n_o": 89,
+     "n_n": 89,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_PowerOffNoStopDeal",
+     "state": "same",
+     "n_o": 108,
+     "n_n": 108,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_StartRunCtrl",
+     "state": "same",
+     "n_o": 179,
+     "n_n": 179,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_TuneRunCtrl",
+     "state": "same",
+     "n_o": 119,
+     "n_n": 119,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateBenchTime",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateSwingPara",
+     "state": "same",
+     "n_o": 124,
+     "n_n": 124,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_runTimeCal",
+     "state": "same",
+     "n_o": 81,
+     "n_n": 81,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_setTimeRun",
+     "state": "same",
+     "n_o": 63,
+     "n_n": 63,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_runSrc_accDecFrq",
+   "n_func": 4,
+   "same": 0,
+   "changed": 4,
+   "ext_o": 4,
+   "ext_n": 4,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [
+    "_s_AccDecIsAcc",
+    "_s_AccDecUseRun",
+    "_s_BenchOverride",
+    "_s_CurveDowngrade",
+    "_s_Fit18",
+    "_s_Q15Rescale",
+    "_s_SbClamp",
+    "_s_SbLine",
+    "_s_SbStep",
+    "_s_TickDown",
+    "_s_TickUp"
+   ],
+   "uncovered": [],
+   "cases": {
+    "f_runSrc_accDecFrq": {
+     "entry": [
+      "AccDecFrqCalc",
+      "LineChangeCalc",
+      "SCurveOridinaryCalc",
+      "SCurveSpecialCalc",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 539530,
+     "mism": 0,
+     "neg": 203,
+     "neg_rc1": 160
+    }
+   },
+   "funcs": [
+    {
+     "f": "_AccDecFrqCalc",
+     "state": "changed",
+     "n_o": 201,
+     "n_n": 128,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_LineChangeCalc",
+     "state": "changed",
+     "n_o": 69,
+     "n_n": 65,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SCurveOridinaryCalc",
+     "state": "changed",
+     "n_o": 359,
+     "n_n": 271,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SCurveSpecialCalc",
+     "state": "changed",
+     "n_o": 608,
+     "n_n": 468,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_AccDecIsAcc",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 21,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_AccDecUseRun",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 47,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_BenchOverride",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 20,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_CurveDowngrade",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 35,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_Fit18",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 32,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_Q15Rescale",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 25,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_SbClamp",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 18,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_SbLine",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 38,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_SbStep",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 62,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_TickDown",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 14,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_s_TickUp",
+     "state": "ONLY-NEW",
+     "n_o": 0,
+     "n_n": 14,
+     "ext": false,
+     "cov": "direct"
+    }
+   ]
+  },
+  {
+   "stem": "f_torqueCtrl",
+   "n_func": 4,
+   "same": 1,
+   "changed": 3,
+   "ext_o": 4,
+   "ext_n": 4,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_torqueCtrl": {
+     "entry": [
+      "AccDecTorqueCalc",
+      "TorqueCalc",
+      "TorqueLimitCalc",
+      "UpdateTorqueAim",
+      "torqueAim",
+      "torqurLine",
+      "upperTorque"
+     ],
+     "calls": 0,
+     "cases": 76663,
+     "mism": 0,
+     "neg": 32,
+     "neg_rc1": 32
+    }
+   },
+   "funcs": [
+    {
+     "f": "_TorqueCalc",
+     "state": "changed",
+     "n_o": 3,
+     "n_n": 3,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_TorqueLimitCalc",
+     "state": "changed",
+     "n_o": 61,
+     "n_n": 62,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateTorqueAim",
+     "state": "changed",
+     "n_o": 116,
+     "n_n": 115,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_AccDecTorqueCalc",
+     "state": "same",
+     "n_o": 56,
+     "n_n": 56,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_ui",
+   "n_func": 10,
+   "same": 6,
+   "changed": 4,
+   "ext_o": 10,
+   "ext_n": 10,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_ui": {
+     "entry": [
+      "DISPLAY_CODE",
+      "DisplayScan",
+      "DisplayScanPrepare",
+      "InitSetSpiForFunc",
+      "InitSpiaGpio",
+      "KeyBordTest",
+      "KeyProcess",
+      "KeyScan",
+      "LED_CODE",
+      "UpdateDisplayBuffer",
+      "UpdateMenuModeDisplayBuffer",
+      "WinkDeal",
+      "bEnflash",
+      "bKeyEsc",
+      "bKeyProc",
+      "bLight",
+      "bOnShift",
+      "diHwStatus",
+      "dispCodeMenuMode",
+      "displayBuffer",
+      "factoryPwd",
+      "flashMaxSDSD",
+      "flashTicker",
+      "flashTickerLed",
+      "keyAge",
+      "keyBordTestFlag",
+      "keyBordValue",
+      "keyChecking",
+      "keyFunc",
+      "keyPreCtrl",
+      "keyPreFunc",
+      "keySelStatus",
+      "keySelType",
+      "keySelTypeBak",
+      "keyStatus",
+      "keyValue",
+      "minRate",
+      "onQuickTicker",
+      "onQuickTickerMax",
+      "onShiftPassViewTicker",
+      "onShiftPassViewTickerMax",
+      "repeatNum",
+      "repeatNumMax",
+      "repeatStep",
+      "scanStep",
+      "spiData",
+      "upDownDelta"
+     ],
+     "calls": 0,
+     "cases": 84331,
+     "mism": 0,
+     "neg": 52,
+     "neg_rc1": 51
+    }
+   },
+   "funcs": [
+    {
+     "f": "_DisplayScanPrepare",
+     "state": "changed",
+     "n_o": 80,
+     "n_n": 80,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_KeyProcess",
+     "state": "changed",
+     "n_o": 149,
+     "n_n": 149,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_UpdateDisplayBuffer",
+     "state": "changed",
+     "n_o": 157,
+     "n_n": 157,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_WinkDeal",
+     "state": "changed",
+     "n_o": 225,
+     "n_n": 224,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DisplayScan",
+     "state": "same",
+     "n_o": 16,
+     "n_n": 16,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSetSpiForFunc",
+     "state": "same",
+     "n_o": 11,
+     "n_n": 11,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSpiaGpio",
+     "state": "same",
+     "n_o": 29,
+     "n_n": 29,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_KeyBordTest",
+     "state": "same",
+     "n_o": 13,
+     "n_n": 13,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_KeyScan",
+     "state": "same",
+     "n_o": 156,
+     "n_n": 156,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_UpdateMenuModeDisplayBuffer",
+     "state": "same",
+     "n_o": 50,
+     "n_n": 50,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "f_vf",
+   "n_func": 1,
+   "same": 1,
+   "changed": 0,
+   "ext_o": 1,
+   "ext_n": 1,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "f_vf": {
+     "entry": [
+      "vfSeparateDeal",
+      "vfSeparateVol",
+      "vfSeprateVolAccLine",
+      "vfSeprateVolAim"
+     ],
+     "calls": 0,
+     "cases": 56089,
+     "mism": 0,
+     "neg": 38,
+     "neg_rc1": 38
+    }
+   },
+   "funcs": [
+    {
+     "f": "_vfSeparateDeal",
+     "state": "same",
+     "n_o": 172,
+     "n_n": 172,
+     "ext": true,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "main",
+   "n_func": 4,
+   "same": 3,
+   "changed": 1,
+   "ext_o": 1,
+   "ext_n": 1,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "main": {
+     "entry": [
+      "ADC_Over_isr",
+      "EPWM1_TZ_isr",
+      "EPWM1_zero_isr",
+      "main",
+      "tu"
+     ],
+     "calls": 0,
+     "cases": 200120,
+     "mism": 0,
+     "neg": 38,
+     "neg_rc1": 38
+    }
+   },
+   "funcs": [
+    {
+     "f": "_main",
+     "state": "changed",
+     "n_o": 67,
+     "n_n": 65,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_ADC_Over_isr",
+     "state": "same",
+     "n_o": 47,
+     "n_n": 47,
+     "ext": false,
+     "cov": "identical"
+    },
+    {
+     "f": "_EPWM1_TZ_isr",
+     "state": "same",
+     "n_o": 23,
+     "n_n": 23,
+     "ext": false,
+     "cov": "identical"
+    },
+    {
+     "f": "_EPWM1_zero_isr",
+     "state": "same",
+     "n_o": 41,
+     "n_n": 41,
+     "ext": false,
+     "cov": "identical"
+    }
+   ]
+  },
+  {
+   "stem": "mainInit_2803x",
+   "n_func": 16,
+   "same": 6,
+   "changed": 10,
+   "ext_o": 14,
+   "ext_n": 14,
+   "ext_miss": [],
+   "ext_extra": [],
+   "helper": [],
+   "uncovered": [],
+   "cases": {
+    "mainInit_2803x": {
+     "entry": [
+      "DisableDog",
+      "EnableDog",
+      "InitFlash",
+      "InitInterrupt",
+      "InitPeripheralClocks",
+      "InitPeripherals",
+      "InitPieCtrl",
+      "InitPieVectTable",
+      "InitPll",
+      "InitSetAdc",
+      "InitSetGpio",
+      "InitSysCtrl",
+      "KickDog",
+      "SetInterruptEnable",
+      "copy_prg",
+      "gErrorIntCnt",
+      "rsvd_ISR"
+     ],
+     "calls": 0,
+     "cases": 20283,
+     "mism": 0,
+     "neg": 69,
+     "neg_rc1": 69
+    }
+   },
+   "funcs": [
+    {
+     "f": "_InitFlash",
+     "state": "changed",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": false,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitInterrupt",
+     "state": "changed",
+     "n_o": 22,
+     "n_n": 22,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitPeripheralClocks",
+     "state": "changed",
+     "n_o": 9,
+     "n_n": 9,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitPeripherals",
+     "state": "changed",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitPieCtrl",
+     "state": "changed",
+     "n_o": 29,
+     "n_n": 25,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitPieVectTable",
+     "state": "changed",
+     "n_o": 24,
+     "n_n": 24,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitPll",
+     "state": "changed",
+     "n_o": 47,
+     "n_n": 47,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSetAdc",
+     "state": "changed",
+     "n_o": 64,
+     "n_n": 65,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_InitSetGpio",
+     "state": "changed",
+     "n_o": 32,
+     "n_n": 35,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_SetInterruptEnable",
+     "state": "changed",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "direct"
+    },
+    {
+     "f": "_DisableDog",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_EnableDog",
+     "state": "same",
+     "n_o": 6,
+     "n_n": 6,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_InitSysCtrl",
+     "state": "same",
+     "n_o": 11,
+     "n_n": 11,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_KickDog",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_copy_prg",
+     "state": "same",
+     "n_o": 17,
+     "n_n": 17,
+     "ext": true,
+     "cov": "identical"
+    },
+    {
+     "f": "_rsvd_ISR",
+     "state": "same",
+     "n_o": 7,
+     "n_n": 7,
+     "ext": false,
+     "cov": "identical"
+    }
+   ]
+  }
+ ]
+}

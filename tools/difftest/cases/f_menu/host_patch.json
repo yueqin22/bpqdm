@@ -1,0 +1,68 @@
+{
+  "why": "宿主保真补丁 —— 15 条替换, 两侧都打 (side=both), 只作用于 build/_difftest/gen_f_menu/ 下的宿主副本, 交付源码与目标端编译不受影响。\n\n分两类。每一类都满足同一条要求: 在目标端**逐字等价** (或至少逐位等价), 在宿主端把 C28x 的语义还原回来。\n\n========================================================================\nA. 宿主缺 stddef.h, 以及 GetCodeIndex 的常量折叠 (3 条)\n========================================================================\n\nA1. 加一行 #include <stddef.h>\n    下面 A2/A3 要用 offsetof, 而模块的 include 链里没有任何一个头文件带 stddef.h (目标端的 C28x 运行时头里有, 宿主上 MSVC 不给)。目标端多一行 include 无副作用, 所以两侧都打。\n\nA2/A3. frqSrcFuncIndex / diFuncIndex 两张表的静态初始化式\n\n    这两张表长这样:\n        const Uint16 frqSrcFuncIndex[] =\n        {\n            GetCodeIndex(funcCode.code.frqXSrc),\n            GetCodeIndex(funcCode.code.frqYSrc),\n        };\n    而 GetCodeIndex(code) 展开成 ((Uint16)((&(code)) - (&(funcCode.all[0])))) —— **两个地址常量相减**。C28x 的 cl2000 把它当常量折叠, 正常编译; MSVC 的 C 前端接受单个地址常量, 但拒绝两个地址常量相减 (error C2099)。实测过 6 种写法 (裸指针差 / char* 差 / 强转 size_t 后相减 / 经 long 中转 / extern 对象 / offsetof 相减) 全部被拒。\n\n    f_fcDeal / f_invPara / f_motorFc 三处遇到同一个坑时, 退让成\"去掉初始化式, 由 driver 运行期回填\"。这里不退让 —— 因为存在一个**既是常量表达式、又在两端都正确**的写法:\n\n        (Uint16)((offsetof(FUNCCODE_ALL, code.frqXSrc)\n                  - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16))\n\n    offsetof 在 MSVC 里就是整型常量表达式, 静态初始化式能用。为什么等价:\n        GetCodeIndex 做的是 Uint16* 相减, 得到**元素个数**;\n        目标端 offsetof 返回**字数**, sizeof(Uint16)=1 -> 字数差 = 元素个数;\n        宿主端 offsetof 返回**字节数**, sizeof(Uint16)=2 -> 字节差/2 = 元素个数。\n    两端的值都是元素下标, 与 GetCodeIndex 的结果**逐位相同**。\n    (MSVC 接受 offsetof(T, m[i]) 这种带下标的成员指定符, 已单独探针验证。)\n\n    好处: 表仍然是静态初始化式, 仍与源码同形 (const / D 段), 不需要 driver 回填, 值也不会漂。整块替换而不是逐项替换, 是因为两块表各自只有一处定义, count=1 一失配就停。\n\n    注: 表**内容**在目标端的等价由 build_and_compare.py 的 Tier B (f_menu.obj 的 .econst 逐段比对) 单独证明; 这里的补丁只影响宿主副本。\n\n========================================================================\nB. 16 位 int 的宽度与符号语义 (8 条)\n========================================================================\n\nB1. sizeof 的词/字节差 (4 条)\n\n    C28x 的 sizeof 返回 16 位**字数**, MSVC 返回**字节数**。\n\n    - memcpy(funcCodeGrade, funcCodeGradeAll, FUNCCODE_GROUP_NUM) —— 2 处, 两处的括号写法不同, 所以拆成两条规则\n      C28x 的 char 是 16 位, 所以 memcpy 的 n 就是**字数**: 目标端拷 83 字 = 166 字节。\n      宿主上 n 被当字节数, 只拷 83 字节 = 41.5 项 —— 表拷了一半, 后面的比较全无意义。\n      改成 ... * sizeof(Uint16): 目标端 83*1 = 83 (不变), 宿主 83*2 = 166 字节, 一致。\n\n    - sizeof(frqSrcFuncIndex) / sizeof(diFuncIndex) —— 各 2 处\n      这两个表分别有 2 项和 18 项 Uint16, 却被当成**元素个数**用:\n          for (i = sizeof(...) - 1; i >= 0; i--)   与   NoSameDeal(..., sizeof(...), ...)\n      目标端 2/1 与 18/1 正好是项数; 宿主上算出 4 与 36 —— 循环跑到表外读相邻 .econst (frqSrcFuncIndex 紧邻 diFuncIndex), 既不可复现也可能越界。\n      改成 sizeof(x)/sizeof(Uint16): 目标端不变, 宿主端 4/2=2, 36/2=18。\n\nB2. 16 位混合符号比较 (4 条规则, 4 处)\n\n    判定标准只有一条: **C28x 的整数提升是否与宿主不同**。C28x 上 int 是 16 位, 于是:\n      - 两个 int16 相比      -> 有符号 16 位比较。宿主提升到 32 位有符号。\n                                int16 的值在 16 位和 32 位里**表示相同**, 结论必然一致\n                                -> 不需要打补丁。\n      - Uint16 与 int16 相比 -> int 转 unsigned int, 无符号比较。宿主上两者都进 32 位 int,\n                                变成有符号比较 -> int16 那侧为负时结论相反 -> 必须打。\n      - 全是 Uint16 的减法   -> 目标端 mod 65536, 宿主是 32 位有符号差 -> 必须打。\n\n    B2a. i < number / i >= number —— 各 1 处 (NoSameDeal)。i 是 Uint16, number 是 int16\n         形参。number 为负时目标端 (Uint16)number 是 6 万多, 宿主上是负数。\n    B2b. (loopNumber < upper - low) —— 1 处 (LimitOverTurnDeal)。三者都是 Uint16;\n         upper < low 时目标端得到巨大的正数, 宿主上得到负数。\n\n    写法: 在 int16 / 差值那一侧显式加 (Uint16)。目标端 (Uint16)(int16) 只是把位模式原样\n取回 (16 位无符号), 与原表达式的转换结果**逐位相同**; 宿主端则把 32 位有符号值截回 16 位\n无符号, 恢复位模式比较的语义。\n\n    **已删除的 4 条错规则 (教训)**: 早先版本还给 NoSameDeal 里的\n        (data == upper) / (data == lower) / (data > upper) / (data < lower)\n    也加了 (Uint16) 转换, 理由写成\"混合符号比较\"。但那四处 data/upper/lower **全是 int16\n    形参**, 目标端本来就是有符号比较 —— 加了转换反而在 lower 为负时把等式判成不等\n    (data == lower == -32768 被拆成 -32768 == 32768), 凭空造出一个目标端没有的分支, 把\n    测试台引到一个真机上根本不存在的路径上。这正是\"补丁看着更严谨、其实偏离目标\"的例子。\n\nB3. 16 位乘法回绕 (1 条规则, 3 处)\n\n    50 * decNumber[funcCode.code.frqPoint]\n    decNumber = {1, 10, 100, 1000, 10000} (int16)。目标端 int * int16 是 **16 位**乘法, 会回绕:\n        frqPoint=3 -> 50*1000  = 50000  -> 0xC350 (int16 读作 -15536)\n        frqPoint=4 -> 50*10000 = 500000 -> 0xA120 (int16 读作 -24288)\n    宿主上是 32 位乘法, 得到 50000 / 500000 —— 与守卫比较 maxFrq < ... 的结论相反。\n    写成 (Uint16)(50 * decNumber[...]): 目标端不变, 宿主端也截回 16 位。\n\n========================================================================\n有意不绕开\n========================================================================\n\n也可以反过来把 driver 收窄 (不喂 upper >= 32768、不喂 frqPoint >= 3) 来躲开 B 类差异, 但那等于把整片**可达**状态空间排除在测试之外, 结论看着更强其实更弱。所以选择打补丁, 让 driver 扫满 16 位全域。\n\n每条规则的 count 都由 build/_fix_host_patch.py 对着交付源码与冻结基准各校验一次, 不符即退出。",
+  "modules": [
+    {
+      "ref_src": "ref/f_menu_ref.c",
+      "ref_out": "host_ref_f_menu.c",
+      "new_base": "f_menu.c",
+      "new_out": "host_new_f_menu.c",
+      "replace": [
+        {
+          "old": "#include \"f_menu.h\"",
+          "new": "#include <stddef.h>\n#include <string.h>\n#include \"f_menu.h\"",
+          "count": 1
+        },
+        {
+          "old": "const Uint16 frqSrcFuncIndex[] =\n{\n    GetCodeIndex(funcCode.code.frqXSrc),\n    GetCodeIndex(funcCode.code.frqYSrc),\n};",
+          "new": "const Uint16 frqSrcFuncIndex[FRQ_SRC_NO_SAME_NUMER] =\n{\n    (Uint16)((offsetof(FUNCCODE_ALL, code.frqXSrc) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.frqYSrc) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n};",
+          "count": 1
+        },
+        {
+          "old": "const Uint16 diFuncIndex[] =\n{\n    GetCodeIndex(funcCode.code.diFunc[0]),\n    GetCodeIndex(funcCode.code.diFunc[1]),\n    GetCodeIndex(funcCode.code.diFunc[2]),\n    GetCodeIndex(funcCode.code.diFunc[3]),\n    GetCodeIndex(funcCode.code.diFunc[4]),\n\n    GetCodeIndex(funcCode.code.diFunc[5]),\n    GetCodeIndex(funcCode.code.diFunc[6]),\n    GetCodeIndex(funcCode.code.diFunc[7]),\n    GetCodeIndex(funcCode.code.diFunc[8]),\n    GetCodeIndex(funcCode.code.diFunc[9]),\n\n    GetCodeIndex(funcCode.code.vdiFunc[0]),\n    GetCodeIndex(funcCode.code.vdiFunc[1]),\n    GetCodeIndex(funcCode.code.vdiFunc[2]),\n    GetCodeIndex(funcCode.code.vdiFunc[3]),\n    GetCodeIndex(funcCode.code.vdiFunc[4]),\n\n    GetCodeIndex(funcCode.code.aiAsDiFunc[0]),\n    GetCodeIndex(funcCode.code.aiAsDiFunc[1]),\n    GetCodeIndex(funcCode.code.aiAsDiFunc[2]),\n};",
+          "new": "const Uint16 diFuncIndex[18] =\n{\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 0 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 1 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 2 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 3 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 4 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 5 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 6 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 7 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 8 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.diFunc) + 9 * sizeof(((FUNCCODE_ALL *)0)->code.diFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n\n    (Uint16)((offsetof(FUNCCODE_ALL, code.vdiFunc) + 0 * sizeof(((FUNCCODE_ALL *)0)->code.vdiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.vdiFunc) + 1 * sizeof(((FUNCCODE_ALL *)0)->code.vdiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.vdiFunc) + 2 * sizeof(((FUNCCODE_ALL *)0)->code.vdiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.vdiFunc) + 3 * sizeof(((FUNCCODE_ALL *)0)->code.vdiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.vdiFunc) + 4 * sizeof(((FUNCCODE_ALL *)0)->code.vdiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n\n    (Uint16)((offsetof(FUNCCODE_ALL, code.aiAsDiFunc) + 0 * sizeof(((FUNCCODE_ALL *)0)->code.aiAsDiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.aiAsDiFunc) + 1 * sizeof(((FUNCCODE_ALL *)0)->code.aiAsDiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n    (Uint16)((offsetof(FUNCCODE_ALL, code.aiAsDiFunc) + 2 * sizeof(((FUNCCODE_ALL *)0)->code.aiAsDiFunc[0]) - offsetof(FUNCCODE_ALL, all)) / sizeof(Uint16)),\n};",
+          "count": 1
+        },
+        {
+          "old": "memcpy(funcCodeGrade, funcCodeGradeAll, (FUNCCODE_GROUP_NUM))",
+          "new": "memcpy(funcCodeGrade, funcCodeGradeAll, (FUNCCODE_GROUP_NUM)*sizeof(Uint16))",
+          "count": 1
+        },
+        {
+          "old": "memcpy(funcCodeGrade, funcCodeGradeAll, FUNCCODE_GROUP_NUM)",
+          "new": "memcpy(funcCodeGrade, funcCodeGradeAll, FUNCCODE_GROUP_NUM*sizeof(Uint16))",
+          "count": 1
+        },
+        {
+          "old": "sizeof(frqSrcFuncIndex)",
+          "new": "(sizeof(frqSrcFuncIndex)/sizeof(Uint16))",
+          "count": 2
+        },
+        {
+          "old": "sizeof(diFuncIndex)",
+          "new": "(sizeof(diFuncIndex)/sizeof(Uint16))",
+          "count": 2
+        },
+        {
+          "old": "i < number",
+          "new": "i < (Uint16)number",
+          "count": 1
+        },
+        {
+          "old": "i >= number",
+          "new": "i >= (Uint16)number",
+          "count": 1
+        },
+        {
+          "old": "(loopNumber < upper - low)",
+          "new": "(loopNumber < (Uint16)(upper - low))",
+          "count": 1
+        },
+        {
+          "old": "50 * decNumber[funcCode.code.frqPoint]",
+          "new": "(Uint16)(50 * decNumber[funcCode.code.frqPoint])",
+          "count": 3
+        }
+      ]
+    }
+  ]
+}

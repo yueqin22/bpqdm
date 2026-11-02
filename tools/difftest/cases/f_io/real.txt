@@ -1,0 +1,64 @@
+# Host passthrough list for the f_io case (see tools/difftest/README.md).
+#
+# 与 f_comm / f_comm_DP / MotorPWM 同一套芯片头。f_io 直接驱动真外设内存, 一共
+# 六个寄存器块:
+#
+#   ECap1Regs     PulseInSample 读 CAP1..CAP4 再写回 0; InitSetEcap1 写 ECEINT /
+#                 ECCLR / ECCTL1 / ECCTL2. 这里 CAP1..CAP4 既是输入又是输出 ——
+#                 "读到了几个捕获"和"清掉了几个"都必须逐位可比。
+#   EPwm4Regs     AoCalcChannel(AO2) 写 TBPRD / CMPA; InitSetEPWM4 写九个位域
+#   EPwm5Regs     FMPDeal / PulseOutCalc 写 TBPRD / CMPB / TBCTR / TBCTL / CMPCTL
+#                 / AQCTLB; InitSetEPWM5
+#   EPwm6Regs     AoCalcChannel(AO1) 写 TBPRD / CMPA; InitSetEPWM6
+#   GpioCtrlRegs  InitDIGpio / InitDOGpio / InitEPwm*Gpio / InitECap1Gpio 写
+#                 GPxMUX / GPxDIR / GPxPUD / GPxQSEL
+#   GpioDataRegs  getDiHwStatus 读 GPxDAT 的十个位; setDOStatus 写 GPxSET /
+#                 GPxCLEAR 的五个位; InitDIGpio / InitDOGpio 也写 GPxDAT
+#
+# 这些结构体的位域布局**就是被测对象的一部分**, 不能用替身 —— 替身会把"写对了值
+# 写错了寄存器"抹平。所以全部转发真头。
+#
+# 故意不转发 (由用例 shim 提供):
+#   DSP2803x_Device.h  -- cregister / asm() / interrupt; 见 cases/f_io/shim/
+#   DSP28x_Project.h   -- 它是宽度钉死点 (DSP_CLOCK 60 + 类型宽度), 见 cases/f_io/shim/
+#
+# 必须转发 (真 DSP2803x_Examples.h 不在 include 路径上, 只有 include/device 里有):
+#   DSP2803x_Examples.h         DSP_CLOCK 60 / CPU_RATE / PARTNO_*
+#   DSP2803x_GlobalPrototypes.h 它被 Examples 引用
+#   DSP2803x_EPwm_defines.h     TB_DIV1 / TB_COUNT_UP / AQ_SET / AQ_CLEAR /
+#                               CC_SHADOW / CC_IMMEDIATE / CC_CTR_ZERO /
+#                               TB_IMMEDIATE / TB_SHADOW / TB_DISABLE / TB_SYNC_DISABLE
+#   DSP2803x_I2C_defines.h      }
+#   DSP2803x_Cla_Defines.h      } 同上, Examples 引用的
+#
+# 工程头: 公共 shim 里有一批同名空壳 (f_comm.h / f_menu.h / f_ui.h ...),
+# 只转发其中一个会让链条下游撞上桩 (桩里是 `extern struct FUNCCODE_MOCK funcCode`,
+# 与真 `FUNCCODE_ALL funcCode` 重定义冲突), 所以一次全转发。
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Examples.h
+DSP2803x_Gpio.h
+DSP2803x_GlobalPrototypes.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_PieVect.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h
+
+*

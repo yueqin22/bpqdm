@@ -1,0 +1,4 @@
+_DEBUG
+DSP2803X
+LARGE_MODEL
+interrupt=

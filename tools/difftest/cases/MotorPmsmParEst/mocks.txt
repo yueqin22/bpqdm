@@ -1,0 +1,3 @@
+hostlib_mock.c
+atan_mock.c
+cases/MotorPmsmParEst/mock_pmsmparest.c

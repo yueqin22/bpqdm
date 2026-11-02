@@ -1,0 +1,26 @@
+# 转发到真头文件 (gen_dir 的转发头排在 include 路径最前面, 压过所有 shim)。
+#
+# SubPrg.c 的 include 链很短: MotorDefine.h -> SystemDefine.h -> (真)DSP2803x_Device.h,
+# 以及 SubPrgInclude.h -> SystemDefine.h + MotorDefine.h。三个真头文件都**本身**
+# 是 MSVC 可编的 (纯 typedef / #define / 结构体), 唯一 MSVC 不认的那一层
+# (DSP2803x_Device.h) 由用例私有 shim/DSP2803x_Device.h 顶替 —— 私有 shim 目录
+# 排在 gen_dir 之后, 所以 SystemDefine.h 的 `#include "DSP2803x_Device.h"`
+# 落在私有桩上而不是真设备头。
+#
+# 只有 Uint/Ulong/llong/int/long 这几个基础类型和 5 个结构体是本模块真正要的,
+# 真头文件一处不改地提供它们, 结构体布局因此与工程一致 (虽然宿主侧布局本身不
+# 参与比对, 但字段宽度决定读进来的值在两侧如何解释)。
+#
+# DataTypeDef.h **不转发** (run_case.PINNED_SHIMS): 它负责把 u16 钉成 uint16_t,
+# 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+#
+# SubPrgInclude.h **也不转发** —— 它由 host_patch.json 处理: 该文件里有
+# `absl(long int)` / `qatan(long int)` 两条原型, 而用例私有 shim 末尾
+# `#define int short` 会把 `long int` 折成非法的 `long short` (MSVC C2632)。
+# host_patch 会把真文件**整份复制**进 gen_dir 并把 `(long int)` 换成 `(long)`
+# (`long` 与 `long int` 是同一个类型, 位宽不变) —— 结构体与其余原型一字未改。
+# 不能既转发又打补丁: gen_dir 由 real.txt 的转发头在后面覆盖, 补丁会被
+# `#include <真路径>` 的外壳顶掉 (本用例第一版编译失败正是这个: C2632 的报错
+# 路径指向 include/motor/SubPrgInclude.h 而不是 gen_SubPrg/ 下的副本)。
+SystemDefine.h
+MotorDefine.h

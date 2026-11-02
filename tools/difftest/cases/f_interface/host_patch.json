@@ -1,0 +1,75 @@
+{
+  "modules": [
+    {
+      "ref_src": "ref/f_interface_ref.c",
+      "ref_out": "f_interface_ref.c",
+      "new_base": "f_interface.c",
+      "new_out": "f_interface.c",
+      "replace": [
+        {
+          "old": "memcpy(&gSendToMotor2MsDataBuff[5], &motorFc.motorPara.elem.ratingSpeed, 6)",
+          "new": "memcpy(&gSendToMotor2MsDataBuff[5], &motorFc.motorPara.elem.ratingSpeed, 6*sizeof(Uint16))",
+          "count": 1,
+          "side": "both",
+          "lenient": true,
+          "why": "**类 2 保真补丁: memcpy 的'字 vs 字节'。** C28x 的 char 是 16 位, 所以 RTS 的 memcpy(dst, src, n) 搬 n 个**字**; 宿主 x86 的 char 是 8 位, 同一个 n 只搬 n 个**字节** (半个字数)。这 7 处 memcpy 的第三个实参全部是**字数**, 证据是同一句都有一个被 #if 1 关掉的 #else 分支逐字段列出来 —— 本处 #else 正好列了 6 个字段 (ratingSpeed / statorResistance / rotorResistance / leakInductance / mutualInductance / zeroLoadCurrent)。不补的话宿主只搬 3 个字, 索引 8..10 永远停在初值上, 那三个字段的改写就测不出来; 更糟的是'把 memcpy 展开成逐字段赋值'这种合法改写会在宿主上产生**假差异**。乘 sizeof(Uint16) 后目标端 6*2/2 = 6, 宿主 6*2/2 = 6, 两边一致。补丁只作用于宿主副本, 交付源码与目标端编译完全不受影响。",
+          "lenient_why": "IF16/IF17 会改这一句的长度或目的下标, 锚点文本必然消失。跳过它只让这一句在宿主上按字节搬 —— **ref 侧用的是同一条语句的同样文本**(变异只打在 new 侧), 所以两侧宽度一致, 比对仍然公平。"
+        },
+        {
+          "old": "memcpy(&gSendToMotor2MsDataBuff[11], &motorFc.motorPara.elem.pmsmRs, 3)",
+          "new": "memcpy(&gSendToMotor2MsDataBuff[11], &motorFc.motorPara.elem.pmsmRs, 3*sizeof(Uint16))",
+          "count": 1,
+          "side": "both",
+          "lenient": true,
+          "why": "同上一类。#else 分支列出 pmsmRs / pmsmLd / pmsmLq 共 3 个字段。",
+          "lenient_why": "IF18/IF19/IF20 会改这一句的源/长度/目的下标。"
+        },
+        {
+          "old": "memcpy(&gSendToMotor2MsDataBuff[28], &funcCode.code.boostCloseFrq, 9)",
+          "new": "memcpy(&gSendToMotor2MsDataBuff[28], &funcCode.code.boostCloseFrq, 9*sizeof(Uint16))",
+          "count": 1,
+          "side": "both",
+          "lenient": true,
+          "why": "同上一类。#else 分支列出 boostCloseFrq / vfFrq1 / vfVol1 / vfFrq2 / vfVol2 / vfFrq3 / vfVol3 / slipCompCoef / vfOverMagGain 共 9 个字段。",
+          "lenient_why": "IF31/IF32/IF33 会改这一句的长度/目的下标/源。"
+        },
+        {
+          "old": "memcpy(&gSendToMotor2MsDataBuff[61], &motorFc.vcPara.mAcrKp, 4)",
+          "new": "memcpy(&gSendToMotor2MsDataBuff[61], &motorFc.vcPara.mAcrKp, 4*sizeof(Uint16))",
+          "count": 1,
+          "side": "both",
+          "lenient": true,
+          "why": "同上一类。#else 分支列出 mAcrKp / mAcrKi / tAcrKp / tAcrKi 共 4 个字段。",
+          "lenient_why": "IF50/IF51 会改这一句的长度/目的下标。"
+        },
+        {
+          "old": "memcpy(&gSendToMotor2MsDataBuff[70], &motorFc.vcPara.weakFlusMode, 5)",
+          "new": "memcpy(&gSendToMotor2MsDataBuff[70], &motorFc.vcPara.weakFlusMode, 5*sizeof(Uint16))",
+          "count": 1,
+          "side": "both",
+          "lenient": true,
+          "why": "同上一类。#else 分支列出 weakFlusMode / weakFlusCoef / weakFlusCurMax / weakFlusAutoCoef / weakFlusIntegrMul 共 5 个字段。",
+          "lenient_why": "IF55/IF56/IF57 会改这一句的长度/目的下标/源。"
+        },
+        {
+          "old": "memcpy(&gSendToMotor2MsDataBuff[FUNC_TO_MOTOR_2MS_DATA_NUM], &funcCode.group.cf[0], 40)",
+          "new": "memcpy(&gSendToMotor2MsDataBuff[FUNC_TO_MOTOR_2MS_DATA_NUM], &funcCode.group.cf[0], 40*sizeof(Uint16))",
+          "count": 1,
+          "side": "both",
+          "lenient": true,
+          "why": "同上一类。#else 分支列出 cf[0]..cf[39] 共 40 个字段。这一处尤其关键: 目标端搬 40 个字正好写到 gSendToMotor2MsDataBuff[75..114], 即容量 115 的最后一项; 不补的话宿主只搬 20 个字, 第 95..114 项永远停在初值。",
+          "lenient_why": "IF58~IF61 会改这一句的长度/源/目的偏移/源下标。"
+        },
+        {
+          "old": "memcpy(&funcCode.group.uf[0], &gSendToFunctionDataBuff[MOTOR_TO_Func_2MS_DATA_NUM], 30)",
+          "new": "memcpy(&funcCode.group.uf[0], &gSendToFunctionDataBuff[MOTOR_TO_Func_2MS_DATA_NUM], 30*sizeof(Uint16))",
+          "count": 1,
+          "side": "both",
+          "lenient": true,
+          "why": "同上一类。#else 分支列出 uf[0]..uf[29] 共 30 个字段。这是 copyDataCore2Uf2ms 的**全部**正文 —— 不补的话这个函数在宿主上只写了 uf[0..14], 后一半的改写无从发现。",
+          "lenient_why": "IF88/IF89/IF90 会改这一句的长度/源偏移/目的。"
+        }
+      ]
+    }
+  ]
+}

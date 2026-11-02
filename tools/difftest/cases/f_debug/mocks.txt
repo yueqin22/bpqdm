@@ -1,0 +1,15 @@
+# f_debug 用例要链接的 mock 清单 (相对 tools/difftest/)。
+#
+# mock_debug.c -- 本用例私有: 模块唯一的四个外部数据 (runFlag / frq / frqRun /
+#   frqTmp)。四个都**不按侧重命名**: f_debug.c 里它们是 extern, 两侧必须绑到
+#   同一份, 否则差异可能来自输入而不是来自代码。
+#
+# 不链 hostlib_mock.c: f_debug.c 的活代码不调用 qsqrt / abs / qsin / qatan。
+#   f_debug.h 里只有一行 `Uint16 qsqrt(Uint32 data);` 的**声明**, 全模块没有
+#   任何一处调用。
+#
+# 不链 atan_mock.c: 同上, 本模块不调用 atan。
+#
+# 不链 hw_mock.c: 本模块的活代码不碰任何外设。InitDa / UpdateDaBuffer / DaOut /
+#   DA_SYNC_DEAL 整块在 `#if 0` 里 (源码 419-520 行), 一行都不编译。
+cases/f_debug/mock_debug.c

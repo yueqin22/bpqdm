@@ -1,0 +1,79 @@
+{
+  "modules": [
+    {
+      "ref_src": "../../../../include/motor/MotorInclude.h",
+      "ref_out": "MotorInclude.h",
+      "new_base": "include/motor/MotorInclude.h",
+      "new_out": "MotorInclude.h",
+      "replace": [
+        {
+          "old": "extern interrupt void ",
+          "new": "extern void ",
+          "count": 4,
+          "side": "both",
+          "why": "Real MotorInclude.h lines 72..75 are four `extern interrupt void ..._isr(void);` prototypes; `interrupt` is a C28x keyword and MSVC reports C2054. Dropping the keyword leaves plain void(void) prototypes: no function name or parameter changes, and the patch is host-only, so the target build is unaffected."
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/device/DSP2803x_PieVect.h",
+      "ref_out": "DSP2803x_PieVect.h",
+      "new_base": "include/device/DSP2803x_PieVect.h",
+      "new_out": "DSP2803x_PieVect.h",
+      "replace": [
+        {
+          "old": "typedef interrupt void(*PINT)(void);",
+          "new": "typedef void(*PINT)(void);",
+          "count": 1,
+          "side": "both",
+          "why": "Real DSP2803x_PieVect.h line 9. MotorPWM does not touch PieVectTable, but the case shim's DSP2803x_Device.h includes this header exactly as the real device header does, so it must parse. Only the keyword is removed; the struct layout is untouched."
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/MotorPwmInclude.h",
+      "ref_out": "MotorPwmInclude.h",
+      "new_base": "include/motor/MotorPwmInclude.h",
+      "new_out": "MotorPwmInclude.h",
+      "replace": [
+        {
+          "old": "#include \"MotorInclude.h\"",
+          "new": "#include <MotorInclude.h>",
+          "count": 1,
+          "side": "both",
+          "why": "MotorPWM.c line 2 includes MotorPwmInclude.h and this header's line 10 includes MotorInclude.h. Left quoted, MSVC resolves it from include/motor/ (the same directory as MotorPwmInclude.h itself) and gets the UNPATCHED MotorInclude.h with the four `extern interrupt void` prototypes -- the gen_dir copy would never be reached, C2054. Angle brackets drop the same-directory rule, gen_dir is first on the include path, so the patched copy wins. Same trap MotorSVC hit through MotorVCInclude.h."
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/MotorVCInclude.h",
+      "ref_out": "MotorVCInclude.h",
+      "new_base": "include/motor/MotorVCInclude.h",
+      "new_out": "MotorVCInclude.h",
+      "replace": [
+        {
+          "old": "#include \"MotorInclude.h\"",
+          "new": "#include <MotorInclude.h>",
+          "count": 1,
+          "side": "both",
+          "why": "Reached from the patched MotorInclude.h (line 12). That copy lives in gen_dir, so its quoted includes already resolve to gen_dir first -- this entry is kept for symmetry with the MotorSVC case and to make the dependency explicit: if the include order inside MotorInclude.h ever changes so MotorVCInclude.h is reached from include/motor/ instead, the unpatched quoted include would reappear here first."
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/SubPrgInclude.h",
+      "ref_out": "SubPrgInclude.h",
+      "new_base": "include/motor/SubPrgInclude.h",
+      "new_out": "SubPrgInclude.h",
+      "replace": [
+        {
+          "old": "(long int)",
+          "new": "(long)",
+          "count": 2,
+          "side": "both",
+          "why": "`extern int absl(long int);` (line 76) and `extern int qatan(long int);` (line 78). The case shim ends with `#define int short`, so `long int` expands to `long short` and MSVC rejects it (C2632). `long` and `long int` are the same type, so the width is unchanged. Neither function is called by MotorPWM, but both must parse."
+        }
+      ]
+    }
+  ]
+}

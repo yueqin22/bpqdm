@@ -1,0 +1,17 @@
+# f_runSrc_accDecFrq 用例: 把公共 shim 里有真身的头文件**全部**转发到真头文件。
+#
+# 为什么必须一次全转发 (与 f_runSrc 同一个理由):
+# 本模块的 include 链是 f_runSrc.h -> f_funcCode.h -> DSP28x_Project.h,
+# 再加上 f_frqSrc.h / f_main.h / f_menu.h / f_debug.h。这些头文件互相引用,
+# 而公共 shim 里的 p2p_common.h 无条件声明
+#     extern struct FUNCCODE_MOCK funcCode;
+# 与真的 `FUNCCODE_ALL funcCode` 重定义冲突。只转发其中一个, 链条下游仍会撞上桩。
+#
+# 本模块**不碰任何外设寄存器** (nm2000 -u 只列出 15 个数据符号 + qsqrt),
+# 所以转发过来的是纯 `struct` / `extern` 声明, 宿主编得过。
+#
+# DataTypeDef.h 不在转发范围 (run_case.PINNED_SHIMS): 真文件把 u16 定义成
+# `unsigned int`, 宿主上是 32 位。宽度前提由本用例私有的
+# shim/DSP28x_Project.h 钉死 —— 那是 f_funcCode.h 的第一个 include,
+# 所以整条链解析之前宽度就已经定好了。
+*

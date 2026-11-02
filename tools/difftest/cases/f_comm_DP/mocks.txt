@@ -1,0 +1,17 @@
+# f_comm_DP 用例要链接的 mock 清单 (相对 tools/difftest/)。
+#
+# mock_commdp.c -- 本用例私有, 提供两类东西, 都**不按侧重命名**:
+#   (1) 模块驱动的五个外设对象 (SciaRegs / PieCtrlRegs / GpioCtrlRegs /
+#       PieVectTable / IER) 加 EALLOW-EDIS 计数表。它们是模块的输入兼输出面,
+#       两侧必须绑到同一份, 否则差异可能来自输入而不是来自代码。
+#   (2) CrcValueByteCalc, 逐字抄自 f_common 的冻结基准。它是依赖不是被测单元:
+#       两侧调同一份, 既不会制造差异, 也不会掩盖差异。
+#
+# 不链 hostlib_mock.c: 活代码不调用 qsqrt / abs / qsin / qatan。f_comm_DP.h
+#   链上来的 f_funcCode.h 已被 shim 换成只引芯片头, 连那些原型都看不到。
+#
+# 不链 atan_mock.c: 同上, 本模块不调用 atan。
+#
+# 不链 hw_mock.c: 本模块要的是**真**寄存器模型 (SCI_REGS / GPIO_CTRL_REGS 的
+#   位域布局就是被测对象的一部分), hw_mock 那种寄存器文件替身会把布局差异抹平。
+cases/f_comm_DP/mock_commdp.c

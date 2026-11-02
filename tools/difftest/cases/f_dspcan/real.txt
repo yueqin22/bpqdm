@@ -1,0 +1,14 @@
+# 转发到真头文件 (gen_dir 的转发头排在 include 路径最前面, 压过所有 shim)。
+#
+# 本模块整篇读写 eCAN 寄存器, 所以寄存器结构体必须是**真身** —— 位域布局错了,
+# 差分测试测的就是仿制品。这两个头实测 MSVC 直接编得过 (纯结构体 + extern 声明,
+# 没有 cregister / interrupt / asm)。真文件在 include/device 下, 而该目录不在宿主
+# include 路径上, 所以由这份清单生成转发头放进 gen_dir。
+#
+# 不转发的:
+#   DSP2803x_Device.h   —— 有 `extern cregister volatile unsigned int IFR;` 与
+#                          `asm(" EALLOW")`, 由用例私有 shim/DSP28x_Project.h 顶替。
+#   DSP2803x_Examples.h —— 拉 DSP2803x_GlobalPrototypes.h / DefaultISR.h (全是
+#                          `__interrupt` 原型), 只取其中的 DSP_CLOCK 常量。
+DSP2803x_ECan.h
+DSP2803x_Gpio.h

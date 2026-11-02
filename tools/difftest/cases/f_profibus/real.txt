@@ -1,0 +1,10 @@
+# 全部转发到真头文件。
+#
+# f_profibus.c 只 include f_comm.h, 但真 f_comm.h 又拉进 f_funcCode.h / f_main.h /
+# f_menu.h / f_runSrc.h / f_eeprom.h / f_frqSrc.h —— 公共 shim 里这些都是空壳,
+# 只转发一个会让链条下游撞上桩 (f_plc 用例已踩过)。本模块还要用真的
+# FUNCCODE_ALL / funcCodeGradeSum / DPDataNum 的形状, 抄一份等于抄错。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

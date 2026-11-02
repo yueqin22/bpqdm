@@ -1,0 +1,52 @@
+{
+  "modules": [
+    {
+      "ref_src": "ref/mainInit_2803x_ref.c",
+      "ref_out": "mainInit_2803x_ref.c",
+      "new_base": "mainInit_2803x.c",
+      "new_out": "mainInit_2803x.c",
+      "replace": [
+        {
+          "old": "#define Device_cal (void   (*)(void))0x3D7C80",
+          "new": "extern void gHostDeviceCal(void);\r\n#define Device_cal gHostDeviceCal",
+          "count": 1,
+          "why": "Device_cal 是 TI 出厂校准例程在 ROM 里的地址 (0x3D7C80)。宿主上直接跳过去必然段错误, 整个测试台崩掉; 而这一步只是 InitSetAdc 里的一条指令, 与两侧等价性无关。改成 mock 里的空壳后, '有没有调用它' 仍然可观测 (gHostDevCalN + 事件日志), 与目标端行为不冲突: 补丁只作用于 host_patch, 目标端编译用的还是原文件。顺带补上声明, 否则 mock 里的定义在模块这个翻译单元里看不见。"
+        },
+        {
+          "old": "   asm(\" RPT #7 || NOP\");",
+          "new": ";",
+          "count": 1,
+          "why": "InitFlash 末尾的 RPT #7 || NOP 是 C28x 内联汇编, MSVC 不认 (C2054)。它只展宽时钟 (等 Flash 写恢复), 宿主上没有 Flash, 两侧同样删掉不影响可比性。"
+        },
+        {
+          "old": "    asm(\" RPT #28 || NOP\");",
+          "new": ";",
+          "count": 1,
+          "why": "同上, InitSetAdc 里 ADC 上电后等带隙基准稳定的延时。两条 asm 的 RPT 号不同 (7 / 28), 锚点本身不会混淆。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/MotorInclude.h",
+      "ref_out": "MotorInclude.h",
+      "new_base": "include/motor/MotorInclude.h",
+      "new_out": "MotorInclude.h",
+      "replace": [],
+      "why": "把**真** MotorInclude.h 复制进 gen_dir (宿主补丁目录, 排在 include 路径最前面)。为什么必须复制: 公共 shim (tools/difftest/shim/MotorInclude.h) 是一个只为 f_p2p 之类模块准备的最小壳, 而本模块的 `#include \"MotorInclude.h\"` 是**带引号**的 —— 生成目录里的模块副本就在自己身边, 引号 include 先搜该目录, 再按 -I 顺序搜到公共 shim, 于是拿到那份壳: 里面既没有 5 条 `extern ... void XXX_isr` 原型 (ADC_Over_isr / EPWM1_TZ_isr / EPWM1_zero_isr / SCI_RXD_isr / SCI_TXD_isr 全部未声明, C2065), 也没有 InitSetAdc / InitSetPWM 的前向声明 (C4013 之后 C2371 重定义), 更没有 15 条项目头文件的真实链。复制进 gen_dir 后这条链按宿主的 include 顺序原样展开, 只有 DSP2803x_Device.h 由本用例私有 shim 顶掉 (cregister / asm 宏 / 末尾的 int 宽度钉死), 其余全是真的。replace 为空 = 原样复制, 一条都不改; `interrupt` 关键字由 shim 的 `#define interrupt` 处理, 不需要在这里动文本。"
+    },
+    {
+      "ref_src": "../../../../include/motor/SubPrgInclude.h",
+      "ref_out": "SubPrgInclude.h",
+      "new_base": "include/motor/SubPrgInclude.h",
+      "new_out": "SubPrgInclude.h",
+      "replace": [
+        {
+          "old": "(long int)",
+          "new": "(long)",
+          "count": 2,
+          "why": "用例私有 shim 的 DSP2803x_Device.h 末尾有 `#define int short` (宽度钉死, 见那边的长注释)。`absl(long int)` / `qatan(long int)` 展开成 `long short` 是非法类型组合 (C2632)。改成 `(long)` 语义完全相同 —— 宿主与目标机的 `long` 都是 32 位 —— 与 MotorEncoder 用例同一条补丁。必须复制进 gen_dir: MotorInclude.h 的链是带引号的, 会先搜到 gen_dir 里的这份, 不改的话整条链都编不过。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# MotorPmsmMain 用例要链接的 mock 清单 (相对 tools/difftest/)。
+#
+# hostlib_mock.c  -- abs / labs / qsin / qsqrt 的宿主替身。目标端 abs 与
+#   __IQsat 都是 cl2000 内建 (nm2000 对 build/Debug/MotorPmsmMain.obj 的
+#   undefined 集合里既没有 _abs 也没有 __IQsat, 也没有 _labs: 目标端全部行内
+#   展开), 宿主上 abs 走 SubPrgInclude.h 的原型 -> 本文件给出 16 位语义的定义;
+#   qsin / qsqrt 在 asm/ASMSubPrg.asm 里, 是多项式, 不逐位复刻, 但两侧调同一份,
+#   差分仍然有效 (见 hostlib_mock.c 顶部说明)。
+#   __IQsat 由 shim/DSP2803x_Device.h 里的 static long __IQsat(long,long,long)
+#   提供 (C28x 内建, 工程里没有任何头文件定义它)。
+#
+# 不链 atan_mock.c: 本模块不调用 atan, 也不链 SubPrg.c。
+#
+# 不链 hw_mock.c: 本模块要的是**真**寄存器模型 (EQEP_REGS 的 QPOSCNT/QCLR、
+#   GPIO_DATA_REGS 的 GPACLEAR/GPASET 位域就是被测对象的一部分), hw_mock 那种
+#   寄存器文件替身会把布局差异抹平。
+#
+# mock_pmsmmain.c -- 本用例私有: 三个外设对象 + DINT/EINT/EALLOW/EDIS 计数表 +
+#   21 个 "别的翻译单元拥有" 的全局量 + 9 个被调函数的计数/参数台账。
+#   模块自己的 5 个全局量 (gIPMPos / gFluxWeak / gPMInitPos / gIPMPosCheck /
+#   gPmDecoup) 由 ref_tu.c / new_tu.c 按侧重命名, 不在这里。
+hostlib_mock.c
+cases/MotorPmsmMain/mock_pmsmmain.c

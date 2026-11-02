@@ -1,0 +1,33 @@
+# Host passthrough list for the f_debug case (see tools/difftest/README.md).
+#
+# Exactly one header is forwarded, and it is forwarded on purpose.
+#
+# f_debug.h is the module's own configuration header, and its whole content is
+# `#if` ladders that decide what the module IS:
+#
+#   DEBUG_F_POSITION_CTRL   0 unless ZJ_MD380M is defined -- and no build
+#                           configuration defines it, so 0.  This is the macro
+#                           that gates the module's only caller.
+#   F_DEBUG_RAM             0 unless FUNC_DEBUG_RAM is defined -> 0.  This is the
+#                           macro that hides UniversalDebug32 / PowerOnDebug /
+#                           InitDa / UpdateDaBuffer / DaOut from the header.
+#   LOCALF / LOCALD         empty / `extern` in the live arm.  They decide
+#                           whether the nine entry points and the module's
+#                           buffers are external symbols or file-local.  That is
+#                           not a detail: new_case.py renamed 26 symbols for
+#                           this case precisely because they are external, and
+#                           if LOCALF/LOCALD ever flipped the rename table would
+#                           be wrong and the two TUs would silently collapse
+#                           into one set of globals.
+#   BitAssign, TIME_*       macros the module carries.
+#
+# Hand-copying that header into shim/ would mean the bench could disagree with
+# the firmware about any of the above, and the disagreement would be invisible
+# -- the case would keep passing while testing a different configuration.  So
+# the real file is forwarded and the case tracks the build by construction.
+#
+# Nothing else needs forwarding.  f_debug.c's live code touches no peripheral
+# (InitDa / UpdateDaBuffer / DaOut / DA_SYNC_DEAL are inside `#if 0`), and the
+# four other headers on its include list are answered by empty or minimal stubs
+# in cases/f_debug/shim/.
+f_debug.h

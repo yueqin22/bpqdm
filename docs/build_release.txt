@@ -1,0 +1,42 @@
+构建记录 — Release 配置
+============================================================
+
+工具链: TI C2000 CGT v25.11.1.LTS (--abi=coffabi, COFF)
+目标: TMS320F28035 / C28x
+
+一、编译选项 (取自 project/jt380.pjt, 逐字执行)
+------------------------------------------------------------
+cl2000 (见 project/jt380.pjt [Compiler] Release)
+
+二、编译结果
+------------------------------------------------------------
+  源文件数 : 59
+  失败     : 0
+  告警/错误行: 74
+
+三、链接
+------------------------------------------------------------
+  命令: cd project && cl2000 -@Release.lkf
+  结果: 成功
+  产物: E:/software/bpqdm/bpqdm_rewrite\build/Release\jt380_Release.out
+  映射: E:/software/bpqdm/bpqdm_rewrite\build/Release\jt380_Release.map
+
+四、映像
+------------------------------------------------------------
+  hex2000 -i -memwidth 16 -romwidth 16  (C28x 为 16 位字机器)
+  产物: E:/software/bpqdm/bpqdm_rewrite\build/Release\jt380_Release.hex
+  大小: 283516 字节
+  SHA256: 1156cbe77441c51a3009575c05b984c80184af172228fabe13a02d89dc8453c1
+
+五、与原工程副本的比对 (同一工具链、同一选项)
+------------------------------------------------------------
+  原工程映像: E:/software/bpqdm/bpqdm_rewrite\build/_verify\baseline_tree\Release\MD380_Release.hex (287087 字节)
+  SHA256    : 6ef7c85f2ed02078bbe3a58c5300b2a7676091c6939bc5ddb8c0ae7cbaec31e7
+  结论      : 不同
+
+六、与原 CCS 3.3 构建的对照
+------------------------------------------------------------
+  原工程 Debug 实测: Build Complete, 0 Errors, 39 Warnings, 0 Remarks
+  原始日志: docs/original_build_Debug.log
+  (原日志未记录告警正文, 故无法逐条比对)
+

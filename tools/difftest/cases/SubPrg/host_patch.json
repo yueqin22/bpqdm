@@ -1,0 +1,41 @@
+{
+  "modules": [
+    {
+      "ref_src": "ref/SubPrg_ref.c",
+      "ref_out": "SubPrg_ref.c",
+      "new_base": "SubPrg.c",
+      "new_out": "SubPrg.c",
+      "replace": [
+        {
+          "old": "#define  SETOVM asm(\" SETC OVM\")",
+          "new": "#define  SETOVM",
+          "count": 1,
+          "side": "both",
+          "why": "`asm(\" SETC OVM\")` 是 C28x 内联汇编, MSVC 报 C2054/C2059。SETOVM/CLROVM 成对出现在 PID() 的首尾, 而本模块**没有任何一条语句依赖 OVM 标志位**: 没有 `__sat` 之类读溢出的内建, 也没有别处读这个标志。换成空语句后两侧语义不变。补丁只作用于宿主构建, 目标端由 target_check.py 用真 cl2000 编, 不受影响。count=1 是文本出现次数 (与 f_main 用例处理 `asm(\" nop\")` 同一手法)。"
+        },
+        {
+          "old": "#define  CLROVM asm(\" CLRC OVM\")",
+          "new": "#define  CLROVM",
+          "count": 1,
+          "side": "both",
+          "why": "同上, PID() 末尾那一半。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/SubPrgInclude.h",
+      "ref_out": "SubPrgInclude.h",
+      "new_base": "include/motor/SubPrgInclude.h",
+      "new_out": "SubPrgInclude.h",
+      "replace": [
+        {
+          "old": "(long int)",
+          "new": "(long)",
+          "count": 2,
+          "side": "both",
+          "why": "`extern int absl(long int);` 与 `extern int qatan(long int);`。用例私有 shim/DSP2803x_Device.h 末尾 `#define int short` (必须这么做, 否则 `typedef unsigned int Uint;` 在宿主上是 32 位), 于是 `long int` 会展开成 `long short` —— MSVC C2632。`long` 与 `long int` 是同一个类型, 去掉 `int` 位宽不变。这两条只是原型, 本模块一个都不调, 编得过就行。与 MotorEncoder 用例的同一条补丁完全同源。"
+        }
+      ]
+    }
+  ]
+}

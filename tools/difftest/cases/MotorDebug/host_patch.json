@@ -1,0 +1,19 @@
+{
+  "modules": [
+    {
+      "ref_src": "ref/MotorDebug_ref.c",
+      "ref_out": "MotorDebug_ref.c",
+      "new_base": "MotorDebug.c",
+      "new_out": "MotorDebug.c",
+      "replace": [
+        {
+          "old": "Uint gDebugBuffer[C_DEBUG_BUFF_SIZE];",
+          "new": "Uint16 gDebugBuffer[C_DEBUG_BUFF_SIZE];",
+          "count": 1,
+          "side": "both",
+          "why": "宿主保真补丁 (词/字节宽差), 两侧都要打。目标端 `Uint` 是 1 个 16 位字, 宿主 `MotorDefine.h` 的 `typedef unsigned int Uint;` 是 32 位。不折宽的话 `SaveDebugData32` 的语义就错了: 它是 `p = (Ulong *)&gDebugBuffer; p[gDebugPoint++] = data;`, 目标上一个 `Ulong` = 2 个字, 所以一次写掉 gDebugBuffer 的第 2i / 2i+1 项; 宿主上一次只写掉 1 个 32 位元素, 缓冲区里被改动的**项数**和位置都不同。把数组元素折成 Uint16 之后: `SaveDebugData16` 的 `gDebugBuffer[i] = data` (data 是 Uint) 会**隐式截断到 16 位**, 与目标端的原生 16 位存储一致; `SaveDebugData32` 的 `p[i]` 落在第 2i / 2i+1 个 16 位字上, 与目标端逐字对应。driver 也按 `extern Uint16 ref_gDebugBuffer[]` 声明并按 16 位字比对。交付源码里的 `Uint gDebugBuffer[...]` 一字未改, 目标端构建不经过本补丁。"
+        }
+      ]
+    }
+  ]
+}

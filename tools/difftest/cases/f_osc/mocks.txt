@@ -1,0 +1,8 @@
+# f_osc 用例的 mock 源文件清单 (相对 tools/difftest/)
+#
+# 默认的 hw_mock.c + hw_mock_p2p.c 不能用于本用例:
+#   - hw_mock_p2p.c 里是 `struct FUNCCODE_MOCK funcCode;`, 而本用例走真
+#     f_funcCode.h, funcCode 的类型是 FUNCCODE_ALL, 两者不是同一个类型;
+#   - hw_mock.c 包含 MotorInclude.h, 那是电机模块那一支的头, 与 SCI 无关。
+# 所以本用例自带 mock_osc.c (寄存器实例 + 4 个外部函数 + 3 个全局量)。
+cases/f_osc/mock_osc.c

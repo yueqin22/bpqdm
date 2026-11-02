@@ -1,0 +1,34 @@
+{
+  "modules": [
+    {
+      "ref_src": "../../../../include/motor/MotorInclude.h",
+      "ref_out": "MotorInclude.h",
+      "new_base": "include/motor/MotorInclude.h",
+      "new_out": "MotorInclude.h",
+      "replace": [
+        {
+          "old": "extern interrupt void ",
+          "new": "extern void ",
+          "count": 4,
+          "side": "both",
+          "why": "真 MotorInclude.h 第 72~75 行有 4 条 `extern interrupt void ..._isr(void);` 原型, `interrupt` 是 C28x 关键字, MSVC 报 C2054。去掉关键字后原型就是普通的 void(void)。只改原型, 不改任何函数名与参数 —— 目标端不受影响 (本补丁只在宿主构建时用)。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/device/DSP2803x_PieVect.h",
+      "ref_out": "DSP2803x_PieVect.h",
+      "new_base": "include/device/DSP2803x_PieVect.h",
+      "new_out": "DSP2803x_PieVect.h",
+      "replace": [
+        {
+          "old": "typedef interrupt void(*PINT)(void);",
+          "new": "typedef void(*PINT)(void);",
+          "count": 1,
+          "side": "both",
+          "why": "真 DSP2803x_PieVect.h 第 9 行 `typedef interrupt void(*PINT)(void);` —— 同上, `interrupt` MSVC 不认。本模块不写 PieVectTable, 但用例私有 shim/DSP2803x_Device.h 会把这颗头拉进编译单元, 所以它必须编得过。只去掉关键字, 结构体布局原样保留。"
+        }
+      ]
+    }
+  ]
+}

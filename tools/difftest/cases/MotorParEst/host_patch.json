@@ -1,0 +1,49 @@
+{
+  "modules": [
+    {
+      "ref_src": "../../../../include/motor/MotorInclude.h",
+      "ref_out": "MotorInclude.h",
+      "new_base": "include/motor/MotorInclude.h",
+      "new_out": "MotorInclude.h",
+      "replace": [
+        {
+          "old": "extern interrupt void ",
+          "new": "extern void ",
+          "count": 4,
+          "side": "both",
+          "why": "真 MotorInclude.h 第 72~75 行有 4 条 `extern interrupt void ..._isr(void);` 原型, `interrupt` 是 C28x 关键字, MSVC 报 C2054。去掉关键字后原型就是普通的 void(void), 与 PieVectTable 的 PINT 字段 (本用例另有一条补丁把它从 interrupt 改成普通函数指针) 对得上。 只改原型, 不改任何函数名与参数 —— 目标端不受影响 (本补丁只在宿主构建时用)。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/device/DSP2803x_PieVect.h",
+      "ref_out": "DSP2803x_PieVect.h",
+      "new_base": "include/device/DSP2803x_PieVect.h",
+      "new_out": "DSP2803x_PieVect.h",
+      "replace": [
+        {
+          "old": "typedef interrupt void(*PINT)(void);",
+          "new": "typedef void(*PINT)(void);",
+          "count": 1,
+          "side": "both",
+          "why": "真 DSP2803x_PieVect.h 第 9 行 `typedef interrupt void(*PINT)(void);` —— 同上, `interrupt` MSVC 不认。本模块要写 PieVectTable (PIE_VECTTABLE_ADCINT / EPWM1_TZINT / EPWM1_INT 三个字段), 所以这个结构体必须是**真的**: 只去掉关键字, 字段顺序、数量、每个字段的偏移都保持原样, 宿主与目标端的布局因此一致 (差分测试比的是写入的**内容**, 两侧都在宿主上跑, 所以布局一致就够)。"
+        }
+      ]
+    },
+    {
+      "ref_src": "../../../../include/motor/MotorParaIDinclude.h",
+      "ref_out": "MotorParaIDinclude.h",
+      "new_base": "include/motor/MotorParaIDinclude.h",
+      "new_out": "MotorParaIDinclude.h",
+      "replace": [
+        {
+          "old": "#include \"MotorInclude.h\"",
+          "new": "#include <MotorInclude.h>",
+          "count": 1,
+          "side": "both",
+          "why": "真 MotorParaIDinclude.h 第 10 行 `#include \"MotorInclude.h\"`。带引号的 include 先按**包含它的那个文件所在目录**查找 —— 该文件在 include/motor/ 下, 于是它一定拿到 include/motor/MotorInclude.h 那份**没打过补丁**的真文件, gen_dir 里的补丁副本永远轮不到。改成尖括号后不再看同目录, 才走 include 路径, gen_dir 排最前, 补丁生效。 MotorInfoCollect 用例踩过同一个坑, 结论直接复用。"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "modules": [
+    {
+      "ref_src": "ref/f_main_ref.c",
+      "ref_out": "f_main_ref.c",
+      "new_base": "f_main.c",
+      "new_out": "f_main.c",
+      "replace": [
+        {
+          "old": "asm(\" nop\");",
+          "new": ";",
+          "count": 11,
+          "side": "both",
+          "why": "f_main.c 正文里有 11 处 `asm(\" nop\");` (Main05msFunctionA / C 各一处是**活代码**, 其余 9 处在 #if 0 里, 预处理器会删掉)。`asm` 是 C28x 关键字, MSVC 报 C2059。换成空语句后语义不变 —— nop 不产生任何可观测状态, 只是占一拍。补丁只在宿主构建时用, 目标端不受影响。注意 count 数是**文本出现次数**(含 #if 0 里的), 不是活代码数。"
+        },
+        {
+          "old": "asm(\" ESTOP0\");",
+          "new": ";",
+          "count": 13,
+          "side": "both",
+          "why": "同上。13 处全部在 `#if DEBUG_F_CHK_FUNC_CODE` (求值为 0) 与 `#if 0` 里, 预处理器会删掉, 但文本补丁按文本数, 所以仍然要一并替换 —— 留着的话下次有人把 DEBUG_F_CHK_FUNC_CODE 打开就编不过了。"
+        },
+        {
+          "old": "(Uint16*)MEMORY_ADDRESS",
+          "new": "(Uint16*)(gHostMemory + MEMORY_ADDRESS)",
+          "count": 1,
+          "side": "both",
+          "why": "getMomeryValue() 的整个正文是 `a = (Uint16*)MEMORY_ADDRESS; memoryValue = *a;`, 其中 MEMORY_ADDRESS 是 funcCode.code.memoryAddr —— 一个 16 位**地址**。目标端那条地址指向真实 RAM; 宿主上把 16 位整数当指针解引用是未定义行为 (实测直接访问违例)。改写成以它为下标取一张 64K 项的 16 位表, 语义(按下标取一个字)与越界行为都变成确定的。gHostMemory 在用例私有 shim/DSP28x_Project.h 里声明, 由 driver 灌内容 —— 两侧看到同一张表, 所以 memoryValue 的比对仍然有效。"
+        }
+      ]
+    }
+  ]
+}

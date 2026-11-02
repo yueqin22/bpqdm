@@ -1,0 +1,38 @@
+{
+  "why": "宿主补丁, 只作用于宿主副本, 交付源码与目标端编译不受影响。\n\n四处 sizeof 的词/字节差。C28x 的 sizeof 返回**16 位字数**, MSVC 返回**字节数**。\nf_io.c 里有四处把 sizeof 当**元素个数**用, 而这几处的元素类型都是 Uint16, 所以\n目标端字数 == 项数, 宿主上则**翻倍**:\n\n  1) GetTemperature  `size = sizeof(voltageTempPT100);`  (两处, PT100 / PT1000)\n     GetTemperatureCalc 把它当表长 len 用 (`for (i = 1; i < len; i++)`)。目标端\n     len = 52 正好是表项数; 宿主上算出 104, 循环会跑到表外读相邻 .econst ——\n     既不可复现, 也把 `if (i >= len) i = len - 1;` 这条钳位判据整个绕开。\n\n  2) AiCalc  `#define SIZE_AI_CALIBRATE  sizeof(struct ANALOG_CALIBRATE_CURVE)`\n     用于 `&aiCalibrateCurve[0].before1 + SIZE_AI_CALIBRATE * j` —— 这是 Uint16*\n     上的指针算术, 加的是**元素**个数。结构体是四个 Uint16, 目标端 4 正好一步\n     一个结构体; 宿主上 8, 于是 j=1 读到的是 aiCalibrateCurve[2], j=2 直接读到\n     aoCalibrateCurve 里去了 —— 三路标定曲线变成\"第 0 路对、后两路是别人的数\"。\n\n  3) AiCalc  `#define SIZE_AI_JUMP  sizeof(struct AI_JUMP)`  同上, 结构体两个\n     Uint16, 宿主上步长翻倍, j=1/2 读到 aiJumpSet 表外。\n\n改成 sizeof(...)/sizeof(Uint16): 目标端 4/1 = 4、2/1 = 2、52/1 = 52, 宿主 8/2 = 4、\n4/2 = 2、104/2 = 52, 两边一致, 而且这个写法在目标端与原文**逐字等价**。\n\n与 f_error / f_invPara 的同一处补丁是同一个手法。这里四条都用默认的 side=both:\n交付源码的改写**保持这四处表达式原样** (只改结构不改表达式), 所以 ref 与 new 两侧\n的锚点文本相同。若哪天改写动了这四行, 补丁会以 '出现 0 次, 期望 1 次' 直接报错\n停下 —— 那正是想要的: 宁可停下, 也不要拿一份宿主宽度不对的副本继续跑。\n\n第五条不是宽度问题, 是 C28x 的内联汇编:\n\n  4) DiCalc  `asm(\" nop\");`\n     MSVC 的 C 前端没有这个关键字, 把它当**函数调用** (warning C4013), 链接期\n     报 LNK2019 找不到 `asm`。目标端它是一条真正的 NOP —— DiCalc 刚通过\n     getDiHwStatus 读完整组 GPIO, 插一拍让采样稳定。宿主上没有对应物, 用\n     `(void)0;` 替掉: 语义是\"什么也不做\", 与\"没有可观测副作用\"等价。\n     锚点**不带缩进**, 所以改写调整层级不会让补丁失配, 但语句本身必须还在。\n     代价要说清: 这条 NOP 在宿主上本来就不可观测 (它不写任何状态), 所以\n     \"改写把这条 NOP 删了\"这类差异本用例永远抓不到 —— 属于\"证明不了\"清单。",
+  "modules": [
+    {
+      "ref_src": "ref/f_io_ref.c",
+      "ref_out": "host_ref_f_io.c",
+      "new_base": "f_io.c",
+      "new_out": "host_new_f_io.c",
+      "replace": [
+        {
+          "old": "size = sizeof(voltageTempPT100);",
+          "new": "size = (sizeof(voltageTempPT100)/sizeof(Uint16));",
+          "count": 1
+        },
+        {
+          "old": "size = sizeof(voltageTempPT1000);",
+          "new": "size = (sizeof(voltageTempPT1000)/sizeof(Uint16));",
+          "count": 1
+        },
+        {
+          "old": "#define SIZE_AI_CALIBRATE   sizeof(struct ANALOG_CALIBRATE_CURVE)",
+          "new": "#define SIZE_AI_CALIBRATE   (sizeof(struct ANALOG_CALIBRATE_CURVE)/sizeof(Uint16))",
+          "count": 1
+        },
+        {
+          "old": "#define SIZE_AI_JUMP sizeof(struct AI_JUMP)",
+          "new": "#define SIZE_AI_JUMP (sizeof(struct AI_JUMP)/sizeof(Uint16))",
+          "count": 1
+        },
+        {
+          "old": "asm(\" nop\");",
+          "new": "(void)0;",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+# f_osc 用例: 把公共 shim 里有真身的头文件**全部**转发到真头文件, 再把
+# 本模块真正摸到的那批外设头也逐个转发。
+#
+# 本模块的 include 链是 f_osc.h -> f_funcCode.h -> DSP28x_Project.h, 再加
+# f_comm.h -> f_main.h / f_menu.h / f_runSrc.h / f_eeprom.h / f_frqSrc.h。
+# 这些头文件互相引用, 而公共 shim 里的 p2p_common.h 无条件声明
+#     extern struct FUNCCODE_MOCK funcCode;
+# 与真的 `FUNCCODE_ALL funcCode` 重定义冲突。只转发其中一个, 链条下游仍会撞上桩。
+#
+# `*` 只展开"公共 shim 目录里存在、且 include/ 下有真身"的那一批。本用例私有的
+# 两个 shim (DSP28x_Project.h / DSP2803x_Device.h) **不在**公共 shim 目录里,
+# 所以不会被转发掉 —— 这一点很关键, 因为 run_case.py 把转发层排在 include 路径
+# 最前面, 一旦这两个被转发, 宽度钉死和外设关键字替换会同时失效, 而测试台仍然会
+# "通过", 只是测的已经不是目标端语义了。
+#
+# 下面逐个列出的 DSP2803x_*.h 是另一回事: 它们**不在**公共 shim 目录里, `*`
+# 展开不到, 而 include/device 又不在 include 路径上。它们只能靠转发层被找到,
+# 这正是想要的 —— 用例私有的 DSP2803x_Device.h 负责替换三个宿主编不过的构造
+# (`cregister` / `asm()` / `interrupt`), 而这些外设头只提供结构体与 extern
+# 声明, 宿主原样就能编。位域布局本身就是被测对象 (SCIRXST.bit.RXERROR、
+# SCIRXBUF.bit.RXDT、SCIFFTX.bit.TXFFST、PIEIER9.bit.INTx1 全都在被读写),
+# 所以必须来自真身, 不能用手写的替身 —— 否则比较的是两套都错的布局。
+#
+# 例外: DSP2803x_Device.h 绝不能列在这里 (那是用例私有 shim 的职责)。
+#
+# 本模块的对外依赖只有 4 个函数 + 3 个全局量 (nm2000 -u 实测):
+#     CrcValueByteCalc / CommRead / CommWrite
+#     funcCode / sciFlag / commRcvData / commReadData
+# 它们由 mock_osc.c 提供, 两侧共享同一份 —— 是输入面, 不是被测单元。
+*
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_PieVect.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

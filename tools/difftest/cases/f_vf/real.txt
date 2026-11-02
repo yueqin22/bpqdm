@@ -1,0 +1,23 @@
+# 全部转发到真头文件。
+#
+# f_vf.c 的 include 链是 f_main.h / f_runSrc.h / f_frqSrc.h / f_io.h。
+# 这几个都必须用真的:
+#   - f_main.h   提供 struct MOTOR_FC 的 extern 与 VF_CALC_PERIOD / ABS_INT16 /
+#                ABS_INT32 —— 本模块的斜坡步长与绝对值运算全靠它们;
+#   - f_runSrc.h 提供真的 LINE_CHANGE_STRUCT 与 LINE_CHANGE_STRTUCT_DEFALUTS
+#                (本模块的 vfSeprateVolAccLine 就靠它初始化 .calc),
+#                以及 union RUN_FLAG 的 extern (runFlag.bit.run);
+#   - f_frqSrc.h 提供 maxFrq / frq / FrqPidSetDeal / UpdateMultiSetFrq 的声明;
+#   - f_io.h     提供 aiDeal[] / struct AI_DEAL / AI_NUMBER / pulseInSet /
+#                struct DI_FUNC 的 extern。
+#
+# f_funcCode.h 由 f_runSrc.h 拉进来, 提供 FUNCCODE_ALL funcCode 与全部
+# FUNCCODE_vf* / FUNCCODE_motorCtrlMode_VF 常量、TIME_UNIT_VF_VOL_ACC_TIME。
+#
+# 公共 shim 里这些头都是空壳 (只 include p2p_common.h), 而 p2p_common.h 无条件声明
+# `extern struct FUNCCODE_MOCK funcCode`, 与真的 FUNCCODE_ALL funcCode 直接重定义冲突。
+# 所以**必须一次全转发**: 只转发一个, 链条下游仍会撞上桩。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

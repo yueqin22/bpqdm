@@ -1,0 +1,45 @@
+# 转发到真头文件。
+#
+# f_main.c 的 include 链是 f_main.h / f_runSrc.h / f_frqSrc.h / f_eeprom.h /
+# f_io.h / f_menu.h / f_ui.h / f_comm.h / f_posCtrl.h / f_osc.h / f_canlink.h /
+# f_p2p.h。公共 shim 里 f_comm.h / f_common.h / f_error.h / f_frqSrc.h / f_io.h /
+# f_menu.h / f_runSrc.h / f_ui.h 全是空壳, 而本模块**处处**要求它们是真的:
+#
+#   f_main.h        GetTime() -> CpuTimer1.RegsAddr->TIM.all / FUNC_DEAL_PERIOD /
+#                   POWER_ON_* / AIAO_CHK_* / ABS_INT16 / GetMax / GetMin
+#   f_funcCode.h    FUNCCODE_ALL / funcCode / funcCodeAttribute / FNUM_PARA /
+#                   GetCodeIndex() / EEPROM_CHECK_INDEX1/2 / AI_AO_CALIB_START
+#   f_eeprom.h      FUNCCODE_RW / funcCodeRead / SaveOneFuncCode() /
+#                   FUNCCODE_RW_MODE_* / FUNCCODE_READ_RET_OK / errorEeprom
+#   f_runSrc.h      runFlag / runSrc / tuneCmd
+#   f_frqSrc.h      runMode / frqCalcSrcOld / frqAimTmp0 / pmsmRotorPos
+#   f_menu.h        menu[] / menuLevel / MenuInit()
+#   f_ui.h          displayBuffer / scanStep / spiData / DisplayScan() 等
+#   f_error.h       errorCode
+#
+# **必须一次全转发**: 只转发一个, 链条下游仍会撞上桩里的替身类型 (例如
+# `extern struct FUNCCODE_MOCK funcCode` 与真 `FUNCCODE_ALL funcCode` 重定义冲突)。
+# `*` 由 run_case.py 的 _expand_star() 展开成"公共 shim 里有真身的那一批"。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+#
+# 另外显式列出两个**外设**头:
+#
+#   DSP2803x_SysCtrl.h     InitDspFunc 直接写 SysCtrlRegs.PCLKCR0/PCLKCR1 的
+#                          ECANAENCLK / EPWM4..6ENCLK / ECAP1ENCLK / LINAENCLK。
+#                          位域布局必须是芯片的真布局, 否则"改写把某一位弄反"
+#                          就测不出来。
+#   DSP2803x_CpuTimers.h   GetTime() 展开成 CpuTimer1.RegsAddr->TIM.all。
+#                          CpuTimer1 是 struct CPUTIMER_VARS (含 RegsAddr 指针),
+#                          CPUTIMER_REGS.TIM.all 是 32 位 —— 宽度与偏移都必须是
+#                          真的, 否则 GetTime() 的减法就不是 32 位减法。
+#
+# 两者实测 MSVC 直接编得过: 纯结构体 + extern 声明 + 宏, 没有 cregister /
+# interrupt / asm。DSP2803x_Device.h 与 DSP2803x_Examples.h 有意**不**转发
+# (前者有 `extern cregister volatile unsigned int IFR;`, 后者拉进一堆
+# `__interrupt` 原型), 由用例私有 shim/DSP28x_Project.h 顶替。
+*
+DSP2803x_SysCtrl.h
+DSP2803x_CpuTimers.h
+DSP2803x_GlobalPrototypes.h

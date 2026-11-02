@@ -1,0 +1,38 @@
+# cases/f_invPara 的布局对照标签。
+#
+# 顺序必须与 cases/f_invPara/_layout_probe.c 里 LAYOUT_LIST 的展开顺序**逐项对应**。
+#
+# 前 3 项量 union 的整体尺寸, 用来说明"宿主与目标端的下标空间本身就不一样大"。
+# 中间 22 项就是 motor1ParaIndex[] 的 22 个条目 —— 它们是模块写 funcCode.all[] 时
+# 真正用到的下标, 也是本用例最要紧的一组数。
+# 后 3 项是 motorSnIndexIncToMotor1[1..3], 即 2/3/4 号电机参数区相对 1 号区的偏移。
+#
+# 单位: B = 字节 (目标端 sizeof 数值 x2 才是宿主字节), W = 字偏移, C = 元素个数
+sizeof(FUNCCODE_ALL)|B
+sizeof(FUNCCODE_CODE)|B
+FNUM_ALL|C
+motor1ParaIndex[0] ratingPower|W
+motor1ParaIndex[1] ratingCurrent|W
+motor1ParaIndex[2] statorResistance|W
+motor1ParaIndex[3] rotorResistance|W
+motor1ParaIndex[4] leakInductance|W
+motor1ParaIndex[5] mutualInductance|W
+motor1ParaIndex[6] zeroLoadCurrent|W
+motor1ParaIndex[7] pmsmRs|W
+motor1ParaIndex[8] pmsmLd|W
+motor1ParaIndex[9] pmsmLq|W
+motor1ParaIndex[10] pmsmRsLdUnit|W
+motor1ParaIndex[11] pmsmCoeff|W
+motor1ParaIndex[12] mAcrKp|W
+motor1ParaIndex[13] mAcrKi|W
+motor1ParaIndex[14] tAcrKp|W
+motor1ParaIndex[15] tAcrKi|W
+motor1ParaIndex[16] pmsmCheckTime|W
+motor1ParaIndex[17] enCoderDir|W
+motor1ParaIndex[18] enCoderAngle|W
+motor1ParaIndex[19] uvGainWarp|W
+motor1ParaIndex[20] uvwSignDir|W
+motor1ParaIndex[21] uvwSignAngle|W
+motorSnIndexIncToMotor1[1] (M2-M1)|W
+motorSnIndexIncToMotor1[2] (M3-M1)|W
+motorSnIndexIncToMotor1[3] (M4-M1)|W

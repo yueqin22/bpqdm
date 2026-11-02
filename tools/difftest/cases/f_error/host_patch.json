@@ -1,0 +1,18 @@
+{
+  "why": "宿主补丁, 一条, 只作用于宿主副本, 交付源码与目标端编译不受影响。\n\nsizeof 的词/字节差: C28x 的 sizeof 返回**16 位字数**, MSVC 返回**字节数**。\ngetMotorError() 里 `for (i = 0; i < sizeof(errorCodeFromMotorList); i++)` 把\nsizeof 当成**元素个数**用 (errorCodeFromMotorList 是 19 项 Uint16)。目标端\n19/1 = 19 正好是项数; 宿主上算出 38, 循环跑到表外去读相邻内存 —— 既不可复现\n(实测会读到 .econst 里紧邻的别的常量), 也可能直接越界崩。\n\n改成 sizeof(errorCodeFromMotorList)/sizeof(Uint16): 目标端 19/1 = 19, 宿主\n38/2 = 19, 两边一致, 而且这个写法在目标端与原文**逐字等价**。\n\n与 f_invPara 的同一处补丁是同一个手法。区别在 side: 那里改写后的源码自己已经\n换成了可移植写法, 所以只补 ref 侧; 这里 f_error.c 的改写**保持原文不动**\n(只改结构不改表达式), 所以两侧都要打, 用默认的 both。\n\n另一处 sizeof —— `errorScene1.all[sizeof(struct ERROR_SCENE_STRUCT) - 1]` ——\n**不需要补丁**: union ERROR_SCENE 的数组长度本身就写成\n`Uint16 all[sizeof(struct ERROR_SCENE_STRUCT)]`, 于是目标端取 all[8-1]=all[7]\n(数组尾), 宿主取 all[16-1]=all[15] (同样是数组尾)。两边都在界内, 而且都落在\n\"联合体最后一个 Uint16\" 这个位置上, 语义一致。反过来, 若把它改写成字面量 8,\n宿主侧就会变成 all[7] 而数组有 16 项 —— 那才是真正的差异。所以这里**刻意保留\n表达式原样**。",
+  "modules": [
+    {
+      "ref_src": "ref/f_error_ref.c",
+      "ref_out": "host_ref_f_error.c",
+      "new_base": "f_error.c",
+      "new_out": "host_new_f_error.c",
+      "replace": [
+        {
+          "old": "i < sizeof(errorCodeFromMotorList)",
+          "new": "i < (sizeof(errorCodeFromMotorList)/sizeof(Uint16))",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# 全部转发到真头文件。
+#
+# f_frqSrc_pid.c 的 include 链是 f_frqSrc.h / f_main.h / f_runSrc.h / f_io.h /
+# f_menu.h / f_ui.h。其中:
+#
+#   - f_frqSrc.h   提供本模块自己的 extern 声明 (frq / frqAim / frqAiPu /
+#                  upperFrq / lowerFrq / maxFrq / plcStep / plcStepOld /
+#                  frqCalcSrc / frqCalcSrcOld / frqFlag ...) 以及 **PID_FUNC 的
+#                  完整布局与 PID_FUNC_DEFAULTS** —— 这个结构体是本用例的观测
+#                  主体, 抄一份就等着漂移;
+#   - f_runSrc.h   提供 union RUN_CMD / union RUN_FLAG 与 runCmd / runFlag,
+#                  以及 LINE_CHANGE_STRUCT 与 LINE_CHANGE_STRTUCT_DEFALUTS;
+#   - f_io.h       提供 struct DI_FUNC / diFunc / struct AI_DEAL / aiDeal[] /
+#                  pulseInSet, 以及 LINE_STRUCT 与 LINE_STRTUCT_DEFALUTS、
+#                  LowPassFilter 与 LPF_DEFALUTS;
+#   - f_main.h     提供 ABS_INT32 / GetMax / GetMin / PID_CALC_PERIOD 等宏;
+#   - f_menu.h     提供 menu0DispStatus 等;
+#   - f_ui.h       提供 keyFunc。
+#
+# f_funcCode.h 由 f_frqSrc.h 拉进来, 提供 FUNCCODE_ALL funcCode 与全部
+# FUNCCODE_pid* 常量、TIME_UNIT_PID_* 常量。
+#
+# 为什么用 `*` 而不是一个个列: 公共 shim 里这些头都是 `#include "p2p_common.h"`
+# 的空壳, 而 p2p_common.h 无条件声明 `extern struct FUNCCODE_MOCK funcCode`,
+# 与真的 `FUNCCODE_ALL funcCode` 冲突。**必须一次全转发** —— 只转发一个,
+# 链条下游仍会撞上桩。展开结果记进记录的 real_forwarded 字段, 可查。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

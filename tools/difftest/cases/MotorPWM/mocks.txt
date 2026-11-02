@@ -1,0 +1,14 @@
+# MotorPWM 用例要链接的 mock 清单 (相对 tools/difftest/)。
+#
+# hostlib_mock.c  -- abs / labs / qsin / qatan / qsqrt 的宿主替身。目标端
+#   abs 与 __IQsat 都是 cl2000 内建, 宿主上 abs 走 SubPrgInclude.h 的原型 ->
+#   本文件给出 16 位语义的定义。MotorPWM 只用 qsin (OutPutPWMVC 两次、
+#   OutPutPWMVF 两次), qsin 在 asm/ASMSubPrg.asm 里是多项式, 不逐位复刻, 但
+#   两侧调同一份, 差分仍然有效 (见 hostlib_mock.c 顶部说明)。
+# mock_pwm.c      -- 本用例私有: EPwm1/2/3Regs 三块真实外设寄存器 + EALLOW/EDIS
+#   计数表 + 3 个"别的翻译单元拥有"的全局量 (gADC / gDeadBand / gPhase)。
+#   模块自己的 10 个全局量由 ref_tu.c/new_tu.c 按侧重命名, 不在这里。
+#
+# 不链 atan_mock.c: MotorPWM 不调用 atan。
+hostlib_mock.c
+cases/MotorPWM/mock_pwm.c

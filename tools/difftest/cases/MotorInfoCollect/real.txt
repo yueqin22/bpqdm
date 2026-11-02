@@ -1,0 +1,49 @@
+# 转发到真头文件 (gen_dir 的转发头排在 include 路径最前面, 压过所有 shim)。
+#
+# 两类:
+#
+# 1. MotorInclude.h —— 公共 shim 里有一份**最小替身**(只声明 ZeroPosCtl/f_p2p 用到
+#    的那几个量)。本模块要的是真的那一条链: MotorInclude.h -> MotorStructDefine.h
+#    / MotorInfoCollectInclude.h / MotorInvProtectInclude.h (gError) /
+#    MotorParaIDinclude.h (gUVCoff) / MotorPublicCalInclude.h (gShortGnd) / ...
+#    用替身等于换了一套结构体, 而本模块写的 15 个全局量全是这些结构体。
+#
+# 2. include/device 下的外设头 —— 它们**不在**宿主 include 路径上 (run_case 只挂了
+#    motor/common/function), 但 SystemDefine.h 会 `#include "DSP2803x_Device.h"`,
+#    而真实设备头里有 `extern cregister volatile unsigned int IFR;` 与
+#    `asm(" clrc INTM")` 这类 MSVC 不认的 C28x 语法。所以设备头由用例私有
+#    shim/DSP2803x_Device.h 顶上 (只保留类型 + BITn + 下面这批外设头), 外设头本身
+#    则是纯结构体 + extern 声明, 实测 MSVC 直接编得过, 所以照转 —— 寄存器结构体
+#    保持真身, 位域布局才不是仿制品。
+#
+# 注意 MotorInclude.h **不在**这份清单里 —— 它由 host_patch.json 提供宿主副本
+# (真文件有 4 条 `extern interrupt void ...` 原型, MSVC 编不过)。若同时写进
+# real.txt, make_real_passthroughs 会把 gen_dir 里的补丁副本覆盖成转发头,
+# 补丁就白打了 —— 这一条是实测踩出来的。
+#
+# 实测过的反例: 转发真 DSP2803x_Examples.h 会失败, 它 #include
+# DSP2803x_GlobalPrototypes.h, 那里全是 `__interrupt void ...` 原型; 紧接着的
+# DSP2803x_DefaultISR.h 同理。这两个都留在 shim 里不转发。
+
+DSP2803x_Adc.h
+DSP2803x_BootVars.h
+DSP2803x_Cla.h
+DSP2803x_Cla_Defines.h
+DSP2803x_Comp.h
+DSP2803x_CpuTimers.h
+DSP2803x_DevEmu.h
+DSP2803x_ECan.h
+DSP2803x_ECap.h
+DSP2803x_EPwm.h
+DSP2803x_EPwm_defines.h
+DSP2803x_EQep.h
+DSP2803x_Gpio.h
+DSP2803x_I2C_defines.h
+DSP2803x_I2c.h
+DSP2803x_Lin.h
+DSP2803x_NmiIntrupt.h
+DSP2803x_PieCtrl.h
+DSP2803x_Sci.h
+DSP2803x_Spi.h
+DSP2803x_SysCtrl.h
+DSP2803x_XIntrupt.h

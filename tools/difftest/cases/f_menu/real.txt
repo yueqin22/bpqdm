@@ -1,0 +1,29 @@
+# 全部转发到真头文件。
+#
+# f_menu.c 的 include 链是 f_menu.h / f_main.h / f_runSrc.h / f_frqSrc.h / f_io.h /
+# f_ui.h / f_eeprom.h / f_comm.h / f_posCtrl.h / f_invPara.h / f_fcDeal.h / f_p2p.h,
+# 末尾还 #include "f_funcCode_disp.c" (270 行, 表 + UpdateU0Data)。
+# 公共 shim 里 f_menu.h / f_runSrc.h / f_frqSrc.h / f_io.h / f_ui.h / f_comm.h /
+# f_error.h / f_common.h / MotorInclude.h 都是空壳, 而本模块**处处**要求它们是真的:
+#
+#   f_menu.h -> f_funcCode.h    FUNCCODE_ALL / GetCodeIndex / GetGradeIndex /
+#                               funcCodeAttribute / funcCodeGradeAll /
+#                               funcCodeGradeSum / FUNCCODE_GROUP_*
+#   f_ui.h                      DISPLAY_CODE / LED_CODE / displayBuffer / keyFunc /
+#                               upDownDelta / DISPLAY_* 编码枚举
+#   f_io.h                      LowPassFilter / LPF_DEFALUTS / LpfCalc /
+#                               diStatus / doStatus / diFunc / aiDeal / pulseInFrq
+#   f_runSrc.h                  runFlag / runSrc / tuneCmd / invtStatus / torqueAim
+#   f_frqSrc.h                  frq / frqAim / frqDroop / pidFunc / runMode /
+#                               frqKeyUpDownDelta / bFrqDigital
+#   f_eeprom.h                  funcCodeRwMode[Tmp] / funcCodeOneWrite*
+#   f_invPara.h                 invPara / invTypeLimitTable / INV_TYPE_*
+#
+# **必须一次全转发**: 只转发一个, 链条下游仍会撞上桩里的替身类型, 而本模块的
+# 观测量就是这些结构体的**具体布局** (funcCode.code.errorScene3.elem 的 8 个
+# Uint16、GetCodeIndex 算出的下标、funcCodeAttribute 的 909 项) —— 替身类型会让
+# 测试失去意义。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

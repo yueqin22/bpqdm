@@ -1,0 +1,16 @@
+# f_comm 用例要链接的 mock 清单 (相对 tools/difftest/)。
+#
+# mock_comm.c -- 本用例私有, 提供三类东西, 都**不按侧重命名**:
+#   (1) 六个外设对象 (LinaRegs / GpioCtrlRegs / GpioDataRegs / PieCtrlRegs /
+#       PieVectTable / IER) 加 EALLOW-EDIS 计数表 gHostCpuCtl[]。它们是模块的
+#       输入兼输出面, 两侧必须绑到同一份。
+#   (2) 模块读写的工程全局量 (funcCode / runFlag / errorCode / p2pData ...)
+#       与两张等级表 (grade_tables.inc, 生成物)。
+#   (3) 十个协议入口 + 菜单层四个函数的替身, 加 CrcValueByteCalc /
+#       GetNumberDigit1 的逐字副本。
+#
+# 不链 hostlib_mock.c: 活代码不调用 qsqrt / qsin / qatan 这些定点数学。
+# 不链 hw_mock.c: 本模块要的是**真**寄存器模型 (LINA_REGS / GPIO_CTRL_REGS 的
+#   位域布局就是被测对象的一部分), hw_mock 那种寄存器文件替身会把布局差异抹平。
+# 不链 hw_mock_p2p.c: p2pData 由本用例 mock 自己持有, 那份会撞名。
+cases/f_comm/mock_comm.c

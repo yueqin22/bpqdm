@@ -1,0 +1,1 @@
+cases/MotorInfoCollect/mock_infocollect.c

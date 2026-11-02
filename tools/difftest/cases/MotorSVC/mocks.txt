@@ -1,0 +1,16 @@
+# MotorSVC 用例要链接的 mock 清单 (相对 tools/difftest/)。
+#
+# hostlib_mock.c  -- abs / labs / qsin / qatan / qsqrt 的宿主替身。目标端
+#   abs 与 __IQsat 都是 cl2000 内建 (nm2000 对 build/Debug/MotorSVC.obj 的
+#   undefined 集合里既没有 _abs 也没有 __IQsat: 目标端行内展开), 宿主上
+#   abs 走 SubPrgInclude.h 的原型 -> 本文件给出 16 位语义的定义;
+#   qsin / qsqrt 在 asm/ASMSubPrg.asm 里, 是多项式, 不逐位复刻, 但两侧
+#   调同一份, 差分仍然有效 (见 hostlib_mock.c 顶部说明)。
+# atan_mock.c     -- SubPrg.c 里 atan(x,y) 的宿主替身 (本链不链 SubPrg.c,
+#   否则会与它自己的 atan 定义撞名)。
+# mock_svc.c      -- 本用例私有: CPU 定时器 + EINT/DINT 计数表 + 14 个
+#   "别的翻译单元拥有"的全局量。模块自己的 8 个全局量由 ref_tu.c/new_tu.c
+#   按侧重命名, 不在这里。
+hostlib_mock.c
+atan_mock.c
+cases/MotorSVC/mock_svc.c

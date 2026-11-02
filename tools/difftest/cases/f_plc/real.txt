@@ -1,0 +1,11 @@
+# 全部转发到真头文件。
+#
+# f_plc.c 的 include 链是 f_funcCode.h / f_dspcan.h / f_canlink.h / f_comm.h / f_plc.h。
+# 其中 f_comm.h 在公共 shim 里是个空壳 (只 include p2p_common.h), 而 p2p_common.h
+# 无条件声明 `extern struct FUNCCODE_MOCK funcCode` —— 跟真的 FUNCCODE_ALL funcCode
+# 直接重定义冲突。真 f_comm.h 又会拉进 f_main.h / f_runSrc.h / f_frqSrc.h / f_menu.h,
+# 它们同样是空壳。所以**必须一次全转发**: 只转发一个, 链条下游仍会撞上桩。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*

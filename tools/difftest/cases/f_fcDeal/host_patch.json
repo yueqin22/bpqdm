@@ -1,0 +1,44 @@
+{
+  "why": [
+    "宿主构建专用补丁, 目标端不受影响。",
+    "",
+    "f_fcDeal.c 在文件作用域有一张表:",
+    "    LOCALF Uint16 const limitOtherCodeIndex[LIMIT_OTHER_CODE_NUM] =",
+    "    { PULSE_IN_MAX_INDEX, PULSE_IN_MIN_INDEX, ... };",
+    "其中 PULSE_IN_MAX_INDEX 这些宏展开成 GetCodeIndex(funcCode.code.<成员>),",
+    "也就是 `(Uint16)(&(funcCode.code.X) - &(funcCode.all[0]))` —— **两个地址常量相减**。",
+    "",
+    "C28x 的 cl2000 把它当常量折叠, 正常编译。MSVC 的 C 前端不行: 它接受单个",
+    "地址常量, 但拒绝两个地址常量相减 (error C2099)。实测过 6 种写法 (裸指针差 /",
+    "char* 差 / 强转 size_t 后相减 / 经 long 中转 / extern 对象 / offsetof 相减)",
+    "全部被拒 —— 与 f_invPara、f_motorFc 踩到的是同一个坑, 那两处的记录见各自",
+    "的 host_patch.json。所以这不是换个 shim 写法能绕开的。",
+    "",
+    "补丁只做一件事: 把静态初始化式换成不带初始化式的声明。值由 driver.c 在跑之前",
+    "用**同一批宏** (PULSE_IN_MAX_INDEX ... MAX_FRQ_INDEX) 填进去, 不是另写一份",
+    "公式, 所以不会和源码里的算法漂移。",
+    "",
+    "顺序无关性: 模块只做 `if (limitOtherCodeIndex[j] == index) { ...; break; }`,",
+    "而 13 个值互不相同 (driver.c 的 check_limit_table() 断言), 命中是唯一的,",
+    "所以表的排列在行为上不可观测。表**内容**的等价由目标端证明 ——",
+    "build_and_compare.py 的 Tier B 逐段比对 f_fcDeal.obj 的 .econst 内容。",
+    "",
+    "改动范围: 16 行 -> 1 行, 只改这一处 (count=1, 失配就报错停下)。",
+    "const 一并去掉: 表改由运行期填充, 必须是可写的; 模块只读它, 语义不变。"
+  ],
+  "modules": [
+    {
+      "ref_src": "ref/f_fcDeal_ref.c",
+      "ref_out": "host_ref_f_fcDeal.c",
+      "new_base": "f_fcDeal.c",
+      "new_out": "host_new_f_fcDeal.c",
+      "replace": [
+        {
+          "old": "LOCALF Uint16 const limitOtherCodeIndex[LIMIT_OTHER_CODE_NUM] =\n{\n    PULSE_IN_MAX_INDEX,\n    PULSE_IN_MIN_INDEX,\n    CURVE2_MAX_INDEX,\n    CURVE2_MIN_INDEX,\n    CURVE1_MAX_INDEX,\n    CURVE1_MIN_INDEX,\n    VF_FRQ3_INDEX,\n    VF_FRQ2_INDEX,\n    VF_FRQ1_INDEX,\n    RATING_FRQ_INDEX,\n    LOWER_FRQ_INDEX,\n    UPPER_FRQ_INDEX,\n    MAX_FRQ_INDEX,\n};",
+          "new": "LOCALF Uint16 limitOtherCodeIndex[LIMIT_OTHER_CODE_NUM];",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "modules": [
+    {
+      "ref_src": "../../../../include/function/f_comm_DP.h",
+      "ref_out": "f_comm_DP.h",
+      "new_base": "include/function/f_comm_DP.h",
+      "new_out": "f_comm_DP.h",
+      "replace": [
+        {
+          "old": "#include \"f_funcCode.h\"",
+          "new": "#include <f_funcCode.h>",
+          "count": 1,
+          "side": "both",
+          "why": "f_comm_DP.h line 4. Left quoted, MSVC resolves it from include/function/ (the same-directory rule) and gets the REAL f_funcCode.h -- a hub that pulls DSP28x_Project.h / f_debug.h / f_interface.h / f_p2p.h and, through them, most of the project. The gen_dir copy (cases/f_comm_DP/shim/f_funcCode.h) would never be reached. Angle brackets drop the same-directory rule; gen_dir is first on the include path, so the stub wins. Only the quote style changes -- every #define in this header stays as the firmware has it, which is the whole point of forwarding it real."
+        }
+      ]
+    }
+  ]
+}

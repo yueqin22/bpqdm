@@ -1,0 +1,29 @@
+# 全部转发到真头文件。
+#
+# f_frqSrc.c 的 include 链是 f_frqSrc.h / f_main.h / f_runSrc.h / f_io.h /
+# f_menu.h / f_ui.h / f_p2p.h / f_comm.h。这几个都必须用真的:
+#   - f_frqSrc.h  提供本模块自己的 extern 声明 (frq / frqAim / maxFrq /
+#                 upperFrq / lowerFrq / frqFlag / frqXy / jumpFrq1 / jumpFrq2 ...)
+#                 以及 struct FRQ_XY / union FRQ_FLAG / JUMP_FRQ 的布局;
+#   - f_main.h    提供 struct MOTOR_FC 的 extern、FRQ_SRC_PERIOD、
+#                 ABS_INT16 / ABS_INT32 —— 本模块的绝对值与周期常量全靠它们;
+#   - f_runSrc.h  提供 union RUN_FLAG / union RUN_CMD 的 extern、
+#                 accDecFrqPrcFlag、runDirPanelOld、RUN_MODE_* 与 ACC_DEC_FRQ_*;
+#   - f_io.h      提供 aiDeal[] / struct AI_DEAL / AI_NUMBER / pulseInSet /
+#                 struct DI_FUNC / struct DI_SELECT_FUNC / diFunc / diSelectFunc;
+#   - f_menu.h    提供 menu0DispStatus / keyFunc / GetNumberDigit1 的声明;
+#   - f_ui.h      提供 frqAimDisp / frqXDisp / frqYDisp / frqAimPLCDisp / runSrc;
+#   - f_p2p.h     提供 struct P2P_DATA 与 p2pData (P2P_REV_FRQ_SET 分支要用);
+#   - f_comm.h    提供 dpFrqAim / commProtocolSec / PROFIBUS 常量。
+#
+# f_funcCode.h 由 f_runSrc.h 拉进来, 提供 FUNCCODE_ALL funcCode 与全部
+# FUNCCODE_frqCalcSrc_* / FUNCCODE_frqXySrc_* / FUNCCODE_plcFrq0Src_* /
+# FUNCCODE_plcRunMode_* / FUNCCODE_plcTimeUnit_* / FUNCCODE_motorCtrlMode_* 常量。
+#
+# 公共 shim 里这些头都是空壳 (只 include p2p_common.h), 而 p2p_common.h 无条件声明
+# `extern struct FUNCCODE_MOCK funcCode`, 与真的 FUNCCODE_ALL funcCode 直接重定义冲突。
+# 所以**必须一次全转发**: 只转发一个, 链条下游仍会撞上桩。
+#
+# DataTypeDef.h 不在展开范围内 (run_case.PINNED_SHIMS) —— 它负责把 u16 钉成
+# uint16_t, 转发成真文件会让 u16 在宿主上变成 32 位, 整个测试台的宽度前提就没了。
+*
